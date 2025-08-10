@@ -1,11 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Augenpraxis Mitte</title>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augenarztpraxis Dr. med. Nahla Al-Asbahi - Ihre Augenärztin in Berlin Mitte</title>
+    <meta name="description" content="Augenarztpraxis Dr. med. Nahla Al-Asbahi in [Stadt] bietet umfassendeAugenheilkunde. Vereinbaren Sie online einen Termin.">
+    <meta name="keywords" content="Augenarzt, Augenarztpraxis, Dr. Nahla Al-Asbahi, Augenheilkunde, [Stadt],Sehtest,Glaukom,Makuladegeneration,GrauerStar,TrockeneAugen">
+    <meta name="author" content="vivenna">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="vivenna" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="canonical" href="https://augenpraxis-mitte.de/">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            transition: top 0.3s; /* Für den Ausblendeffekt */
+            line-height: 0.9;
+            margin-left: -20px;
+        }
+
+        .header-left, .header-center, .header-right, .header-button, .header-language {
+            padding: 10px;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-right: 0px;
+        }
+
+        .header-center {
+            padding-left: 0px;
+            margin-left: -230px;
+        }
+        
+        .header-center-text {
+            font-weight: bold;
+        }
+
+        .header-right {
+            margin-left: -220px;
+        }
+
+        .button {
+            background-color: #4b79ce;
+            color: white;
+            padding: 13px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-left: -250px;
+        }
+
+        /* Style für das Ausblenden der Kopfzeile beim Scrollen */
+        .header-hidden {
+            top: -150px; /* Höhe der Kopfzeile */
+        }
+
+        main {
+            padding-top: 100px; /* Füge Platz für die feste Kopfzeile hinzu */
+        }
+        .header-language {
+            margin-left: -330px;
+            font-size: 13px;
+        }
+        .language-active {
+            color: grey;
+            margin-right: 10px;
+        }
+        .language-inactive {
+            color: black;
+            margin-right: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Willkommen bei Augenpraxis Mitte</h1>
-  <p>Diese Seite ist online über GitHub Pages.</p>
+    <header class="header">
+        <div class="header-left">
+            <img src="assets/logo.webp" alt="Logo" class="logo"> <!-- Platzhalter für Logo -->
+        </div>
+        <div class="header-center">
+            <span class="header-center-text"><p>Augenarztpraxis</p>
+            <p>Dr. med. Nahla Al-Asbahi</p></span>
+            <p>Fachärztin für Augenheilkunde</p>
+            <p>Berlin Mitte</p>
+        </div>
+        <div class="header-right">
+            <p>Müllerstr. 139, 13353 Berlin</p>
+            <p>Tel: 030 33876167</p>
+            <p>Fax: 030 28654715</p>
+            <p>E-Mail: info@augenpraxis-mitte.de</p>
+        </div>
+        <div class="header-button">
+            <a href="https://google.com" class="button">Termin buchen</a>
+        </div>
+        <div class="header-language">
+            <span class="language-active">DE</span>
+            <a href="/en/"><span class="language-inactive">EN</span></a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Dein Hauptinhalt hier -->
+        <p>Scrolle nach unten, um die Kopfzeile auszublenden.</p>
+        <div style="height: 2000px;"></div> <!-- Füge viel Inhalt hinzu, um das Scrollen zu ermöglichen -->
+    </main>
 </body>
 </html>
