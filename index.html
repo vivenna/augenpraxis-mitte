@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Augenarztpraxis Dr. med. Nahla Al-Asbahi - Ihre Augenärztin in Berlin Mitte</title>
-    <meta name="description" content="Augenarztpraxis Dr. med. Nahla Al-Asbahi in [Stadt] bietet umfassendeAugenheilkunde. Vereinbaren Sie online einen Termin.">
-    <meta name="keywords" content="Augenarzt, Augenarztpraxis, Dr. Nahla Al-Asbahi, Augenheilkunde, [Stadt],Sehtest,Glaukom,Makuladegeneration,GrauerStar,TrockeneAugen">
-    <meta name="author" content="vivenna">
+    <meta name="description" content="Augenarztpraxis Dr. med. Nahla Al-Asbahi in Berlin Mitte bietet umfassende Augenheilkunde. Vereinbaren Sie online einen Termin.">
+    <meta name="keywords" content="Augenarzt, Augenarztpraxis, Dr. Nahla Al-Asbahi, Augenheilkunde, Berlin Mitte, Sehtest, Glaukom, Makuladegeneration, Grauer Star, Trockene Augen">
+   <meta name="author" content="vivenna">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -34,7 +34,6 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
-            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -97,7 +96,40 @@
             color: black;
             margin-right: 20px;
         }
+
+        /* Styles für die Navigationsleiste */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px; /* Zentriert die Navigationsleiste horizontal */
+            width: 100%;
+        }
+        
+        nav {
+            background-color: #fff; /* Weiße Hintergrundfarbe */
+            border: 5px solid #a8e385; /* Dicker, farbiger Rand */
+            border-radius: 50px;
+            padding: 20px 30px; /* Innenabstand */
+            display: inline-block; /* Sorgt dafür, dass es nur so breit wie der Inhalt ist */
+        }
+
+        nav ul {
+            display: flex; /* Nutzt Flexbox, um die Menüpunkte horizontal anzuordnen */
+            justify-content: space-around; /* Verteilt die Elemente gleichmäßig */
+            width: 100%; /* Nimmt die volle Breite des Navigationsbereichs ein */
+            list-style: none; /* Entfernt die Aufzählungszeichen */
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            text-align: center; /* Zentriert den Text in den Listenelementen */
+            padding: 0px 50px; /* Fügt Innenabstand hinzu */
+        }
     </style>
+
+
+
 </head>
 <body>
     <header class="header">
@@ -125,6 +157,17 @@
         </div>
     </header>
 
+   <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="/">Startseite</a></li>
+                <li><a href="leistungen">Leistungen</a></li>
+                <li><a href="sprechzeiten">Sprechzeiten</a></li>
+                <li><a href="wichtige-infos">Wichtige Infos</a></li>
+                <li><a href="kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
     <main>
         <!-- Dein Hauptinhalt hier -->
         <p>Scrolle nach unten, um die Kopfzeile auszublenden.</p>
