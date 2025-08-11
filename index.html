@@ -29,18 +29,14 @@
         }
 
         .header {
-            background-color: #fff;
-            padding: 20px;
+            background-color: #fff;            
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-around; /* Sorgt für gleichmäßige Verteilung */
+            padding: 20px;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 100;
-            transition: top 0.3s; /* Für den Ausblendeffekt */
-            line-height: 0.9;
-            margin-left: -20px;
         }
 
         .header-left, .header-center, .header-right, .header-button, .header-language {
@@ -49,31 +45,19 @@
 
         .logo {
             width: 150px;
-            height: auto;
-            margin-right: 0px;
-        }
-
-        .header-center {
-            padding-left: 0px;
-            margin-left: -230px;
         }
         
         .header-center-text {
             font-weight: bold;
         }
 
-        .header-right {
-            margin-left: -220px;
-        }
-
         .button {
-            background-color: #4b79ce;
-            color: white;
+            color: rgb(255, 255, 255);
+            background-color: #4b79ce; 
             padding: 13px 20px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 10px;
-            margin-left: -250px;
         }
 
         /* Style für das Ausblenden der Kopfzeile beim Scrollen */
@@ -81,20 +65,15 @@
             top: -150px; /* Höhe der Kopfzeile */
         }
 
-        main {
-            padding-top: 100px; /* Füge Platz für die feste Kopfzeile hinzu */
-        }
         .header-language {
-            margin-left: -330px;
             font-size: 13px;
         }
         .language-active {
             color: grey;
-            margin-right: 10px;
+            padding-right: 5px;
         }
-        .language-inactive {
+       .language-inactive {
             color: black;
-            margin-right: 20px;
         }
 
         /* Styles für die Navigationsleiste */
@@ -126,6 +105,10 @@
             text-align: center; /* Zentriert den Text in den Listenelementen */
             padding: 0px 50px; /* Fügt Innenabstand hinzu */
         }
+
+        main {
+            padding-top: 100px; /* Füge Platz für die feste Kopfzeile hinzu */
+        }
     </style>
 
 
@@ -133,27 +116,27 @@
 </head>
 <body>
     <header class="header">
-        <div class="header-left">
-            <img src="assets/logo.webp" alt="Logo" class="logo"> <!-- Platzhalter für Logo -->
-        </div>
-        <div class="header-center">
-            <span class="header-center-text"><p>Augenarztpraxis</p>
-            <p>Dr. med. Nahla Al-Asbahi</p></span>
-            <p>Fachärztin für Augenheilkunde</p>
-            <p>Berlin Mitte</p>
-        </div>
-        <div class="header-right">
-            <p>Müllerstr. 139, 13353 Berlin</p>
-            <p>Tel: 030 33876167</p>
-            <p>Fax: 030 28654715</p>
-            <p>E-Mail: info@augenpraxis-mitte.de</p>
-        </div>
-        <div class="header-button">
-            <a href="https://google.com" class="button">Termin buchen</a>
-        </div>
-        <div class="header-language">
-            <span class="language-active">DE</span>
-            <a href="/en/"><span class="language-inactive">EN</span></a>
+       <div class="header-left">
+        <img src="assets/logo.webp" alt="Logo" class="logo">
+       </div>
+       <div class="header-center">
+        <span class="header-center-text">
+         <p>Augenarztpraxis</p>
+         <p>Dr. med. Nahla Al-Asbahi</p>
+        </span>
+        <p>Fachärztin für Augenheilkunde</p>
+        <p>Berlin Mitte</p>
+       </div>
+       <div class="header-right">
+        <p>Müllerstr. 139, 13353 Berlin</p>
+        <p>Tel: 030 33876167</p>
+        <p>Fax: 030 28654715</p>
+        <p>E-Mail: info@augenpraxis-mitte.de</p>
+       </div>
+       <a href="https://google.com" class="button">Termin buchen</a>
+       <div class="header-language">
+        <span class="language-active">DE</span>
+        <a href="/en/"><span class="language-inactive">EN</span></a>
         </div>
     </header>
 
