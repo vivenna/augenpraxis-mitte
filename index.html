@@ -35,12 +35,14 @@
         .header {
             background-color: #fff;            
             display: flex;
+            flex-wrap: wrap; /* Ermöglicht Umbruch bei kleineren Bildschirmen */
             align-items: center;
-            justify-content: space-around; /* Sorgt für gleichmäßige Verteilung */
             padding: 20px;
             top: 0;
+            justify-content: center;
             left: 0;
             width: 100%;
+            margin-left: -30px;
         }
 
         .header-left, .header-center, .header-right, .header-button, .header-language {
@@ -49,18 +51,23 @@
 
         .logo {
             width: 150px;
+            margin: 0 0; /* Vergrößert den Abstand links und rechts vom Logo */
         }
         
+        .header-center {
+            margin: 0 50px; /* Fügt Abstand links und rechts vom Text hinzu */
+        }
+
         .header-center-text {
             font-weight: bold;
         }
 
         .button {
             color: rgb(255, 255, 255);
-            background-color: #4b79ce; 
+            background-color: #4b79ce;
             padding: 13px 20px;
             text-decoration: none;
-            font-weight: bold;
+            margin: 0 50px; /* Fügt Abstand links und rechts vom Button hinzu */
             border-radius: 10px;
         }
 
@@ -70,6 +77,7 @@
         }
 
         .header-language {
+            margin: 0 0px; /* Abstand links und rechts vom Sprachauswahl entfernt */
             font-size: 13px;
         }
         .language-active {
@@ -136,6 +144,8 @@
         <p>Tel: 030 33876167</p>
         <p>Fax: 030 28654715</p>
         <p>E-Mail: info@augenpraxis-mitte.de</p>
+
+
        </div>
        <a href="https://google.com" class="button">Termin buchen</a>
        <div class="header-language">
