@@ -138,9 +138,17 @@
 
 
         main {
-            padding-top: 300px;
+            padding-top: 50px;
         }
-
+        .main-content {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        .main-text {
+            flex: 1;
+            padding-right: 20px;
+        }
     </style>
 
 
@@ -188,21 +196,22 @@
     </div>
 
     <main>
-     <div style="display: flex; align-items: center; padding: 20px;">
-            <div style="flex: 1; padding-right: 20px;">
+     <div class="main-content">
+            <div class="main-text">
                 <h2>Herzlich Willkommen in unserer
                     <br>Augenarztpraxis im Herzen von Berlin</h2>
-                <p style="font-size: 16px;">Unsere Augenarztpraxis in Berlin-Mitte bietet Ihnen eine umfassende und moderne augenärztliche Versorgung.
+                <p>Unsere Augenarztpraxis in Berlin-Mitte bietet Ihnen eine umfassende und moderne augenärztliche Versorgung.
                     Von der allgemeinen Untersuchung bis hin zu bildgebenden Hightech-Verfahren setzen wir auf Erfahrung,
                     Fachkompetenz und neueste Technik – stets mit dem Ziel, die bestmögliche Lösung für Ihr Anliegen zu
                     finden.</p>
-                <p style="font-size: 16px;">Dabei legen wir besonderen Wert auf eine individuelle, einfühlsame Beratung und eine angenehme
+                <p>Dabei legen wir besonderen Wert auf eine individuelle, einfühlsame Beratung und eine angenehme
                     Atmosphäre. Unser freundliches Praxisteam nimmt sich Zeit für Ihre Bedürfnisse und sorgt dafür, dass Sie
                     sich bei uns gut aufgehoben fühlen.</p>
             </div>
-            <div style="flex: 1;">
-                <img src="assets/main.png" alt="Augenarztpraxis" style="width: 100%; border-radius: 10px;">
+            <div class="main-image">
+                <img src="assets/pexels-kseniachernaya-5752241.jpg" alt="Augenarztpraxis">
             </div>
+
         </div>
     </main>
 
@@ -244,4 +253,23 @@
         });
     </script>
 </body>
+
+<style>
+    .main-image {
+        flex: 1;
+    }
+
+    .main-image img {
+        width: 50%;
+        border-radius: 10px;
+        opacity: 0.5;
+        margin-top: 50px;
+    }
+
+    .main-text p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+</style>
 </html>
