@@ -95,6 +95,7 @@
             margin-top: 20px; /* Zentriert die Navigationsleiste horizontal */
             width: 100%;
             z-index: 100; /* Stellen Sie sicher, dass es über anderen Inhalten liegt */
+            transition: height 0.3s ease; /* Füge eine sanfte Transition für Höhenänderungen hinzu */
         }
         
         nav {
@@ -118,6 +119,10 @@
             text-align: center; /* Zentriert den Text in den Listenelementen */
             padding: 0px 50px; /* Fügt Innenabstand hinzu */
         }
+       .nav-placeholder {
+            height: 109px; /* Gleiche Höhe wie die Navigationsleiste */
+            width: 100%;
+        }
         
         .nav-fixed {
             position: fixed;
@@ -125,7 +130,7 @@
         }
 
         main {
-            padding-top: 100px; /* Füge Platz für die feste Kopfzeile hinzu */
+            padding-top: 200px; /* Füge Platz für die feste Kopfzeile hinzu */
         }
     </style>
 
@@ -136,14 +141,26 @@
     document.addEventListener('DOMContentLoaded', function() {
         const navContainer = document.querySelector('.nav-container');
         let navTop = navContainer.offsetTop;
-        
+        const distanceToFixed = 20; // Abstand zum oberen Rand, bei dem die Navigationsleiste fixiert wird
+        let navPlaceholder = document.createElement('div');
+
+        navPlaceholder.className = 'nav-placeholder';
+
         function stickNav() {
-            if (window.scrollY >= navTop) {
+            if (window.scrollY >= (navTop - distanceToFixed)) {
                 navContainer.classList.add('nav-fixed');
+                // Füge den Platzhalter direkt vor dem nav-container ein
+                navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
+
+
             } else {
                 navContainer.classList.remove('nav-fixed');
+                if (navPlaceholder.parentNode) {
+                    navPlaceholder.parentNode.removeChild(navPlaceholder);
+                }
             }
         }
+
 
         window.addEventListener('scroll', stickNav);
     });
@@ -177,6 +194,7 @@
         </div>
     </header>
 
+
    <div class="nav-container">
         <nav>
             <ul>
@@ -188,6 +206,7 @@
             </ul>
         </nav>
     </div>
+
     <main>
         <!-- Dein Hauptinhalt hier -->
         <p>Scrolle nach unten, um die Kopfzeile auszublenden.</p>
