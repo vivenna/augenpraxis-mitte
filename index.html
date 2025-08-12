@@ -88,14 +88,13 @@
             color: black;
         }
 
-        /* Styles für die Navigationsleiste */
         .nav-container {
             display: flex;
             justify-content: center;
-            margin-top: 20px; /* Zentriert die Navigationsleiste horizontal */
+            padding-top: 20px; /* statt margin-top */
             width: 100%;
-            z-index: 100; /* Stellen Sie sicher, dass es über anderen Inhalten liegt */
-            transition: height 0.3s ease; /* Füge eine sanfte Transition für Höhenänderungen hinzu */
+            z-index: 100;
+            transition: height 0.3s ease;
         }
         
         nav {
@@ -126,9 +125,9 @@
         
         .nav-fixed {
             position: fixed;
-            top: 0;
-            left: 0; /* Damit es exakt am linken Rand klebt */
-            width: 100%; /* Verhindert schrumpfen */
+            top: 20px; /* entspricht distanceToFixed */
+            left: 0;
+            width: 100%;
         }
 
 
@@ -151,8 +150,12 @@
         navPlaceholder.className = 'nav-placeholder';
 
         function stickNav() {
+            const style = window.getComputedStyle(navContainer);
+            const marginTop = parseInt(style.marginTop) || 0;
+            const totalHeight = navContainer.offsetHeight + marginTop;
+
             if (window.scrollY >= (navTop - distanceToFixed)) {
-                navPlaceholder.style.height = navContainer.offsetHeight + "px";
+                navPlaceholder.style.height = totalHeight + "px";
                 navContainer.classList.add('nav-fixed');
                 navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
             } else {
