@@ -30,7 +30,7 @@
         a {
             text-decoration: none;
             color: inherit;
-        }
+        }   
 
         .header {
             background-color: #fff;            
@@ -94,6 +94,7 @@
             justify-content: center;
             margin-top: 20px; /* Zentriert die Navigationsleiste horizontal */
             width: 100%;
+            z-index: 100; /* Stellen Sie sicher, dass es über anderen Inhalten liegt */
         }
         
         nav {
@@ -117,6 +118,11 @@
             text-align: center; /* Zentriert den Text in den Listenelementen */
             padding: 0px 50px; /* Fügt Innenabstand hinzu */
         }
+        
+        .nav-fixed {
+            position: fixed;
+            top: 0; /* Stelle sicher, dass es ganz oben ist */
+        }
 
         main {
             padding-top: 100px; /* Füge Platz für die feste Kopfzeile hinzu */
@@ -126,6 +132,23 @@
 
 
 </head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navContainer = document.querySelector('.nav-container');
+        let navTop = navContainer.offsetTop;
+        
+        function stickNav() {
+            if (window.scrollY >= navTop) {
+                navContainer.classList.add('nav-fixed');
+            } else {
+                navContainer.classList.remove('nav-fixed');
+            }
+        }
+
+        window.addEventListener('scroll', stickNav);
+    });
+</script>
+
 <body>
     <header class="header">
        <div class="header-left">
