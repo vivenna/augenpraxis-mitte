@@ -126,12 +126,16 @@
         
         .nav-fixed {
             position: fixed;
-            top: 0; /* Stelle sicher, dass es ganz oben ist */
+            top: 0;
+            left: 0; /* Damit es exakt am linken Rand klebt */
+            width: 100%; /* Verhindert schrumpfen */
         }
 
+
         main {
-            padding-top: 200px; /* Füge Platz für die feste Kopfzeile hinzu */
+            padding-top: 0;
         }
+
     </style>
 
 
@@ -148,11 +152,9 @@
 
         function stickNav() {
             if (window.scrollY >= (navTop - distanceToFixed)) {
+                navPlaceholder.style.height = navContainer.offsetHeight + "px";
                 navContainer.classList.add('nav-fixed');
-                // Füge den Platzhalter direkt vor dem nav-container ein
                 navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
-
-
             } else {
                 navContainer.classList.remove('nav-fixed');
                 if (navPlaceholder.parentNode) {
