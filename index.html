@@ -209,7 +209,7 @@
                     sich bei uns gut aufgehoben fühlen.</p>
             </div>
             <div class="main-image">
-                <img src="assets/pexels-kseniachernaya-5752241.jpg" alt="Augenarztpraxis">
+                <img src="assets/eye-4453129_1280.jpg" alt="Augenarztpraxis">
             </div>
 
         </div>
@@ -256,6 +256,15 @@
 
 <style>
     .main-image {
+        /* Neue Werte */
+        width: 70%; /* Nimmt 70% des verfügbaren Platzes ein */
+        margin-left: auto; /* Schiebt das Bild nach rechts */
+        margin-right: 0; /* Stellt sicher, dass es nicht zu weit rechts ist */
+        flex: none; /* Überschreibt den Flex-Wert, um die Breite zu kontrollieren */
+    }
+
+
+    .main-image img {
         flex: 1;
     }
 
