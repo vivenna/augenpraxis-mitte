@@ -181,10 +181,59 @@
             width: 100%;
             max-width: 600px;
             border-radius: 10px;
-            opacity: 0.35;
+            opacity: 1;
             margin-top: 50px;
             margin-right: 0;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+        .main-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .main-content {
+            display: block;
+            align-items: initial;
+            padding: 20px;
+            position: relative;
+            min-height: 350px;
+        }
+        .main-text {
+            flex: initial;
+            padding-right: initial;
+            position: relative;
+            z-index: 2;
+            width: 80%;
+            max-width: 750px;
+            background: transparent;
+            padding-left: 80px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .main-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .main-image-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            pointer-events: none;
+        }
+        .main-image-bg img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            opacity: 1;
+            margin-top: 50px;
+            margin-right: 0;
         }
         .main-text p {
             font-size: 16px;
@@ -192,9 +241,6 @@
             margin-bottom: 15px;
         }
     </style>
-
-
-
 </head>
 <body>
     <header class="header">
@@ -293,58 +339,4 @@
         });
     </script>
 </body>
-
-<style>
-    .main-content {
-        display: block;
-        align-items: initial;
-        padding: 20px;
-        position: relative;
-        min-height: 350px;
-    }
-    .main-text {
-        flex: initial;
-        padding-right: initial;
-        position: relative;
-        z-index: 2;
-        width: 80%;
-        max-width: 750px;
-        background: transparent;
-        padding-left: 80px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .main-text h2 {
-        font-size: 1.8rem;
-        margin-bottom: 25px;
-        font-weight: 800;
-        line-height: 1.2;
-    }
-    .main-image-bg {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 60%;
-        height: 100%;
-        z-index: 1;
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-        pointer-events: none;
-    }
-    .main-image-bg img {
-        width: 100%;
-        max-width: 600px;
-        border-radius: 10px;
-        opacity: 0.35;
-        margin-top: 50px;
-        margin-right: 0;
-        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    }
-    .main-text p {
-        font-size: 16px;
-        line-height: 1.8;
-        margin-bottom: 15px;
-    }
-</style>
 </html>
