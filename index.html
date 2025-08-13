@@ -500,11 +500,16 @@
         });
     </script>
     <script>
-    // Rezensionen Slideshow mit Pager
+    // Rezensionen Slideshow mit Pager und Autoplay bei Sichtbarkeit
     document.addEventListener('DOMContentLoaded', function() {
         const slides = document.querySelectorAll('.rezensionen-slide');
         const pagerDots = document.querySelectorAll('.rezensionen-pager-dot');
+        const rezensionenSection = document.querySelector('.rezensionen-section');
         let current = 0;
+        let interval = null;
+        const DURATION = 4000;
+        let started = false;
+
         function showSlide(idx) {
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === idx);
@@ -513,6 +518,10 @@
                 dot.classList.toggle('active', i === idx);
             });
         }
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }
         pagerDots.forEach((dot, i) => {
             dot.addEventListener('click', function() {
                 current = i;
@@ -520,6 +529,21 @@
             });
         });
         showSlide(current);
+
+        // Intersection Observer für Autoplay
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !started) {
+                    started = true;
+                    interval = setInterval(nextSlide, DURATION);
+                } else if (!entry.isIntersecting && interval) {
+                    clearInterval(interval);
+                    interval = null;
+                    started = false;
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(rezensionenSection);
     });
     </script>
 </body>
