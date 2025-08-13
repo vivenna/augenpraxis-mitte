@@ -141,13 +141,45 @@
             padding-top: 50px;
         }
         .main-content {
-            display: flex;
-            align-items: center;
+            display: block;
+            align-items: initial;
             padding: 20px;
+            position: relative;
+            min-height: 350px;
         }
         .main-text {
-            flex: 1;
-            padding-right: 20px;
+            flex: initial;
+            padding-right: initial;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            background: transparent;
+        }
+        .main-image-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            pointer-events: none;
+        }
+        .main-image-bg img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            opacity: 0.35;
+            margin-top: 50px;
+            margin-right: 0;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+        .main-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
     </style>
 
@@ -196,8 +228,8 @@
     </div>
 
     <main>
-     <div class="main-content" style="position: relative; min-height: 350px;">
-        <div class="main-text" style="position: relative; z-index: 2; width: 100%; background: transparent;">
+     <div class="main-content">
+        <div class="main-text">
             <h2>Herzlich Willkommen in unserer<br>Augenarztpraxis im Herzen von Berlin</h2>
             <p>Unsere Augenarztpraxis in Berlin-Mitte bietet Ihnen eine umfassende und moderne augenärztliche Versorgung.
                 Von der allgemeinen Untersuchung bis hin zu bildgebenden Hightech-Verfahren setzen wir auf Erfahrung,
@@ -254,17 +286,19 @@
 
 <style>
     .main-content {
+        display: block;
+        align-items: initial;
+        padding: 20px;
         position: relative;
         min-height: 350px;
-        width: 100%;
-        display: block;
     }
     .main-text {
+        flex: initial;
+        padding-right: initial;
         position: relative;
         z-index: 2;
         width: 100%;
         background: transparent;
-        padding: 20px 0 20px 0;
     }
     .main-image-bg {
         position: absolute;
