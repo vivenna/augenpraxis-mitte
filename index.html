@@ -240,6 +240,56 @@
             line-height: 1.8;
             margin-bottom: 15px;
         }
+        .sprechstunde-section {
+            margin: 100px 0 40px 0;
+            padding-left: 0;
+            text-align: center;
+        }
+        .sprechstunde-section h2 {
+            font-size: 2.7rem;
+            color: #000;
+            margin-bottom: 48px;
+            font-weight: 800;
+        }
+        .sprechstunde-tabelle {
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: 800px;
+            max-width: 1100px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            color: #000;
+            background: #fff;
+        }
+        .sprechstunde-tabelle th,
+        .sprechstunde-tabelle td {
+            padding: 18px 36px;
+            text-align: center;
+            color: #000;
+            background: #fff;
+        }
+        .sprechstunde-tabelle th {
+            font-weight: 800;
+            background: #fff;
+            color: #000;
+        }
+        .sprechstunde-tabelle th,
+        .sprechstunde-tabelle td {
+            border-right: 2px solid #4b79ce;
+        }
+        .sprechstunde-tabelle th:last-child,
+        .sprechstunde-tabelle td:last-child {
+            border-right: none;
+        }
+        .sprechstunde-tabelle thead tr {
+            border-bottom: 2px solid #4b79ce;
+        }
+        .sprechstunde-tabelle tbody tr:first-child td {
+            border-top: 2px solid #4b79ce;
+        }
+        .sprechstunde-tabelle tbody tr td {
+            border-top: none;
+        }
     </style>
 </head>
 <body>
@@ -300,7 +350,24 @@
         </div>
     </div>
     </main>
-
+    <section class="sprechstunde-section">
+        <h2>Unsere Sprechstunde</h2>
+        <table class="sprechstunde-tabelle">
+            <thead>
+                <tr>
+                    <th>Wochentag</th>
+                    <th>Sprechstunde</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Montag</td><td>8-9 Uhr</td></tr>
+                <tr><td>Dienstag</td><td>8-9 Uhr</td></tr>
+                <tr><td>Mittwoch</td><td>8-9 Uhr</td></tr>
+                <tr><td>Donnerstag</td><td>8-9 Uhr</td></tr>
+                <tr><td>Freitag</td><td>8-9 Uhr</td></tr>
+            </tbody>
+        </table>
+    </section>
     <footer>
         <div>
             <p>
