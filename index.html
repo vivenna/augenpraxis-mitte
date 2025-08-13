@@ -18,6 +18,11 @@
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="canonical" href="https://augenpraxis-mitte.de/">
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         html {
             overflow-x: hidden;
         }
@@ -374,6 +379,164 @@
             opacity: 0.8;
             font-style: normal;
         }
+        .footer {
+            background: #4b79ce;
+            color: #fff;
+            position: relative;
+            padding: 70px 0 0 0;
+            min-height: 340px;
+            overflow: hidden;
+            font-size: 1.15rem;
+            width: 100%;
+            /* margin-left entfernt */
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            text-align: left;
+        }
+        .footer-image-container {
+            position: absolute;
+            top: -40px;
+            left: -60px;
+            z-index: 1;
+            width: 220px;
+            height: 220px;
+            overflow: visible;
+            pointer-events: none;
+        }
+        .footer-logo {
+            width: 220px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.95;
+            transform: translateY(-20px);
+        }
+        .footer-main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            margin-left: 220px;
+        }
+        .footer-claim {
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+            margin-top: 0;
+            letter-spacing: 0.5px;
+        }
+        .footer-button {
+            background: #fff;
+            color: #4b79ce;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 15px 38px;
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            margin-top: 0;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: inline-block;
+        }
+        .footer-button:hover {
+            background: #7bbd64;
+            color: #fff;
+        }
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 40px 18px 220px;
+            box-sizing: border-box;
+        }
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-width: 220px;
+            margin-bottom: 0;
+        }
+        .footer-kontakt-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+        .footer-kontakt-info {
+            font-size: 0.98rem;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        .footer-sprechstunde {
+            font-size: 1.05rem;
+            opacity: 0.8;
+            text-align: left;
+            line-height: 1.7;
+            margin-top: 0;
+        }
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-end;
+            min-width: 180px;
+            margin-bottom: 0;
+        }
+        .footer-link {
+            color: #fff;
+            font-size: 1.02rem;
+            opacity: 0.8;
+            margin-bottom: 6px;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .footer-link:hover {
+            color: #7bbd64;
+        }
+        @media (max-width: 900px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                gap: 30px;
+            }
+            .footer-main {
+                margin-left: 0;
+                align-items: flex-start;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 20px 18px 20px;
+                gap: 18px;
+            }
+            .footer-image-container {
+                left: -30px;
+                top: -30px;
+                width: 140px;
+                height: 140px;
+            }
+            .footer-logo {
+                width: 140px;
+            }
+            .footer-left, .footer-right {
+                align-items: flex-start;
+                min-width: 0;
+                margin-bottom: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -477,11 +640,34 @@
             </div>
         </div>
     </section>
-    <footer>
-        <div>
-            <p>
-
-            </p>
+    <footer class="footer">
+        <div class="footer-image-container">
+            <img src="assets/logo.webp" alt="Logo" class="footer-logo">
+        </div>
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-claim">Klar sehen beginnt mit einem Klick</div>
+                <a href="https://google.com" class="footer-button">Termin buchen</a>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-left">
+                    <div class="footer-kontakt-title">Kontakt</div>
+                    <div class="footer-kontakt-info">
+                        <div>Tel: 030 33876167</div>
+                        <div>Fax: 030 28654715</div>
+                        <div>E-Mail: info@augenpraxis-mitte.de</div>
+                    </div>
+                </div>
+                <div class="footer-sprechstunde">
+                    <div>Mo, Do</div>
+                    <div>Di, Mi, Fr</div>
+                    <div>nach Vereinbarung</div>
+                </div>
+                <div class="footer-right">
+                    <a href="impressum" class="footer-link">Impressum</a><br>
+                    <a href="datenschutz" class="footer-link">Datenschutzerklärung</a>
+                </div>
+            </div>
         </div>
     </footer>
     <script>
