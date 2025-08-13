@@ -351,9 +351,14 @@
             display: none;
             max-width: 800px;
             margin: 0 40px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
         }
         .rezensionen-slide.active {
             display: block;
+            opacity: 1;
+            pointer-events: auto;
         }
         .rezensionen-slide blockquote {
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -521,6 +526,7 @@
         let fillInterval = null;
         const DURATION = 4000;
         let started = false;
+        let isTransitioning = false;
 
         function resetFills() {
             pagerFills.forEach((fill, i) => {
@@ -542,10 +548,22 @@
             });
         }
         function showSlide(idx) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === idx);
-            });
-            animateFill(idx);
+            const currentSlide = document.querySelector('.rezensionen-slide.active');
+            if (currentSlide && slides[idx] !== currentSlide) {
+                currentSlide.style.opacity = '0';
+                setTimeout(() => {
+                    currentSlide.classList.remove('active');
+                    slides[idx].classList.add('active');
+                    slides[idx].style.opacity = '1';
+                    animateFill(idx);
+                }, 400);
+            } else {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === idx);
+                    slide.style.opacity = i === idx ? '1' : '0';
+                });
+                animateFill(idx);
+            }
         }
         function nextSlide() {
             current = (current + 1) % slides.length;
