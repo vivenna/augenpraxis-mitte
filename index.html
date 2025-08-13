@@ -299,6 +299,59 @@
             color: #222;
             opacity: 0.8;
         }
+        .rezensionen-section {
+            margin: 140px 0 100px 0;
+            text-align: center;
+        }
+        .rezensionen-section h2 {
+            font-size: 3.2rem;
+            color: #4b79ce;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+        .rezensionen-slideshow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            min-height: 320px;
+        }
+        .rezensionen-slide {
+            display: none;
+            max-width: 800px;
+            margin: 0 40px;
+        }
+        .rezensionen-slide.active {
+            display: block;
+        }
+        .rezensionen-slide blockquote {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            color: #222;
+            margin: 0 0 28px 0;
+            line-height: 1.6;
+        }
+        .rezensionen-autor {
+            font-size: 1.4rem;
+            color: #555;
+            opacity: 0.8;
+            font-style: normal;
+        }
+        .rezensionen-prev,
+        .rezensionen-next {
+            background: none;
+            border: none;
+            font-size: 3rem;
+            color: #4b79ce;
+            cursor: pointer;
+            padding: 0 28px;
+            transition: color 0.2s;
+        }
+        .rezensionen-prev:hover,
+        .rezensionen-next:hover {
+            color: #7bbd64;
+        }
     </style>
 </head>
 <body>
@@ -380,6 +433,25 @@
             Hinweis: Jeden Wochentag findet eine Akutsprechstunde von 8–9 Uhr statt.
         </div>
     </section>
+    <section class="rezensionen-section">
+        <h2>Rezensionen</h2>
+        <div class="rezensionen-slideshow">
+            <button class="rezensionen-prev" aria-label="vorherige Rezension">&#8592;</button>
+            <div class="rezensionen-slide active">
+                <blockquote>"Sehr freundliche Ärztin, die sich Zeit nimmt und alles verständlich erklärt. Ich habe mich sehr gut aufgehoben gefühlt!"</blockquote>
+                <div class="rezensionen-autor">Anna S.</div>
+            </div>
+            <div class="rezensionen-slide">
+                <blockquote>"Kurze Wartezeiten, moderne Praxis und ein tolles Team. Kann ich nur weiterempfehlen!"</blockquote>
+                <div class="rezensionen-autor">Max M.</div>
+            </div>
+            <div class="rezensionen-slide">
+                <blockquote>"Kompetente Beratung und schnelle Terminvergabe. Vielen Dank für die gute Betreuung!"</blockquote>
+                <div class="rezensionen-autor">Lena K.</div>
+            </div>
+            <button class="rezensionen-next" aria-label="nächste Rezension">&#8594;</button>
+        </div>
+    </section>
     <footer>
         <div>
             <p>
@@ -416,6 +488,28 @@
 
             window.addEventListener('scroll', stickNav);
         });
+    </script>
+    <script>
+    // Rezensionen Slideshow
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.rezensionen-slide');
+        const prevBtn = document.querySelector('.rezensionen-prev');
+        const nextBtn = document.querySelector('.rezensionen-next');
+        let current = 0;
+        function showSlide(idx) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === idx);
+            });
+        }
+        prevBtn.addEventListener('click', function() {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        });
+        nextBtn.addEventListener('click', function() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        });
+    });
     </script>
 </body>
 </html>
