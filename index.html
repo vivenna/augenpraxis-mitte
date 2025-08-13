@@ -333,9 +333,19 @@
             border-radius: 3px;
             cursor: pointer;
             transition: background 0.2s;
+            overflow: hidden;
+            position: relative;
         }
-        .rezensionen-pager-dot.active {
+        .rezensionen-pager-fill {
+            display: block;
+            height: 100%;
+            width: 0%;
             background: #7bbd64;
+            border-radius: 3px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: width 0s;
         }
         .rezensionen-slide {
             display: none;
@@ -456,9 +466,9 @@
                 <div class="rezensionen-autor">Lena K.</div>
             </div>
             <div class="rezensionen-pager">
-                <span class="rezensionen-pager-dot active" data-slide="0"></span>
-                <span class="rezensionen-pager-dot" data-slide="1"></span>
-                <span class="rezensionen-pager-dot" data-slide="2"></span>
+                <span class="rezensionen-pager-dot"><span class="rezensionen-pager-fill"></span></span>
+                <span class="rezensionen-pager-dot"><span class="rezensionen-pager-fill"></span></span>
+                <span class="rezensionen-pager-dot"><span class="rezensionen-pager-fill"></span></span>
             </div>
         </div>
     </section>
@@ -500,23 +510,42 @@
         });
     </script>
     <script>
-    // Rezensionen Slideshow mit Pager und Autoplay bei Sichtbarkeit
+    // Rezensionen Slideshow mit animierten Pager-Balken und Autoplay bei Sichtbarkeit
     document.addEventListener('DOMContentLoaded', function() {
         const slides = document.querySelectorAll('.rezensionen-slide');
         const pagerDots = document.querySelectorAll('.rezensionen-pager-dot');
+        const pagerFills = document.querySelectorAll('.rezensionen-pager-fill');
         const rezensionenSection = document.querySelector('.rezensionen-section');
         let current = 0;
         let interval = null;
+        let fillInterval = null;
         const DURATION = 4000;
         let started = false;
 
+        function resetFills() {
+            pagerFills.forEach((fill, i) => {
+                fill.style.transition = 'none';
+                fill.style.width = '0%';
+                // force reflow for transition reset
+                void fill.offsetWidth;
+            });
+        }
+        function animateFill(idx) {
+            pagerFills.forEach((fill, i) => {
+                fill.style.transition = 'none';
+                fill.style.width = '0%';
+                void fill.offsetWidth;
+                if (i === idx) {
+                    fill.style.transition = `width ${DURATION}ms linear`;
+                    fill.style.width = '100%';
+                }
+            });
+        }
         function showSlide(idx) {
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === idx);
             });
-            pagerDots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === idx);
-            });
+            animateFill(idx);
         }
         function nextSlide() {
             current = (current + 1) % slides.length;
@@ -526,6 +555,10 @@
             dot.addEventListener('click', function() {
                 current = i;
                 showSlide(current);
+                if (interval) {
+                    clearInterval(interval);
+                    interval = setInterval(nextSlide, DURATION);
+                }
             });
         });
         showSlide(current);
@@ -535,11 +568,13 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting && !started) {
                     started = true;
+                    showSlide(current);
                     interval = setInterval(nextSlide, DURATION);
                 } else if (!entry.isIntersecting && interval) {
                     clearInterval(interval);
                     interval = null;
                     started = false;
+                    resetFills();
                 }
             });
         }, { threshold: 0.3 });
