@@ -478,8 +478,14 @@
             margin-bottom: 8px;
         }
         .footer-kontakt-info {
-            font-size: 0.98rem;
+            font-size: 1.05rem;
             line-height: 1.7;
+        }
+        .footer-kontakt-info > div,
+        .footer-sprechstunde-row,
+        .footer-sprechstunde-sowie {
+            margin-bottom: 0;
+            padding: 0;
         }
         .footer-sprechstunde {
             position: absolute;
@@ -495,7 +501,7 @@
         .footer-sprechstunde-title {
             font-size: 1.05rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 0;
         }
         .footer-right {
             position: absolute;
@@ -526,7 +532,10 @@
             justify-content: space-between;
             width: 270px;
             font-size: 1.05rem;
-            margin-bottom: 2px;
+            margin-bottom: 0;
+            padding: 0;
+            align-items: normal;
+            min-height: 0;
         }
         .footer-sprechstunde-tag {
             text-align: left;
@@ -580,14 +589,14 @@
             }
         }
         .footer, .footer * {
-    color: #fff !important;
-}
-.footer-sprechstunde-sowie {
-    flex: 1 1 100%;
-    text-align: left;
-    font-size: 1.05rem;
-    margin-top: 2px;
-}
+            color: #fff;
+        }
+        .footer-sprechstunde-sowie {
+            flex: 1 1 100%;
+            text-align: left;
+            font-size: 1.05rem;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
