@@ -459,6 +459,7 @@
             align-items: flex-end;
             padding: 0 40px 18px 220px;
             box-sizing: border-box;
+            position: relative; /* hinzugefügt für absolute Positionierung von .footer-left */
         }
         .footer-left {
             display: flex;
@@ -467,6 +468,9 @@
             justify-content: flex-end;
             min-width: 220px;
             margin-bottom: 0;
+            position: absolute;
+            left: 30px;
+            top: 0;
         }
         .footer-kontakt-title {
             font-size: 1.05rem;
@@ -482,6 +486,7 @@
             text-align: left;
             line-height: 1.7;
             margin-top: 0;
+            margin-left: 260px; /* Abstand zu .footer-left, damit nichts überlappt */
         }
         .footer-sprechstunde-title {
             font-size: 1.05rem;
@@ -495,6 +500,7 @@
             justify-content: flex-end;
             min-width: 180px;
             margin-bottom: 0;
+            margin-left: 260px; /* Abstand zu .footer-left, damit nichts überlappt */
         }
         .footer-link {
             color: #fff;
@@ -539,6 +545,16 @@
                 align-items: flex-start;
                 padding: 0 20px 18px 20px;
                 gap: 18px;
+                position: static;
+            }
+            .footer-left {
+                position: static;
+                left: auto;
+                top: auto;
+                margin-bottom: 0;
+            }
+            .footer-sprechstunde, .footer-right {
+                margin-left: 0;
             }
             .footer-image-container {
                 left: -30px;
