@@ -18,330 +18,592 @@
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="canonical" href="https://augenpraxis-mitte.de/">
     <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    html {
-        overflow-x: hidden;
-    }
-    body {
-        font-family: 'Roboto', sans-serif;
-        overflow-x: hidden; /* Verhindert horizontales Scrollen */
-        letter-spacing: 0.5px;
-    }
-
-    a {
-        text-decoration: none;
-        color: inherit;
-    }   
-
-    .header {
-        background-color: #fff;            
-        display: flex;
-        flex-wrap: wrap; /* Ermöglicht Umbruch bei kleineren Bildschirmen */
-        align-items: center;
-        padding: 20px;
-        top: 0;
-        justify-content: center;
-        left: 0;
-        width: 100%;
-        margin-left: -30px;
-    }
-
-    .header-left, .header-center, .header-right, .header-button, .header-language {
-        padding: 10px;
-    }
-
-    .logo {
-        width: 150px;
-        margin: 0 0; /* Vergrößert den Abstand links und rechts vom Logo */
-    }
-    
-    .header-center {
-        margin: 0 50px; /* Fügt Abstand links und rechts vom Text hinzu */
-    }
-
-    .header-center-text {
-        font-weight: bold;
-    }
-
-    .button {
-        color: rgb(255, 255, 255);
-        background-color: #4b79ce;
-        padding: 13px 20px;
-        text-decoration: none;
-        margin: 0 50px; /* Fügt Abstand links und rechts vom Button hinzu */
-        border-radius: 10px;
-        font-weight: bold;
-        transition: background-color 0.3s ease; /* Fügt einen sanften Übergang hinzu */
-    }
-
-    .button:hover {
-        background-color: #7bbd64; /* Ändert die Farbe zu einem dunkleren Grün beim Hover */
-    }
-
-    .header-language {
-        margin: 0 0px; /* Abstand links und rechts vom Sprachauswahl entfernt */
-        font-size: 13px;
-    }
-    .language-active {
-        color: grey;
-        padding-right: 5px;
-    }
-   .language-inactive {
-        color: black;
-    }
-
-    .nav-container {
-        display: flex;
-        justify-content: center;
-        padding-top: 20px; /* statt margin-top */
-        width: 100%;
-        z-index: 100;
-        transition: height 0.3s ease;
-    }
-    
-    nav {
-        background-color: #fff; /* Weiße Hintergrundfarbe */
-        border: 5px solid #a8e385; /* Dicker, farbiger Rand */
-        border-radius: 50px;
-        padding: 20px 30px; /* Innenabstand */
-        display: inline-block; /* Sorgt dafür, dass es nur so breit wie der Inhalt ist */
-    }
-
-    nav ul {
-        display: flex; /* Nutzt Flexbox, um die Menüpunkte horizontal anzuordnen */
-        justify-content: space-around; /* Verteilt die Elemente gleichmäßig */
-        width: 100%; /* Nimmt die volle Breite des Navigationsbereichs ein */
-        list-style: none; /* Entfernt die Aufzählungszeichen */
-        padding: 0;
-        margin: 0;
-    }
-
-    nav ul li {
-        text-align: center; /* Zentriert den Text in den Listenelementen */
-        padding: 0px 50px; /* Fügt Innenabstand hinzu */
-    }
-   .nav-placeholder {
-        height: 109px; /* Gleiche Höhe wie die Navigationsleiste */
-        width: 100%;
-    }
-    
-    .nav-fixed {
-        position: fixed;
-        top: 20px; /* entspricht distanceToFixed */
-        left: 0;
-        width: 100%;
-    }
-
-    .sprechstunde-section {
-        margin: 100px 0 40px 0;
-        padding-left: 0;
-        text-align: center;
-    }
-    .sprechstunde-section h2 {
-        font-size: 2.7rem;
-        color: #000;
-        margin-bottom: 70px;
-        font-weight: 800;
-    }
-    .sprechstunde-tabelle {
-        border-collapse: separate;
-        border-spacing: 0;
-        min-width: 950px;
-        max-width: 1300px;
-        margin: 0 auto;
-        font-size: 1.5rem;
-        color: #000;
-        background: #fff;
-        table-layout: fixed;
-    }
-    .sprechstunde-tabelle th,
-    .sprechstunde-tabelle td {
-        padding: 18px 36px;
-        text-align: center;
-        color: #000;
-        background: #fff;
-        width: 50%;
-        font-weight: 400;
-    }
-    .sprechstunde-tabelle th {
-        font-weight: 400;
-        background: #fff;
-        color: #000;
-    }
-    .sprechstunde-tabelle th,
-    .sprechstunde-tabelle td {
-        border-right: 2px solid #a8e385;
-    }
-    .sprechstunde-tabelle th:last-child,
-    .sprechstunde-tabelle td:last-child {
-        border-right: none;
-    }
-    .sprechstunde-tabelle thead tr {
-        border-bottom: 2px solid #a8e385;
-    }
-    .sprechstunde-tabelle tbody tr:first-child td {
-        border-top: 2px solid #a8e385;
-    }
-    .sprechstunde-tabelle tbody tr td {
-        border-top: none;
-    }
-    .sprechstunde-hinweis {
-        margin-top: 40px;
-        font-size: 1.05rem;
-        color: #222;
-        opacity: 0.8;
-    }
-
-    .lage-section {
-        margin: 100px 0;
-        text-align: center;
-    }
-    .lage-section h2 {
-        font-size: 2.5rem;
-        color: #000;
-        margin-bottom: 40px;
-        font-weight: 700;
-    }
-    .lage-tabelle {
-        margin: 0 0 0 15%;
-        width: 75%;
-        max-width: 1100px;
-        border-spacing: 40px 24px;
-        text-align: left;
-        font-size: 1.5rem;
-        color: #000;
-        font-weight: 500;
-    }
-    .lage-tabelle td {
-        vertical-align: top;
-        padding: 12px 18px;
-        font-weight: 400;
-    }
-    .lage-tabelle td:first-child {
-        width: 350px;
-    }
-</style>
-</head>
-<body>
-<header class="header">
-   <div class="header-left">
-    <img src="assets/logo.jpg" alt="Logo" class="logo">
-   </div>
-   <div class="header-center">
-    <span class="header-center-text">
-     <p>Augenarztpraxis</p>
-     <p>Dr. med. Nahla Al-Asbahi</p>
-    </span>
-    <p>Fachärztin für Augenheilkunde</p>
-    <p>Berlin Mitte</p>
-   </div>
-   <div class="header-right">
-    <p>Müllerstr. 139, 13353 Berlin</p>
-    <p>Tel: 030 33876167</p>
-    <p>Fax: 030 28654715</p>
-    <p>E-Mail: info@augenpraxis-mitte.de</p>
-   </div>
-   <a href="https://google.com" class="button">Termin buchen</a>
-   <div class="header-language">
-    <span class="language-active">DE</span>
-    <a href="/en/"><span class="language-inactive">EN</span></a>
-    </div>
-</header>
-<div class="nav-container">
-    <nav>
-        <ul>
-            <li><a href="/">Startseite</a></li>
-            <li><a href="leistungen">Leistungen</a></li>
-            <li><a href="sprechzeiten">Sprechzeiten</a></li>
-            <li><a href="wichtige-infos">Wichtige Infos</a></li>
-            <li><a href="kontakt">Kontakt</a></li>
-        </ul>
-    </nav>
-</div>
-<section class="sprechstunde-section">
-    <h2>Unsere Sprechstunde</h2>
-    <table class="sprechstunde-tabelle">
-        <thead>
-            <tr>
-                <th>Wochentag</th>
-                <th>Sprechstunde</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>Montag</td><td>8-13 Uhr, 14-17 Uhr</td></tr>
-            <tr><td>Dienstag</td><td>8-13 Uhr</td></tr>
-            <tr><td>Mittwoch</td><td>8-13 Uhr</td></tr>
-            <tr><td>Donnerstag</td><td>8-13 Uhr, 14-17 Uhr</td></tr>
-            <tr><td>Freitag</td><td>8-13 Uhr</td></tr>
-        </tbody>
-    </table>
-    <div class="sprechstunde-hinweis">
-        Hinweis: Jeden Wochentag findet eine Akutsprechstunde von 8–9 Uhr statt.
-    </div>
-</section>
-<section class="lage-section">
-    <h2>Lage</h2>
-    <table class="lage-tabelle">
-        <tbody>
-            <tr>
-                <td>Adresse:</td>
-                <td>Müllerstr. 153, 13353 Berlin</td>
-            </tr>
-            <tr>
-                <td>U-Bahn:</td>
-                <td>U9 (Seestraße), U6 (Leopoldplatz)</td>
-            </tr>
-            <tr>
-                <td>Tram:</td>
-                <td>M13, 50 (Bahnhof Seestraße)</td>
-            </tr>
-            <tr>
-                <td>Bus (Seestraße):</td>
-                <td>106, 120</td>
-            </tr>
-            <tr>
-                <td>Bus (Leopoldplatz):</td>
-                <td>120, 142, 147, 221, 247, 327</td>
-            </tr>
-            <tr>
-                <td>Auto:</td>
-                <td>Gebührenpflichtiges Parkhaus Brüsseler Str. 52</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const navContainer = document.querySelector('.nav-container');
-        let navTop = navContainer.offsetTop;
-        const distanceToFixed = 20; // Abstand zum oberen Rand, bei dem die Navigationsleiste fixiert wird
-        let navPlaceholder = document.createElement('div');
-
-        navPlaceholder.className = 'nav-placeholder';
-
-        function stickNav() {
-            const style = window.getComputedStyle(navContainer);
-            const marginTop = parseInt(style.marginTop) || 0;
-            const totalHeight = navContainer.offsetHeight + marginTop;
-
-            if (window.scrollY >= (navTop - distanceToFixed)) {
-                navPlaceholder.style.height = totalHeight + "px";
-                navContainer.classList.add('nav-fixed');
-                navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
-            } else {
-                navContainer.classList.remove('nav-fixed');
-                if (navPlaceholder.parentNode) {
-                    navPlaceholder.parentNode.removeChild(navPlaceholder);
-                }
-            }
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden; /* Verhindert horizontales Scrollen */
+            letter-spacing: 0.5px;
         }
 
-        window.addEventListener('scroll', stickNav);
-    });
-</script>
+        a {
+            text-decoration: none;
+            color: inherit;
+        }   
+
+        .header {
+            background-color: #fff;            
+            display: flex;
+            flex-wrap: wrap; /* Ermöglicht Umbruch bei kleineren Bildschirmen */
+            align-items: center;
+            padding: 20px;
+            top: 0;
+            justify-content: center;
+            left: 0;
+            width: 100%;
+            margin-left: -30px;
+        }
+
+        .header-left, .header-center, .header-right, .header-button, .header-language {
+            padding: 10px;
+        }
+
+        .logo {
+            width: 150px;
+            margin: 0 0; /* Vergrößert den Abstand links und rechts vom Logo */
+        }
+        
+        .header-center {
+            margin: 0 50px; /* Fügt Abstand links und rechts vom Text hinzu */
+        }
+
+        .header-center-text {
+            font-weight: bold;
+        }
+
+        .button {
+            color: rgb(255, 255, 255);
+            background-color: #4b79ce;
+            padding: 13px 20px;
+            text-decoration: none;
+            margin: 0 50px; /* Fügt Abstand links und rechts vom Button hinzu */
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s ease; /* Fügt einen sanften Übergang hinzu */
+        }
+
+        .button:hover {
+            background-color: #7bbd64; /* Ändert die Farbe zu einem dunkleren Grün beim Hover */
+        }
+
+        .header-language {
+            margin: 0 0px; /* Abstand links und rechts vom Sprachauswahl entfernt */
+            font-size: 13px;
+        }
+        .language-active {
+            color: grey;
+            padding-right: 5px;
+        }
+    .language-inactive {
+            color: black;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding-top: 20px; /* statt margin-top */
+            width: 100%;
+            z-index: 100;
+            transition: height 0.3s ease;
+        }
+        
+        nav {
+            background-color: #fff; /* Weiße Hintergrundfarbe */
+            border: 5px solid #a8e385; /* Dicker, farbiger Rand */
+            border-radius: 50px;
+            padding: 20px 30px; /* Innenabstand */
+            display: inline-block; /* Sorgt dafür, dass es nur so breit wie der Inhalt ist */
+        }
+
+        nav ul {
+            display: flex; /* Nutzt Flexbox, um die Menüpunkte horizontal anzuordnen */
+            justify-content: space-around; /* Verteilt die Elemente gleichmäßig */
+            width: 100%; /* Nimmt die volle Breite des Navigationsbereichs ein */
+            list-style: none; /* Entfernt die Aufzählungszeichen */
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            text-align: center; /* Zentriert den Text in den Listenelementen */
+            padding: 0px 50px; /* Fügt Innenabstand hinzu */
+        }
+    .nav-placeholder {
+            height: 109px; /* Gleiche Höhe wie die Navigationsleiste */
+            width: 100%;
+        }
+        
+        .nav-fixed {
+            position: fixed;
+            top: 20px; /* entspricht distanceToFixed */
+            left: 0;
+            width: 100%;
+        }
+
+        .sprechstunde-section {
+            margin: 100px 0 40px 0;
+            padding-left: 0;
+            text-align: center;
+        }
+        .sprechstunde-section h2 {
+            font-size: 2.7rem;
+            color: #000;
+            margin-bottom: 70px;
+            font-weight: 800;
+        }
+        .sprechstunde-tabelle {
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: 950px;
+            max-width: 1300px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            color: #000;
+            background: #fff;
+            table-layout: fixed;
+        }
+        .sprechstunde-tabelle th,
+        .sprechstunde-tabelle td {
+            padding: 18px 36px;
+            text-align: center;
+            color: #000;
+            background: #fff;
+            width: 50%;
+            font-weight: 400;
+        }
+        .sprechstunde-tabelle th {
+            font-weight: 400;
+            background: #fff;
+            color: #000;
+        }
+        .sprechstunde-tabelle th,
+        .sprechstunde-tabelle td {
+            border-right: 2px solid #a8e385;
+        }
+        .sprechstunde-tabelle th:last-child,
+        .sprechstunde-tabelle td:last-child {
+            border-right: none;
+        }
+        .sprechstunde-tabelle thead tr {
+            border-bottom: 2px solid #a8e385;
+        }
+        .sprechstunde-tabelle tbody tr:first-child td {
+            border-top: 2px solid #a8e385;
+        }
+        .sprechstunde-tabelle tbody tr td {
+            border-top: none;
+        }
+        .sprechstunde-hinweis {
+            margin-top: 40px;
+            font-size: 1.05rem;
+            color: #222;
+            opacity: 0.8;
+        }
+
+        .lage-section {
+            margin: 100px 0;
+            text-align: center;
+        }
+        .lage-section h2 {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        .lage-tabelle {
+            margin: 0 0 0 15%;
+            width: 75%;
+            max-width: 1100px;
+            border-spacing: 40px 24px;
+            text-align: left;
+            font-size: 1.5rem;
+            color: #000;
+            font-weight: 500;
+        }
+        .lage-tabelle td {
+            vertical-align: top;
+            padding: 12px 18px;
+            font-weight: 400;
+        }
+        .lage-tabelle td:first-child {
+            width: 350px;
+        }
+        .footer {
+            background: #4b79ce;
+            color: #fff;
+            position: relative;
+            padding: 100px 0 0 0; /* Padding oben erhöht */
+            min-height: 340px;
+            overflow: hidden;
+            font-size: 1.15rem;
+            width: 100%;
+            /* margin-left entfernt */
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            text-align: left;
+        }
+        .footer-image-container {
+            position: absolute;
+            top: -130px;
+            left: -200px;
+            z-index: 1;
+            width: 220px;
+            height: 220px;
+            overflow: visible;
+            pointer-events: none;
+        }
+        .footer-logo {
+            width: 620px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.6;
+            transform: translateY(-20px);
+        }
+        .footer-main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 80px; /* weiter nach oben */
+            margin-top: 0; /* Abstand zum oberen Rand der Fußzeile */
+            /* margin-left entfernt */
+            transform: translateX(40%);
+        }
+        .footer-claim {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            margin-top: 0;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        .footer-button {
+            background: #fff;
+            color: #4b79ce !important;
+            padding: 15px 38px;
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            margin-top: 0;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            display: inline-block;
+            border: 1px solid #fff;
+        }
+        .footer-button:hover {
+            background: #4b79ce;
+            color: #fff !important;
+            border-color: #fff;
+            border: 1px solid #fff;
+        }
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 40px 18px 220px;
+            box-sizing: border-box;
+            position: relative; /* hinzugefügt für absolute Positionierung von .footer-left */
+            min-height: 120px; /* Platz für .footer-right unten */
+            margin-bottom: 30px;
+        }
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-width: 220px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            position: absolute;
+            left: 50px;
+            top: 0;
+        }
+        .footer-kontakt-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .footer-kontakt-info {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .footer-kontakt-info > div,
+        .footer-sprechstunde-row,
+        .footer-sprechstunde-sowie {
+            margin-bottom: 0;
+            padding: 0;
+        }
+        .footer-sprechstunde {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            margin: 0;
+            font-size: 1.05rem;
+            text-align: left;
+            line-height: 1.7;
+            margin-top: 0;
+        }
+        .footer-sprechstunde-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        .footer-right {
+            position: absolute;
+            right: 50px;
+            bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-width: 180px;
+            margin-bottom: 0;
+            margin-left: 0;
+            text-align: left;
+        }
+        .footer-link {
+            color: #fff;
+            font-size: 1.02rem;
+            margin-bottom: 0;
+            text-decoration: underline;
+            transition: color 0.2s;
+            line-height: 1.8;
+        }
+        .footer-sprechstunde-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 270px;
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            padding: 0;
+            align-items: normal;
+            min-height: 0;
+        }
+        .footer-sprechstunde-tag {
+            text-align: left;
+            flex: 1 1 90px;
+        }
+        .footer-sprechstunde-zeit {
+            text-align: right;
+            flex: 1 1 120px;
+            white-space: nowrap;
+        }
+        @media (max-width: 900px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                gap: 30px;
+            }
+            .footer-main {
+                margin-left: 0;
+                align-items: flex-start;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 20px 18px 20px;
+                gap: 18px;
+                position: static;
+                min-height: 0;
+            }
+            .footer-left {
+                position: static;
+                left: auto;
+                top: auto;
+                margin-bottom: 0;
+            }
+            .footer-sprechstunde, .footer-right {
+                margin-left: 0;
+            }
+            .footer-image-container {
+                left: -30px;
+                top: -30px;
+                width: 140px;
+                height: 140px;
+            }
+            .footer-logo {
+                width: 140px;
+            }
+            .footer-left, .footer-right {
+                align-items: flex-start;
+                min-width: 0;
+                margin-bottom: 0;
+            }
+            .footer-right {
+                position: static;
+                right: auto;
+                bottom: auto;
+                text-align: left;
+                align-items: flex-start;
+                margin-top: 18px;
+            }
+        }
+        .footer, .footer * {
+            color: #fff;
+        }
+        .footer-sprechstunde-sowie {
+            flex: 1 1 100%;
+            text-align: left;
+            font-size: 1.05rem;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+    <div class="header-left">
+        <img src="assets/logo.jpg" alt="Logo" class="logo">
+    </div>
+    <div class="header-center">
+        <span class="header-center-text">
+        <p>Augenarztpraxis</p>
+        <p>Dr. med. Nahla Al-Asbahi</p>
+        </span>
+        <p>Fachärztin für Augenheilkunde</p>
+        <p>Berlin Mitte</p>
+    </div>
+    <div class="header-right">
+        <p>Müllerstr. 139, 13353 Berlin</p>
+        <p>Tel: 030 33876167</p>
+        <p>Fax: 030 28654715</p>
+        <p>E-Mail: info@augenpraxis-mitte.de</p>
+    </div>
+    <a href="https://google.com" class="button">Termin buchen</a>
+    <div class="header-language">
+        <span class="language-active">DE</span>
+        <a href="/en/"><span class="language-inactive">EN</span></a>
+        </div>
+    </header>
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="/">Startseite</a></li>
+                <li><a href="leistungen">Leistungen</a></li>
+                <li><a href="sprechzeiten">Sprechzeiten</a></li>
+                <li><a href="wichtige-infos">Wichtige Infos</a></li>
+                <li><a href="kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
+    <section class="sprechstunde-section">
+        <h2>Unsere Sprechstunde</h2>
+        <table class="sprechstunde-tabelle">
+            <thead>
+                <tr>
+                    <th>Wochentag</th>
+                    <th>Sprechstunde</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Montag</td><td>8-13 Uhr, 14-17 Uhr</td></tr>
+                <tr><td>Dienstag</td><td>8-13 Uhr</td></tr>
+                <tr><td>Mittwoch</td><td>8-13 Uhr</td></tr>
+                <tr><td>Donnerstag</td><td>8-13 Uhr, 14-17 Uhr</td></tr>
+                <tr><td>Freitag</td><td>8-13 Uhr</td></tr>
+            </tbody>
+        </table>
+        <div class="sprechstunde-hinweis">
+            Hinweis: Jeden Wochentag findet eine Akutsprechstunde von 8–9 Uhr statt.
+        </div>
+    </section>
+    <section class="lage-section">
+        <h2>Lage</h2>
+        <table class="lage-tabelle">
+            <tbody>
+                <tr>
+                    <td>Adresse:</td>
+                    <td>Müllerstr. 153, 13353 Berlin</td>
+                </tr>
+                <tr>
+                    <td>U-Bahn:</td>
+                    <td>U9 (Seestraße), U6 (Leopoldplatz)</td>
+                </tr>
+                <tr>
+                    <td>Tram:</td>
+                    <td>M13, 50 (Bahnhof Seestraße)</td>
+                </tr>
+                <tr>
+                    <td>Bus (Seestraße):</td>
+                    <td>106, 120</td>
+                </tr>
+                <tr>
+                    <td>Bus (Leopoldplatz):</td>
+                    <td>120, 142, 147, 221, 247, 327</td>
+                </tr>
+                <tr>
+                    <td>Auto:</td>
+                    <td>Gebührenpflichtiges Parkhaus Brüsseler Str. 52</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <footer class="footer">
+        <div class="footer-image-container">
+            <img src="assets/logo footer.webp" alt="Logo" class="footer-logo">
+        </div>
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-claim">Klar sehen beginnt<br>mit einem Klick</div>
+                <a href="https://google.com" class="footer-button">Termin buchen</a>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-left">
+                    <div class="footer-kontakt-title">Kontakt</div>
+                    <div class="footer-kontakt-info">
+                        <div>Tel: 030 33876167</div>
+                        <div>Fax: 030 28654715</div>
+                        <div>E-Mail: info@augenpraxis-mitte.de</div>
+                    </div>
+                </div>
+                <div class="footer-sprechstunde">
+                    <div class="footer-sprechstunde-title">Sprechzeiten</div>
+                    <div class="footer-sprechstunde-row"><span class="footer-sprechstunde-tag">Mo, Do</span><span class="footer-sprechstunde-zeit">8–13 Uhr, 14–17 Uhr</span></div>
+                    <div class="footer-sprechstunde-row"><span class="footer-sprechstunde-tag">Di, Mi, Fr</span><span class="footer-sprechstunde-zeit">8–13 Uhr</span></div>
+                    <div class="footer-sprechstunde-row"><span class="footer-sprechstunde-sowie">sowie nach Vereinbarung</span></div>
+                </div>
+                <div class="footer-right">
+                    <a href="impressum" class="footer-link">Impressum</a>
+                    <a href="datenschutz" class="footer-link">Datenschutzerklärung</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navContainer = document.querySelector('.nav-container');
+            let navTop = navContainer.offsetTop;
+            const distanceToFixed = 20; // Abstand zum oberen Rand, bei dem die Navigationsleiste fixiert wird
+            let navPlaceholder = document.createElement('div');
+
+            navPlaceholder.className = 'nav-placeholder';
+
+            function stickNav() {
+                const style = window.getComputedStyle(navContainer);
+                const marginTop = parseInt(style.marginTop) || 0;
+                const totalHeight = navContainer.offsetHeight + marginTop;
+
+                if (window.scrollY >= (navTop - distanceToFixed)) {
+                    navPlaceholder.style.height = totalHeight + "px";
+                    navContainer.classList.add('nav-fixed');
+                    navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
+                } else {
+                    navContainer.classList.remove('nav-fixed');
+                    if (navPlaceholder.parentNode) {
+                        navPlaceholder.parentNode.removeChild(navPlaceholder);
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', stickNav);
+        });
+    </script>
 </body>
 </html>
