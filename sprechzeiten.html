@@ -195,6 +195,30 @@
         color: #222;
         opacity: 0.8;
     }
+
+    .lage-section {
+        margin: 100px 0;
+        text-align: center;
+    }
+    .lage-section h2 {
+        font-size: 2.5rem;
+        color: #000;
+        margin-bottom: 40px;
+        font-weight: 800;
+    }
+    .lage-tabelle {
+        margin: 0 auto;
+        width: 80%;
+        max-width: 800px;
+        border-spacing: 20px;
+        text-align: left;
+        font-size: 1.5rem;
+        color: #000;
+    }
+    .lage-tabelle td {
+        vertical-align: top;
+        padding: 10px;
+    }
 </style>
 </head>
 <body>
@@ -253,6 +277,37 @@
     <div class="sprechstunde-hinweis">
         Hinweis: Jeden Wochentag findet eine Akutsprechstunde von 8–9 Uhr statt.
     </div>
+</section>
+<section class="lage-section">
+    <h2>Lage</h2>
+    <table class="lage-tabelle">
+        <tbody>
+            <tr>
+                <td>Adresse:</td>
+                <td>Müllerstr. 153, 13353 Berlin</td>
+            </tr>
+            <tr>
+                <td>U-Bahn:</td>
+                <td>U9 (Seestraße), U6 (Leopoldplatz)</td>
+            </tr>
+            <tr>
+                <td>Tram:</td>
+                <td>M13, 50 (Bahnhof Seestraße)</td>
+            </tr>
+            <tr>
+                <td>Bus (Seestraße):</td>
+                <td>106, 120</td>
+            </tr>
+            <tr>
+                <td>Bus (Leopoldplatz):</td>
+                <td>120, 142, 147, 221, 247, 327</td>
+            </tr>
+            <tr>
+                <td>Auto:</td>
+                <td>Gebührenpflichtiges Parkhaus Brüsseler Str. 52</td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
