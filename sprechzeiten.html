@@ -135,6 +135,66 @@
         left: 0;
         width: 100%;
     }
+
+    .sprechstunde-section {
+        margin: 100px 0 40px 0;
+        padding-left: 0;
+        text-align: center;
+    }
+    .sprechstunde-section h2 {
+        font-size: 2.7rem;
+        color: #000;
+        margin-bottom: 70px;
+        font-weight: 800;
+    }
+    .sprechstunde-tabelle {
+        border-collapse: separate;
+        border-spacing: 0;
+        min-width: 950px;
+        max-width: 1300px;
+        margin: 0 auto;
+        font-size: 1.5rem;
+        color: #000;
+        background: #fff;
+        table-layout: fixed;
+    }
+    .sprechstunde-tabelle th,
+    .sprechstunde-tabelle td {
+        padding: 18px 36px;
+        text-align: center;
+        color: #000;
+        background: #fff;
+        width: 50%;
+        font-weight: 400;
+    }
+    .sprechstunde-tabelle th {
+        font-weight: 400;
+        background: #fff;
+        color: #000;
+    }
+    .sprechstunde-tabelle th,
+    .sprechstunde-tabelle td {
+        border-right: 2px solid #4b79ce;
+    }
+    .sprechstunde-tabelle th:last-child,
+    .sprechstunde-tabelle td:last-child {
+        border-right: none;
+    }
+    .sprechstunde-tabelle thead tr {
+        border-bottom: 2px solid #4b79ce;
+    }
+    .sprechstunde-tabelle tbody tr:first-child td {
+        border-top: 2px solid #4b79ce;
+    }
+    .sprechstunde-tabelle tbody tr td {
+        border-top: none;
+    }
+    .sprechstunde-hinweis {
+        margin-top: 40px;
+        font-size: 1.05rem;
+        color: #222;
+        opacity: 0.8;
+    }
 </style>
 </head>
 <body>
@@ -173,6 +233,27 @@
         </ul>
     </nav>
 </div>
+<section class="sprechstunde-section">
+    <h2>Unsere Sprechstunde</h2>
+    <table class="sprechstunde-tabelle">
+        <thead>
+            <tr>
+                <th>Wochentag</th>
+                <th>Sprechstunde</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Montag</td><td>8-13 Uhr, 14-17 Uhr</td></tr>
+            <tr><td>Dienstag</td><td>8-13 Uhr</td></tr>
+            <tr><td>Mittwoch</td><td>8-13 Uhr</td></tr>
+            <tr><td>Donnerstag</td><td>8-13 Uhr, 14-17 Uhr</td></tr>
+            <tr><td>Freitag</td><td>8-13 Uhr</td></tr>
+        </tbody>
+    </table>
+    <div class="sprechstunde-hinweis">
+        Hinweis: Jeden Wochentag findet eine Akutsprechstunde von 8–9 Uhr statt.
+    </div>
+</section>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const navContainer = document.querySelector('.nav-container');
