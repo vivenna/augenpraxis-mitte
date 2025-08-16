@@ -178,6 +178,237 @@
             :root { --info-icon-size: 2.5rem; --info-icon-gap: 18px; }
             .info-row { font-size:0.95rem; }
         }
+        .footer {
+            background: #4b79ce;
+            color: #fff;
+            position: relative;
+            padding: 100px 0 0 0; /* Padding oben erhöht */
+            min-height: 340px;
+            overflow: hidden;
+            font-size: 1.15rem;
+            width: 100%;
+            /* margin-left entfernt */
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            text-align: left;
+        }
+        .footer-image-container {
+            position: absolute;
+            top: -130px;
+            left: -200px;
+            z-index: 1;
+            width: 220px;
+            height: 220px;
+            overflow: visible;
+            pointer-events: none;
+        }
+        .footer-logo {
+            width: 620px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.6;
+            transform: translateY(-20px);
+        }
+        .footer-main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 80px; /* weiter nach oben */
+            margin-top: 0; /* Abstand zum oberen Rand der Fußzeile */
+            /* margin-left entfernt */
+            transform: translateX(40%);
+        }
+        .footer-claim {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            margin-top: 0;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        .footer-button {
+            background: #fff;
+            color: #4b79ce !important;
+            padding: 15px 38px;
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            margin-top: 0;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            display: inline-block;
+            border: 1px solid #fff;
+        }
+        .footer-button:hover {
+            background: #4b79ce;
+            color: #fff !important;
+            border-color: #fff;
+            border: 1px solid #fff;
+        }
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 40px 18px 220px;
+            box-sizing: border-box;
+            position: relative; /* hinzugefügt für absolute Positionierung von .footer-left */
+            min-height: 120px; /* Platz für .footer-right unten */
+            margin-bottom: 30px;
+        }
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-width: 220px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            position: absolute;
+            left: 50px;
+            top: 0;
+        }
+        .footer-kontakt-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .footer-kontakt-info {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .footer-kontakt-info > div,
+        .footer-sprechstunde-row,
+        .footer-sprechstunde-sowie {
+            margin-bottom: 0;
+            padding: 0;
+        }
+        .footer-sprechstunde {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            margin: 0;
+            font-size: 1.05rem;
+            text-align: left;
+            line-height: 1.7;
+            margin-top: 0;
+        }
+        .footer-sprechstunde-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        .footer-right {
+            position: absolute;
+            right: 50px;
+            bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-width: 180px;
+            margin-bottom: 0;
+            margin-left: 0;
+            text-align: left;
+        }
+        .footer-link {
+            color: #fff;
+            font-size: 1.02rem;
+            margin-bottom: 0;
+            text-decoration: underline;
+            transition: color 0.2s;
+            line-height: 1.8;
+        }
+        .footer-sprechstunde-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 270px;
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            padding: 0;
+            align-items: normal;
+            min-height: 0;
+        }
+        .footer-sprechstunde-tag {
+            text-align: left;
+            flex: 1 1 90px;
+        }
+        .footer-sprechstunde-zeit {
+            text-align: right;
+            flex: 1 1 120px;
+            white-space: nowrap;
+        }
+        @media (max-width: 900px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                gap: 30px;
+            }
+            .footer-main {
+                margin-left: 0;
+                align-items: flex-start;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 20px 18px 20px;
+                gap: 18px;
+                position: static;
+                min-height: 0;
+            }
+            .footer-left {
+                position: static;
+                left: auto;
+                top: auto;
+                margin-bottom: 0;
+            }
+            .footer-sprechstunde, .footer-right {
+                margin-left: 0;
+            }
+            .footer-image-container {
+                left: -30px;
+                top: -30px;
+                width: 140px;
+                height: 140px;
+            }
+            .footer-logo {
+                width: 140px;
+            }
+            .footer-left, .footer-right {
+                align-items: flex-start;
+                min-width: 0;
+                margin-bottom: 0;
+            }
+            .footer-right {
+                position: static;
+                right: auto;
+                bottom: auto;
+                text-align: left;
+                align-items: flex-start;
+                margin-top: 18px;
+            }
+        }
+        .footer, .footer * {
+            color: #fff;
+        }
+        .footer-sprechstunde-sowie {
+            flex: 1 1 100%;
+            text-align: left;
+            font-size: 1.05rem;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
@@ -237,6 +468,37 @@
         </div>
     </section>
     <div class="bottom-gap"></div>
+        <footer class="footer">
+        <div class="footer-image-container">
+            <img src="assets/logo footer.webp" alt="Logo" class="footer-logo">
+        </div>
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-claim">Klar sehen beginnt<br>mit einem Klick</div>
+                <a href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi" class="footer-button">Termin buchen</a>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-left">
+                    <div class="footer-kontakt-title">Kontakt</div>
+                    <div class="footer-kontakt-info">
+                        <div>Tel: 030 33876167</div>
+                        <div>Fax: 030 28654715</div>
+                        <div>E-Mail: info@augenpraxis-mitte.de</div>
+                    </div>
+                </div>
+                <div class="footer-sprechstunde">
+                    <div class="footer-sprechstunde-title">Sprechzeiten</div>
+                    <div class="footer-sprechstunde-row"><span class="footer-sprechstunde-tag">Mo, Do</span><span class="footer-sprechstunde-zeit">8–13 Uhr, 14–17 Uhr</span></div>
+                    <div class="footer-sprechstunde-row"><span class="footer-sprechstunde-tag">Di, Mi, Fr</span><span class="footer-sprechstunde-zeit">8–13 Uhr</span></div>
+                    <div class="footer-sprechstunde-row"><span class="footer-sprechstunde-sowie">sowie nach Vereinbarung</span></div>
+                </div>
+                <div class="footer-right">
+                    <a href="impressum" class="footer-link">Impressum</a>
+                    <a href="datenschutz" class="footer-link">Datenschutzerklärung</a>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navContainer = document.querySelector('.nav-container');
