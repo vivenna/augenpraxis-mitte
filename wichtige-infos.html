@@ -18,6 +18,8 @@
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="canonical" href="https://augenpraxis-mitte.de/">
     <meta name="robots" content="noindex, nofollow">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         html, body {
             margin: 0;
@@ -136,6 +138,50 @@
             left: 0;
             width: 100%;
         }
+
+        .infos-section {
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            padding: 30px 20px;
+            background: #f8f8f8;
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            font-size: 1.25rem;
+        }
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+        .info-icon {
+            flex: 0 0 44px;
+            font-size: 2.1rem;
+            color: #4b79ce;
+            margin-right: 18px;
+            margin-top: 2px;
+        }
+        .info-text {
+            flex: 1;
+            line-height: 1.5;
+        }
+        .info-text b {
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            .infos-section {
+                padding: 18px 5px;
+            }
+            .info-row {
+                font-size: 1.05rem;
+            }
+            .info-icon {
+                font-size: 1.5rem;
+                margin-right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -175,6 +221,25 @@
             </ul>
         </nav>
     </div>
+    <!-- Wichtige Infos Abschnitt (ohne Kasten, weiter unten, größere Schrift) -->
+    <section class="infos-section" style="background:none; box-shadow:none; border-radius:0; margin-top:70px; padding:0; max-width:900px;">
+        <div class="info-row" style="font-size:1.6rem; margin-bottom:38px;">
+            <span class="material-icons info-icon" style="font-size:4.5rem; margin-right:36px;">description</span>
+            <span class="info-text"><b>Befunde & Überweisungen:</b> Bitte bringen Sie Befunde und Überweisungen mit.</span>
+        </div>
+        <div class="info-row" style="font-size:1.6rem; margin-bottom:38px;">
+            <span class="material-icons info-icon" style="font-size:4.5rem; margin-right:36px;">visibility</span>
+            <span class="info-text"><b>Brille:</b> Bitte bringen Sie Ihre Brille zur Untersuchung mit.</span>
+        </div>
+        <div class="info-row" style="font-size:1.6rem; margin-bottom:38px;">
+            <span class="material-icons info-icon" style="font-size:4.5rem; margin-right:36px;">directions_car</span>
+            <span class="info-text"><b>Straßenverkehr:</b> Nach Untersuchungen kann eine Teilnahme am Straßenverkehr mehrere Stunden nicht möglich sein.</span>
+        </div>
+        <div class="info-row" style="font-size:1.6rem; margin-bottom:0;">
+            <span class="material-icons info-icon" style="font-size:4.5rem; margin-right:36px;">group</span>
+            <span class="info-text"><b>Begleitperson:</b> Bitte bringen Sie maximal eine Begleitperson mit in die Praxis. Dies gilt insbesondere bei Terminen von Kindern.</span>
+        </div>
+    </section>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navContainer = document.querySelector('.nav-container');
