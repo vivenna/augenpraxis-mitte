@@ -27,8 +27,8 @@
             box-sizing: border-box;
         }
         :root {
-            --info-icon-size: 4.5rem; /* halbiert von 9rem */
-            --info-icon-gap: 60px;   /* Abstand Icon ↔ Text */
+            --info-icon-size: 3.5rem; /* verkleinert */
+            --info-icon-gap: 40px;   /* etwas kleiner für Proportion */
         }
         html { overflow-x: hidden; }
         body {
@@ -141,7 +141,7 @@
             width: 100%;
         }
 
-        .nav-gap { height:250px; }
+        .nav-gap { height:125px; }
 
         .infos-section {
             max-width: 1100px;
@@ -157,7 +157,7 @@
             column-gap: var(--info-icon-gap);
             align-items: start;
             margin-bottom: 55px; /* mehr vertikaler Abstand */
-            font-size: 2.1rem; /* Text etwas größer */
+            font-size: 1.7rem; /* Text etwas größer */
         }
         .info-row:last-child { margin-bottom: 0; }
         .info-icon {
@@ -171,12 +171,12 @@
         .info-text { line-height: 1.4; }
         .info-text b { font-weight: 700; }
         @media (max-width: 900px) {
-            :root { --info-icon-size: 6rem; --info-icon-gap: 40px; }
-            .info-row { font-size: 1.6rem; }
+            :root { --info-icon-size: 3rem; --info-icon-gap: 30px; }
+            .info-row { font-size:1.3rem; }
         }
         @media (max-width: 600px) {
-            :root { --info-icon-size: 3.5rem; --info-icon-gap: 20px; }
-            .info-row { font-size: 1.1rem; margin-bottom: 30px; }
+            :root { --info-icon-size: 2.5rem; --info-icon-gap: 18px; }
+            .info-row { font-size:0.95rem; }
         }
     </style>
 </head>
@@ -236,6 +236,7 @@
             <span class="info-text"><b>Begleitperson:</b> Bitte bringen Sie maximal eine Begleitperson mit in die Praxis. Dies gilt insbesondere bei Terminen von Kindern.</span>
         </div>
     </section>
+    <div class="bottom-gap"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navContainer = document.querySelector('.nav-container');
