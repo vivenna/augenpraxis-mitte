@@ -26,12 +26,14 @@
             padding: 0;
             box-sizing: border-box;
         }
-        html {
-            overflow-x: hidden;
+        :root {
+            --info-icon-size: 12rem; /* zentrale Steuerung für Icon-Größe */
+            --info-icon-gap: 60px;   /* Abstand Icon ↔ Text */
         }
+        html { overflow-x: hidden; }
         body {
             font-family: 'Roboto', sans-serif;
-            overflow-x: hidden; /* Verhindert horizontales Scrollen */
+            overflow-x: hidden;
             letter-spacing: 0.5px;
         }
 
@@ -140,7 +142,7 @@
         }
 
         .infos-section {
-            max-width: 700px;
+            max-width: 1100px;
             margin: 40px auto 0 auto;
             padding: 30px 20px;
             background: #f8f8f8;
@@ -148,44 +150,35 @@
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         }
         .info-row {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 28px;
-            font-size: 1.25rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            column-gap: var(--info-icon-gap);
+            align-items: start;
+            margin-bottom: 55px; /* mehr vertikaler Abstand */
+            font-size: 2.1rem; /* Text etwas größer */
         }
-        .info-row:last-child {
-            margin-bottom: 0;
-        }
+        .info-row:last-child { margin-bottom: 0; }
         .info-icon {
-            flex: 0 0 44px;
-            font-size: 2.1rem;
+            font-size: var(--info-icon-size) !important;
+            line-height: 1; /* verhindert zusätzliche Höhe */
+            display: block;
+            width: var(--info-icon-size);
+            text-align: center;
             color: #4b79ce;
-            margin-right: 18px;
-            margin-top: 2px;
         }
-        .info-text {
-            flex: 1;
-            line-height: 1.5;
-        }
-        .info-text b {
-            font-weight: bold;
+        .info-text { line-height: 1.4; }
+        .info-text b { font-weight: 700; }
+        @media (max-width: 900px) {
+            :root { --info-icon-size: 8rem; --info-icon-gap: 40px; }
+            .info-row { font-size: 1.6rem; }
         }
         @media (max-width: 600px) {
-            .infos-section {
-                padding: 18px 5px;
-            }
-            .info-row {
-                font-size: 1.05rem;
-            }
-            .info-icon {
-                font-size: 1.5rem;
-                margin-right: 10px;
-            }
+            :root { --info-icon-size: 4rem; --info-icon-gap: 20px; }
+            .info-row { font-size: 1.1rem; margin-bottom: 30px; }
         }
     </style>
 </head>
 <body>
-    <body>
     <header class="header">
     <div class="header-left">
         <img src="assets/logo.jpg" alt="Logo" class="logo">
@@ -221,22 +214,22 @@
             </ul>
         </nav>
     </div>
-    <!-- Wichtige Infos Abschnitt (ohne Kasten, weiter unten, größere Schrift) -->
-    <section class="infos-section" style="background:none; box-shadow:none; border-radius:0; margin-top:70px; padding:0; max-width:900px;">
-        <div class="info-row" style="font-size:1.6rem; margin-bottom:38px;">
-            <span class="material-icons info-icon" style="font-size:4.5rem; margin-right:36px;">description</span>
+    <!-- Wichtige Infos Abschnitt -->
+    <section class="infos-section" style="background:none; box-shadow:none; border-radius:0; margin-top:90px; padding:0; max-width:1200px;">
+        <div class="info-row">
+            <span class="material-icons info-icon">description</span>
             <span class="info-text"><b>Befunde & Überweisungen:</b> Bitte bringen Sie Befunde und Überweisungen mit.</span>
         </div>
-        <div class="info-row" style="font-size:1.6rem; margin-bottom:38px;">
-            <span class="material-icons info-icon" style="font-size:4.5rem; margin-right:36px;">visibility</span>
+        <div class="info-row">
+            <span class="material-icons info-icon">visibility</span>
             <span class="info-text"><b>Brille:</b> Bitte bringen Sie Ihre Brille zur Untersuchung mit.</span>
         </div>
-        <div class="info-row" style="font-size:1.6rem; margin-bottom:38px;">
-            <span class="material-icons info-icon" style="font-size:4.5rem; margin-right:36px;">directions_car</span>
+        <div class="info-row">
+            <span class="material-icons info-icon">directions_car</span>
             <span class="info-text"><b>Straßenverkehr:</b> Nach Untersuchungen kann eine Teilnahme am Straßenverkehr mehrere Stunden nicht möglich sein.</span>
         </div>
-        <div class="info-row" style="font-size:1.6rem; margin-bottom:0;">
-            <span class="material-icons info-icon" style="font-size:4.5rem; margin-right:36px;">group</span>
+        <div class="info-row">
+            <span class="material-icons info-icon">group</span>
             <span class="info-text"><b>Begleitperson:</b> Bitte bringen Sie maximal eine Begleitperson mit in die Praxis. Dies gilt insbesondere bei Terminen von Kindern.</span>
         </div>
     </section>
