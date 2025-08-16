@@ -135,6 +135,53 @@
             left: 0;
             width: 100%;
         }
+
+        .kontakt-main {
+            max-width: 700px;
+            margin: 60px auto 0 0;
+            padding-left: 60px;
+        }
+        .kontakt-ueberschrift {
+            text-align: left;
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        .kontakt-tabelle {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .kontakt-row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .kontakt-label {
+            min-width: 120px;
+            font-weight: 600;
+            color: #222;
+            font-size: 1.15rem;
+        }
+        .kontakt-value {
+            color: #333;
+            font-size: 1.15rem;
+        }
+        @media (max-width: 700px) {
+            .kontakt-main {
+                max-width: 98vw;
+                padding-left: 10px;
+                margin: 40px 0 0 0;
+            }
+            .kontakt-row {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .kontakt-label {
+                min-width: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -202,3 +249,30 @@
             window.addEventListener('scroll', stickNav);
         });
     </script>
+    <main class="kontakt-main">
+        <h1 class="kontakt-ueberschrift">Ihre Kontaktwege</h1>
+        <div class="kontakt-tabelle">
+            <div class="kontakt-row">
+                <div class="kontakt-label">Sprachen:</div>
+                <div class="kontakt-value">Deutsch, Arabisch, Türkisch, Russisch</div>
+            </div>
+            <div class="kontakt-row">
+                <div class="kontakt-label">Telefon:</div>
+                <div class="kontakt-value">+49 (0) 30 33876167</div>
+            </div>
+            <div class="kontakt-row">
+                <div class="kontakt-label">Telefax:</div>
+                <div class="kontakt-value">+49 (0) 30 28654715</div>
+            </div>
+            <div class="kontakt-row">
+                <div class="kontakt-label">E-Mail:</div>
+                <div class="kontakt-value">info@arztpraxis-mitte.de</div>
+            </div>
+            <div class="kontakt-row">
+                <div class="kontakt-label">Termin:</div>
+                <div class="kontakt-value">Online bei Doctolib</div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
