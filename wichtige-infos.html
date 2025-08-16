@@ -145,12 +145,12 @@
         .bottom-gap { height:150px; } /* stark vergrößerter Abstand vor der Fußzeile */
 
         .infos-section {
-            max-width: 950px; /* erhöht von 900px */
-            margin: 40px auto 0 auto;
-            padding: 30px 20px;
-            background: #f8f8f8;
-            border-radius: 20px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            max-width: 950px; /* aus inline */
+            margin: 0 auto 0 auto; /* inline margin-top:0 und horizontale Zentrierung */
+            padding: 0; /* inline */
+            background: none; /* inline */
+            border-radius: 0; /* inline */
+            box-shadow: none; /* inline */
         }
         .info-row {
             display: grid;
@@ -450,7 +450,7 @@
     </div>
     <div class="nav-gap"></div>
     <!-- Wichtige Infos Abschnitt -->
-    <section class="infos-section" style="background:none; box-shadow:none; border-radius:0; margin-top:0; padding:0; max-width:950px;">
+    <section class="infos-section">
         <div class="info-row">
             <span class="material-icons info-icon">description</span>
             <span class="info-text"><b>Befunde & Überweisungen:</b> Bitte bringen Sie Befunde und Überweisungen mit.</span>
