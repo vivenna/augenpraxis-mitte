@@ -27,7 +27,7 @@
             box-sizing: border-box;
         }
         :root {
-            --info-icon-size: 12rem; /* zentrale Steuerung für Icon-Größe */
+            --info-icon-size: 4.5rem; /* halbiert von 9rem */
             --info-icon-gap: 60px;   /* Abstand Icon ↔ Text */
         }
         html { overflow-x: hidden; }
@@ -141,6 +141,8 @@
             width: 100%;
         }
 
+        .nav-gap { height:250px; }
+
         .infos-section {
             max-width: 1100px;
             margin: 40px auto 0 auto;
@@ -169,11 +171,11 @@
         .info-text { line-height: 1.4; }
         .info-text b { font-weight: 700; }
         @media (max-width: 900px) {
-            :root { --info-icon-size: 8rem; --info-icon-gap: 40px; }
+            :root { --info-icon-size: 6rem; --info-icon-gap: 40px; }
             .info-row { font-size: 1.6rem; }
         }
         @media (max-width: 600px) {
-            :root { --info-icon-size: 4rem; --info-icon-gap: 20px; }
+            :root { --info-icon-size: 3.5rem; --info-icon-gap: 20px; }
             .info-row { font-size: 1.1rem; margin-bottom: 30px; }
         }
     </style>
@@ -214,8 +216,9 @@
             </ul>
         </nav>
     </div>
+    <div class="nav-gap"></div>
     <!-- Wichtige Infos Abschnitt -->
-    <section class="infos-section" style="background:none; box-shadow:none; border-radius:0; margin-top:90px; padding:0; max-width:1200px;">
+    <section class="infos-section" style="background:none; box-shadow:none; border-radius:0; margin-top:0; padding:0; max-width:1200px;">
         <div class="info-row">
             <span class="material-icons info-icon">description</span>
             <span class="info-text"><b>Befunde & Überweisungen:</b> Bitte bringen Sie Befunde und Überweisungen mit.</span>
