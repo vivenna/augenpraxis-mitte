@@ -192,6 +192,35 @@
                 min-width: 0;
             }
         }
+
+        .lage-section {
+            margin: 100px 0;
+            text-align: center;
+        }
+        .lage-section h2 {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        .lage-tabelle {
+            margin: 0 0 0 15%;
+            width: 75%;
+            max-width: 1100px;
+            border-spacing: 40px 24px;
+            text-align: left;
+            font-size: 1.5rem;
+            color: #000;
+            font-weight: 500;
+        }
+        .lage-tabelle td {
+            vertical-align: top;
+            padding: 12px 18px;
+            font-weight: 400;
+        }
+        .lage-tabelle td:first-child {
+            width: 350px;
+        }
     </style>
 </head>
 <body>
@@ -230,6 +259,62 @@
             </ul>
         </nav>
     </div>
+    <main class="kontakt-main">
+        <h1 class="kontakt-ueberschrift">Ihre Kontaktwege</h1>
+        <div class="kontakt-tabelle">
+            <div class="kontakt-row">
+                <div class="kontakt-label">Sprachen:</div>
+                <div class="kontakt-value">Deutsch, Arabisch, Türkisch, Russisch</div>
+            </div>
+            <div class="kontakt-row">
+                <div class="kontakt-label">Telefon:</div>
+                <div class="kontakt-value">+49 (0) 30 33876167</div>
+            </div>
+            <div class="kontakt-row">
+                <div class="kontakt-label">Telefax:</div>
+                <div class="kontakt-value">+49 (0) 30 28654715</div>
+            </div>
+            <div class="kontakt-row">
+                <div class="kontakt-label">E-Mail:</div>
+                <div class="kontakt-value">info@arztpraxis-mitte.de</div>
+            </div>
+            <div class="kontakt-row">
+                <div class="kontakt-label">Termin:</div>
+                <div class="kontakt-value"><a class="kontakt-link" href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi" target="_blank" rel="noopener">Online bei Doctolib</a></div>
+            </div>
+        </div>
+    </main>
+    <section class="lage-section">
+        <h2>Lage</h2>
+        <table class="lage-tabelle">
+            <tbody>
+                <tr>
+                    <td>Adresse:</td>
+                    <td>Müllerstr. 153, 13353 Berlin</td>
+                </tr>
+                <tr>
+                    <td>U-Bahn:</td>
+                    <td>U9 (Seestraße), U6 (Leopoldplatz)</td>
+                </tr>
+                <tr>
+                    <td>Tram:</td>
+                    <td>M13, 50 (Bahnhof Seestraße)</td>
+                </tr>
+                <tr>
+                    <td>Bus (Seestraße):</td>
+                    <td>106, 120</td>
+                </tr>
+                <tr>
+                    <td>Bus (Leopoldplatz):</td>
+                    <td>120, 142, 147, 221, 247, 327</td>
+                </tr>
+                <tr>
+                    <td>Auto:</td>
+                    <td>Gebührenpflichtiges Parkhaus Brüsseler Str. 52</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navContainer = document.querySelector('.nav-container');
@@ -259,30 +344,5 @@
             window.addEventListener('scroll', stickNav);
         });
     </script>
-    <main class="kontakt-main">
-        <h1 class="kontakt-ueberschrift">Ihre Kontaktwege</h1>
-        <div class="kontakt-tabelle">
-            <div class="kontakt-row">
-                <div class="kontakt-label">Sprachen:</div>
-                <div class="kontakt-value">Deutsch, Arabisch, Türkisch, Russisch</div>
-            </div>
-            <div class="kontakt-row">
-                <div class="kontakt-label">Telefon:</div>
-                <div class="kontakt-value">+49 (0) 30 33876167</div>
-            </div>
-            <div class="kontakt-row">
-                <div class="kontakt-label">Telefax:</div>
-                <div class="kontakt-value">+49 (0) 30 28654715</div>
-            </div>
-            <div class="kontakt-row">
-                <div class="kontakt-label">E-Mail:</div>
-                <div class="kontakt-value">info@arztpraxis-mitte.de</div>
-            </div>
-            <div class="kontakt-row">
-                <div class="kontakt-label">Termin:</div>
-                <div class="kontakt-value"><a class="kontakt-link" href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi" target="_blank" rel="noopener">Online bei Doctolib</a></div>
-            </div>
-        </div>
-    </main>
 </body>
 </html>
