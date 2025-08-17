@@ -243,7 +243,7 @@
             transition: background-color .25s ease, transform .25s ease;
         }
         .vorsorge-liste li:hover { background:#eef6e7; transform: translateY(-2px); }
-        .vorsorge-left-fixed { position: fixed; top: 110px; z-index: 10; }
+        .vorsorge-left-fixed { position: fixed; top: 160px; z-index: 10; }
         .vorsorge-left-end { position: absolute; left: 0; }
         .vorsorge-left-placeholder { display: none; }
         @media (max-width: 900px) {
@@ -374,25 +374,25 @@
             const left = section.querySelector('.vorsorge-left');
             const right = section.querySelector('.vorsorge-right');
             if(!left || !right) return;
-
-            // Placeholder um Layout-Sprung zu verhindern
-            const placeholder = document.createElement('div');
-            placeholder.className = 'vorsorge-left-placeholder';
-            placeholder.style.width = left.offsetWidth + 'px';
-            placeholder.style.height = left.offsetHeight + 'px';
-            left.parentNode.insertBefore(placeholder, left);
-
-            let leftWidth = left.offsetWidth; // behalten für fixed Zustand
+            // Placeholder erstellen falls noch nicht vorhanden (bereits vorhanden im DOM, aber sicherheitshalber geprüft)
+            const placeholder = document.querySelector('.vorsorge-left-placeholder') || (function(){
+                const ph = document.createElement('div');
+                ph.className = 'vorsorge-left-placeholder';
+                ph.style.width = left.offsetWidth + 'px';
+                ph.style.height = left.offsetHeight + 'px';
+                left.parentNode.insertBefore(ph, left);
+                return ph;
+            })();
+            let leftWidth = left.offsetWidth;
             function onScroll() {
                 const rect = section.getBoundingClientRect();
-                const sectionTop = rect.top + window.scrollY; // absolute Position
-                const offsetTop = 110; // gleicher Wert wie top in CSS
-                const start = sectionTop - offsetTop; // Startpunkt für Fixierung
+                const sectionTop = rect.top + window.scrollY;
+                const offsetTop = 160; // neuer Abstand nach oben
+                const start = sectionTop - offsetTop; // Startpunkt
                 const rightHeight = right.offsetHeight;
                 const leftHeight = left.offsetHeight;
-                const end = sectionTop + rightHeight - leftHeight - offsetTop; // Ende der Fixierung
+                const end = sectionTop + rightHeight - leftHeight - offsetTop;
                 const y = window.scrollY;
-
                 if (y >= start && y <= end) {
                     if (!left.classList.contains('vorsorge-left-fixed')) {
                         leftWidth = placeholder.offsetWidth || left.offsetWidth;
@@ -400,20 +400,19 @@
                         placeholder.style.display = 'block';
                         left.classList.remove('vorsorge-left-end');
                         left.classList.add('vorsorge-left-fixed');
+                        left.style.top = offsetTop + 'px';
                     }
                 } else if (y > end) {
-                    // Am Ende: absolute Position innerhalb der Section, damit sie nicht springt
                     if (!left.classList.contains('vorsorge-left-end')) {
                         left.classList.remove('vorsorge-left-fixed');
                         left.classList.add('vorsorge-left-end');
                         placeholder.style.display = 'block';
-                        const relativeTop = rightHeight - leftHeight; // Position am Ende
+                        const relativeTop = rightHeight - leftHeight;
                         left.style.position = 'absolute';
                         left.style.top = relativeTop + 'px';
                         left.style.width = leftWidth + 'px';
                     }
                 } else {
-                    // Vor dem Start
                     if (left.classList.contains('vorsorge-left-fixed') || left.classList.contains('vorsorge-left-end')) {
                         left.className = left.className.replace('vorsorge-left-fixed','').replace('vorsorge-left-end','').trim();
                         left.style.position = '';
@@ -425,7 +424,6 @@
             }
             window.addEventListener('scroll', onScroll, { passive: true });
             window.addEventListener('resize', () => {
-                // Recalculate widths/heights on resize
                 placeholder.style.width = left.offsetWidth + 'px';
                 placeholder.style.height = left.offsetHeight + 'px';
                 if (!left.classList.contains('vorsorge-left-fixed')) {
