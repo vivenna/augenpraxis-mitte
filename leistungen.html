@@ -198,6 +198,54 @@
                 justify-content: center;
             }
         }
+        /* Neuer Abschnitt Vorsorge & Basisdiagnostik */
+        .vorsorge-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .vorsorge-basis {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 1100px;
+            gap: 60px;
+            margin: 0 auto 120px;
+        }
+        .vorsorge-left { flex: 1; }
+        .vorsorge-left h2 {
+            font-size: 2.4rem;
+            margin: 0 0 25px;
+        }
+        .vorsorge-image-wrapper { max-width: 420px; }
+        .vorsorge-bild {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        .vorsorge-right { flex: 1; }
+        .vorsorge-liste { list-style: none; margin: 0; padding: 0; }
+        .vorsorge-liste li {
+            background: #f5f8f3;
+            border: 1px solid #d3e8c5;
+            padding: 12px 18px 12px 18px;
+            margin: 0 0 12px;
+            border-radius: 14px;
+            font-size: 1rem;
+            line-height: 1.45;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: background-color .25s ease, transform .25s ease;
+        }
+        .vorsorge-liste li:hover { background:#eef6e7; transform: translateY(-2px); }
+        @media (max-width: 900px) {
+            .vorsorge-basis { flex-direction: column; gap: 35px; margin-bottom: 80px; }
+            .vorsorge-left, .vorsorge-right { width: 100%; }
+            .vorsorge-left h2 { text-align: center; }
+            .vorsorge-image-wrapper { margin: 0 auto; }
+        }
     </style>
 </head>
 <body>
@@ -251,6 +299,40 @@
             </div>
         </div>
     </main>
+    <!-- Neuer Abschnitt unterhalb des bisherigen Hauptbereichs -->
+    <section class="vorsorge-wrapper">
+        <div class="vorsorge-basis">
+            <div class="vorsorge-left">
+                <h2>Vorsorge und Basisdiagnostik</h2>
+                <div class="vorsorge-image-wrapper">
+                    <img src="assets/vorsorge.png" alt="Vorsorge und Basisdiagnostik" class="vorsorge-bild">
+                </div>
+            </div>
+            <div class="vorsorge-right">
+                <ul class="vorsorge-liste">
+                    <li>Sehschärfenprüfung (Refraktionsbestimmung), inkl. Brillenverordnung</li>
+                    <li>Augendruckmessung (Tonometrie)</li>
+                    <li>Farbtest (Ishihara)</li>
+                    <li>Untersuchung der zentralen 10° des Gesichtsfelds (Amsler-Gitter-Test)</li>
+                    <li>Überprüfung des räumlichen Sehens sowohl beim Lang-Test als auch Titmus-Test</li>
+                    <li>Untersuchung des vorderen Augenabschnitts</li>
+                    <li>Kontrolle des Augenhintergrundes (Funduskopie)</li>
+                    <li>Kontrolle des Sehnervs (Papille, Nervenfaserschicht)</li>
+                    <li>Glaukom-Vorsorge (grüner Star)</li>
+                    <li>Katarakt-Voruntersuchung (grauer Star)</li>
+                    <li>Früherkennung und Behandlung der altersbedingten Makuladegeneration (AMD)</li>
+                    <li>Untersuchung bei erhöhtem Blutdruck, Diabetes und Gefäßverschlüssen</li>
+                    <li>Interdisziplinäre Betreuung bei Schilddrüsenerkrankungen (Endokrine Orbitopathie)</li>
+                    <li>Regelmäßige Verlaufskontrollen bei Rheuma (Uveitis)</li>
+                    <li>Neuroophthalmologie (z. B. Pupillenstörungen, Doppelbilder, Sehnervpathologien)</li>
+                    <li>Abklärung bei Augenschmerzen, Rötung, Juckreiz</li>
+                    <li>Behandlung des trockenen Auges</li>
+                    <li>Behandlung von Lid- und Lidrandentzündungen</li>
+                    <li>Entfernung von Fremdkörpern</li>
+                </ul>
+            </div>
+        </div>
+    </section>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navContainer = document.querySelector('.nav-container');
