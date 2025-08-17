@@ -339,6 +339,32 @@
             </div>
         </div>
     </section>
+    <!-- Neue zweite Section Apparative Diagnostik -->
+    <section class="vorsorge-wrapper">
+        <div class="vorsorge-basis">
+            <div class="vorsorge-left">
+                <h2>Apparative Diagnostik</h2>
+                <div class="vorsorge-image-wrapper">
+                    <img src="assets/apparative.png" alt="Apparative Diagnostik" class="vorsorge-bild">
+                </div>
+            </div>
+            <div class="vorsorge-right">
+                <ul class="vorsorge-liste">
+                    <li>Autorefraktometrie</li>
+                    <li>Tonometrie (Non-Contact und Applanation nach Goldmann)</li>
+                    <li>Optische Kohärenztomographie (OCT)</li>
+                    <li>Laser Scanning Polarimetrie (GDx)</li>
+                    <li>Pachymetrie (Messung der Hornhautdicke)</li>
+                    <li>Gonioskopie</li>
+                    <li>Perimetrie (Gesichtsfelduntersuchung)</li>
+                    <li>Nyktometrie (Dämmerungssehen & Blendempfindlichkeit)</li>
+                    <li>Tränenfilmanalyse (z. B. bei Sicca-Syndrom)</li>
+                    <li>Messung der Pupillenreaktion und -durchmesser, Kontrast- und Farbsehen</li>
+                    <li>Exophthalmometrie (Hertel)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navContainer = document.querySelector('.nav-container');
@@ -367,71 +393,71 @@
 
             window.addEventListener('scroll', stickNav);
         });
-        // Scrollsteuerung für Vorsorge-Abschnitt
+        // Mehrfache Scrollsteuerung für alle Vorsorge/Diagnostik Abschnitte
         (function() {
-            const section = document.querySelector('.vorsorge-basis');
-            if(!section) return;
-            const left = section.querySelector('.vorsorge-left');
-            const right = section.querySelector('.vorsorge-right');
-            if(!left || !right) return;
-            // Placeholder erstellen falls noch nicht vorhanden (bereits vorhanden im DOM, aber sicherheitshalber geprüft)
-            const placeholder = document.querySelector('.vorsorge-left-placeholder') || (function(){
-                const ph = document.createElement('div');
-                ph.className = 'vorsorge-left-placeholder';
-                ph.style.width = left.offsetWidth + 'px';
-                ph.style.height = left.offsetHeight + 'px';
-                left.parentNode.insertBefore(ph, left);
-                return ph;
-            })();
-            let leftWidth = left.offsetWidth;
-            function onScroll() {
-                const rect = section.getBoundingClientRect();
-                const sectionTop = rect.top + window.scrollY;
-                const offsetTop = 160; // neuer Abstand nach oben
-                const start = sectionTop - offsetTop; // Startpunkt
-                const rightHeight = right.offsetHeight;
-                const leftHeight = left.offsetHeight;
-                const end = sectionTop + rightHeight - leftHeight - offsetTop;
-                const y = window.scrollY;
-                if (y >= start && y <= end) {
-                    if (!left.classList.contains('vorsorge-left-fixed')) {
-                        leftWidth = placeholder.offsetWidth || left.offsetWidth;
-                        left.style.width = leftWidth + 'px';
-                        placeholder.style.display = 'block';
-                        left.classList.remove('vorsorge-left-end');
-                        left.classList.add('vorsorge-left-fixed');
-                        left.style.top = offsetTop + 'px';
-                    }
-                } else if (y > end) {
-                    if (!left.classList.contains('vorsorge-left-end')) {
-                        left.classList.remove('vorsorge-left-fixed');
-                        left.classList.add('vorsorge-left-end');
-                        placeholder.style.display = 'block';
-                        const relativeTop = rightHeight - leftHeight;
-                        left.style.position = 'absolute';
-                        left.style.top = relativeTop + 'px';
-                        left.style.width = leftWidth + 'px';
-                    }
-                } else {
-                    if (left.classList.contains('vorsorge-left-fixed') || left.classList.contains('vorsorge-left-end')) {
-                        left.className = left.className.replace('vorsorge-left-fixed','').replace('vorsorge-left-end','').trim();
-                        left.style.position = '';
-                        left.style.top = '';
-                        left.style.width = '';
-                        placeholder.style.display = 'none';
+            const sections = document.querySelectorAll('.vorsorge-basis');
+            if(!sections.length) return;
+            function initSection(section){
+                const left = section.querySelector('.vorsorge-left');
+                const right = section.querySelector('.vorsorge-right');
+                if(!left || !right) return;
+                let placeholder = left.previousElementSibling;
+                if(!placeholder || !placeholder.classList.contains('vorsorge-left-placeholder')) {
+                    placeholder = document.createElement('div');
+                    placeholder.className = 'vorsorge-left-placeholder';
+                    placeholder.style.width = left.offsetWidth + 'px';
+                    placeholder.style.height = left.offsetHeight + 'px';
+                    left.parentNode.insertBefore(placeholder, left);
+                }
+                let leftWidth = left.offsetWidth;
+                function update(){
+                    const rect = section.getBoundingClientRect();
+                    const sectionTop = rect.top + window.scrollY;
+                    const offsetTop = 160;
+                    const start = sectionTop - offsetTop;
+                    const rightHeight = right.offsetHeight;
+                    const leftHeight = left.offsetHeight;
+                    const end = sectionTop + rightHeight - leftHeight - offsetTop;
+                    const y = window.scrollY;
+                    if (y >= start && y <= end) {
+                        if (!left.classList.contains('vorsorge-left-fixed')) {
+                            leftWidth = placeholder.offsetWidth || left.offsetWidth;
+                            left.style.width = leftWidth + 'px';
+                            placeholder.style.display = 'block';
+                            left.classList.remove('vorsorge-left-end');
+                            left.classList.add('vorsorge-left-fixed');
+                            left.style.top = offsetTop + 'px';
+                        }
+                    } else if (y > end) {
+                        if (!left.classList.contains('vorsorge-left-end')) {
+                            left.classList.remove('vorsorge-left-fixed');
+                            left.classList.add('vorsorge-left-end');
+                            placeholder.style.display = 'block';
+                            const relativeTop = rightHeight - leftHeight;
+                            left.style.position = 'absolute';
+                            left.style.top = relativeTop + 'px';
+                            left.style.width = leftWidth + 'px';
+                        }
+                    } else {
+                        if (left.classList.contains('vorsorge-left-fixed') || left.classList.contains('vorsorge-left-end')) {
+                            left.className = left.className.replace('vorsorge-left-fixed','').replace('vorsorge-left-end','').trim();
+                            left.style.position = '';
+                            left.style.top = '';
+                            left.style.width = '';
+                            placeholder.style.display = 'none';
+                        }
                     }
                 }
+                window.addEventListener('scroll', update, { passive: true });
+                window.addEventListener('resize', () => {
+                    placeholder.style.width = left.offsetWidth + 'px';
+                    placeholder.style.height = left.offsetHeight + 'px';
+                    if (!left.classList.contains('vorsorge-left-fixed')) left.style.width='';
+                    update();
+                });
+                update();
             }
-            window.addEventListener('scroll', onScroll, { passive: true });
-            window.addEventListener('resize', () => {
-                placeholder.style.width = left.offsetWidth + 'px';
-                placeholder.style.height = left.offsetHeight + 'px';
-                if (!left.classList.contains('vorsorge-left-fixed')) {
-                    left.style.width = '';
-                }
-                onScroll();
-            });
-            onScroll();
+            sections.forEach(initSection);
         })();
     </script>
 </body>
