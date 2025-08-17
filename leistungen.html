@@ -393,85 +393,59 @@
 
             window.addEventListener('scroll', stickNav);
         });
-        // Mehrfache Scrollsteuerung für alle Vorsorge/Diagnostik Abschnitte (optimiert gegen Springen beim Hochscrollen)
+        // Mehrfache Scrollsteuerung für alle Vorsorge/Diagnostik Abschnitte (NEU: transform-basiert, symmetrisch, kein Springen)
         (function() {
             const sections = document.querySelectorAll('.vorsorge-basis');
             if(!sections.length) return;
-            function initSection(section){
+            sections.forEach(section => {
                 const left = section.querySelector('.vorsorge-left');
                 const right = section.querySelector('.vorsorge-right');
                 if(!left || !right) return;
-                let placeholder = left.previousElementSibling;
-                if(!placeholder || !placeholder.classList.contains('vorsorge-left-placeholder')) {
-                    placeholder = document.createElement('div');
-                    placeholder.className = 'vorsorge-left-placeholder';
-                    left.parentNode.insertBefore(placeholder, left);
+                // Wrapper für Inhalt erstellen, damit wir nur Inhalt verschieben und der Platz im Flow stabil bleibt
+                if(!left.querySelector('.vorsorge-left-inner')) {
+                    const inner = document.createElement('div');
+                    inner.className = 'vorsorge-left-inner';
+                    while(left.firstChild) inner.appendChild(left.firstChild);
+                    left.appendChild(inner);
                 }
-                function syncPlaceholder(){
-                    placeholder.style.width = left.offsetWidth + 'px';
-                    placeholder.style.height = left.offsetHeight + 'px';
-                }
-                syncPlaceholder();
-                let leftWidth = left.offsetWidth;
-                let lastState = 'static'; // 'static' | 'fixed' | 'end'
-                function applyStatic(){
-                    if(lastState === 'static') return;
-                    left.classList.remove('vorsorge-left-fixed','vorsorge-left-end');
-                    left.style.position='';
-                    left.style.top='';
-                    // Breite zunächst beibehalten bis nach Reflow, um Sprung zu vermeiden
-                    requestAnimationFrame(()=>{ left.style.width=''; });
-                    placeholder.style.display='none';
-                    lastState='static';
-                }
-                function applyFixed(offsetTop){
-                    if(lastState === 'fixed') return;
-                    leftWidth = leftWidth || left.offsetWidth;
-                    left.style.width = leftWidth + 'px';
-                    placeholder.style.display='block';
-                    left.classList.remove('vorsorge-left-end');
-                    left.classList.add('vorsorge-left-fixed');
-                    left.style.top = offsetTop + 'px';
-                    lastState='fixed';
-                }
-                function applyEnd(relativeTop){
-                    if(lastState === 'end') return;
-                    left.classList.remove('vorsorge-left-fixed');
-                    left.classList.add('vorsorge-left-end');
-                    placeholder.style.display='block';
-                    left.style.position='absolute';
-                    left.style.top = relativeTop + 'px';
-                    left.style.width = leftWidth + 'px';
-                    lastState='end';
-                }
-                function update(){
-                    const rect = section.getBoundingClientRect();
-                    const sectionTop = rect.top + window.scrollY;
-                    const offsetTop = 160;
-                    const start = sectionTop - offsetTop;
+                const inner = left.querySelector('.vorsorge-left-inner');
+                // Basis-Styles sicherstellen
+                left.style.position = 'relative';
+                inner.style.willChange = 'transform';
+                inner.style.transition = 'none';
+
+                let start = 0, end = 0, maxShift = 0, offsetTop = 160;
+
+                function recalc(){
+                    // Reset transform für korrekte Messung
+                    inner.style.transform = 'translateY(0px)';
+                    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+                    const leftHeight = inner.offsetHeight; // tatsächliche Höhe des Inhalts
                     const rightHeight = right.offsetHeight;
-                    const leftHeight = left.offsetHeight;
-                    const end = sectionTop + rightHeight - leftHeight - offsetTop;
+                    maxShift = Math.max(0, rightHeight - leftHeight);
+                    start = sectionTop - offsetTop; // ab hier beginnt Bewegung
+                    end = start + maxShift; // bis hier verschieben wir
+                }
+                function onScroll(){
                     const y = window.scrollY;
-                    if (y >= start && y <= end) {
-                        applyFixed(offsetTop);
-                    } else if (y > end) {
-                        applyEnd(rightHeight - leftHeight);
+                    if (y <= start) {
+                        inner.style.transform = 'translateY(0px)';
+                    } else if (y >= end) {
+                        inner.style.transform = 'translateY(' + maxShift + 'px)';
                     } else {
-                        applyStatic();
+                        inner.style.transform = 'translateY(' + (y - start) + 'px)';
                     }
                 }
-                window.addEventListener('scroll', update, { passive: true });
-                window.addEventListener('resize', () => {
-                    // Bei Resize statischen Modus erzwingen um Sprünge zu vermeiden, dann neu berechnen
-                    applyStatic();
-                    syncPlaceholder();
-                    leftWidth = left.offsetWidth;
-                    update();
-                });
-                update();
-            }
-            sections.forEach(initSection);
+                let resizeTimeout;
+                function onResize(){
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(()=>{ recalc(); onScroll(); },120);
+                }
+                recalc();
+                onScroll();
+                window.addEventListener('scroll', onScroll, { passive:true });
+                window.addEventListener('resize', onResize);
+            });
         })();
     </script>
 </body>
