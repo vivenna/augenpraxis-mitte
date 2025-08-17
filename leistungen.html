@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wichtige Infos - Augenarztpraxis Dr. med. Nahla Al-Asbahi in Berlin Mitte</title>
+    <meta name="description" content="Erfahren Sie die wichtigsten Infos der Augenarztpraxis Dr. med. Nahla Al-Asbahi in Berlin Mitte. Vereinbaren Sie Ihren Termin online.">
+    <meta name="keywords" content="Sprechzeiten, Augenarzt, Augenarztpraxis, Dr. Nahla Al-Asbahi, Berlin Mitte, Terminvereinbarung">
+   <meta name="author" content="vivenna">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="vivenna" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="canonical" href="https://augenpraxis-mitte.de/">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --info-icon-size: 3.5rem; /* verkleinert */
+            --info-icon-gap: 55px;   /* erhöht von 40px */
+        }
+        html { overflow-x: hidden; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }   
+
+        .header {
+            background-color: #fff;            
+            display: flex;
+            flex-wrap: wrap; /* Ermöglicht Umbruch bei kleineren Bildschirmen */
+            align-items: center;
+            padding: 20px;
+            top: 0;
+            justify-content: center;
+            left: 0;
+            width: 100%;
+            margin-left: -30px;
+        }
+
+        .header-left, .header-center, .header-right, .header-button, .header-language {
+            padding: 10px;
+        }
+
+        .logo {
+            width: 150px;
+            margin: 0 0; /* Vergrößert den Abstand links und rechts vom Logo */
+        }
+        
+        .header-center {
+            margin: 0 50px; /* Fügt Abstand links und rechts vom Text hinzu */
+        }
+
+        .header-center-text {
+            font-weight: bold;
+        }
+
+        .button {
+            color: rgb(255, 255, 255);
+            background-color: #4b79ce;
+            padding: 13px 20px;
+            text-decoration: none;
+            margin: 0 50px; /* Fügt Abstand links und rechts vom Button hinzu */
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s ease; /* Fügt einen sanften Übergang hinzu */
+        }
+
+        .button:hover {
+            background-color: #7bbd64; /* Ändert die Farbe zu einem dunkleren Grün beim Hover */
+        }
+
+        .header-language {
+            margin: 0 0px; /* Abstand links und rechts vom Sprachauswahl entfernt */
+            font-size: 13px;
+        }
+        .language-active {
+            color: grey;
+            padding-right: 5px;
+        }
+        .language-inactive {
+            color: black;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding-top: 20px; /* statt margin-top */
+            width: 100%;
+            z-index: 100;
+            transition: height 0.3s ease;
+        }
+        
+        nav {
+            background-color: #fff; /* Weiße Hintergrundfarbe */
+            border: 5px solid #a8e385; /* Dicker, farbiger Rand */
+            border-radius: 50px;
+            padding: 20px 30px; /* Innenabstand */
+            display: inline-block; /* Sorgt dafür, dass es nur so breit wie der Inhalt ist */
+        }
+
+        nav ul {
+            display: flex; /* Nutzt Flexbox, um die Menüpunkte horizontal anzuordnen */
+            justify-content: space-around; /* Verteilt die Elemente gleichmäßig */
+            width: 100%; /* Nimmt die volle Breite des Navigationsbereichs ein */
+            list-style: none; /* Entfernt die Aufzählungszeichen */
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            text-align: center; /* Zentriert den Text in den Listenelementen */
+            padding: 0px 50px; /* Fügt Innenabstand hinzu */
+        }
+        .nav-placeholder {
+            height: 109px; /* Gleiche Höhe wie die Navigationsleiste */
+            width: 100%;
+        }
+        
+        .nav-fixed {
+            position: fixed;
+            top: 20px; /* entspricht distanceToFixed */
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="assets/logo.jpg" alt="Logo" class="logo">
+        </div>
+        <div class="header-center">
+            <span class="header-center-text">
+            <p>Augenarztpraxis</p>
+            <p>Dr. med. Nahla Al-Asbahi</p>
+            </span>
+            <p>Fachärztin für Augenheilkunde</p>
+            <p>Berlin Mitte</p>
+        </div>
+        <div class="header-right">
+            <p>Müllerstr. 139, 13353 Berlin</p>
+            <p>Tel: 030 33876167</p>
+            <p>Fax: 030 28654715</p>
+            <p>E-Mail: info@augenpraxis-mitte.de</p>
+        </div>
+        <a href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi" class="button">Termin buchen</a>
+        <div class="header-language">
+            <span class="language-active">DE</span>
+            <a href="/en/"><span class="language-inactive">EN</span></a>
+            </div>
+    </header>
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="/">Startseite</a></li>
+                <li><a href="leistungen">Leistungen</a></li>
+                <li><a href="sprechzeiten">Sprechzeiten</a></li>
+                <li><a href="wichtige-infos">Wichtige Infos</a></li>
+                <li><a href="kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
