@@ -393,7 +393,7 @@
 
             window.addEventListener('scroll', stickNav);
         });
-        // Mehrfache Scrollsteuerung für alle Vorsorge/Diagnostik Abschnitte
+        // Mehrfache Scrollsteuerung für alle Vorsorge/Diagnostik Abschnitte (optimiert gegen Springen beim Hochscrollen)
         (function() {
             const sections = document.querySelectorAll('.vorsorge-basis');
             if(!sections.length) return;
@@ -405,11 +405,45 @@
                 if(!placeholder || !placeholder.classList.contains('vorsorge-left-placeholder')) {
                     placeholder = document.createElement('div');
                     placeholder.className = 'vorsorge-left-placeholder';
-                    placeholder.style.width = left.offsetWidth + 'px';
-                    placeholder.style.height = left.offsetHeight + 'px';
                     left.parentNode.insertBefore(placeholder, left);
                 }
+                function syncPlaceholder(){
+                    placeholder.style.width = left.offsetWidth + 'px';
+                    placeholder.style.height = left.offsetHeight + 'px';
+                }
+                syncPlaceholder();
                 let leftWidth = left.offsetWidth;
+                let lastState = 'static'; // 'static' | 'fixed' | 'end'
+                function applyStatic(){
+                    if(lastState === 'static') return;
+                    left.classList.remove('vorsorge-left-fixed','vorsorge-left-end');
+                    left.style.position='';
+                    left.style.top='';
+                    // Breite zunächst beibehalten bis nach Reflow, um Sprung zu vermeiden
+                    requestAnimationFrame(()=>{ left.style.width=''; });
+                    placeholder.style.display='none';
+                    lastState='static';
+                }
+                function applyFixed(offsetTop){
+                    if(lastState === 'fixed') return;
+                    leftWidth = leftWidth || left.offsetWidth;
+                    left.style.width = leftWidth + 'px';
+                    placeholder.style.display='block';
+                    left.classList.remove('vorsorge-left-end');
+                    left.classList.add('vorsorge-left-fixed');
+                    left.style.top = offsetTop + 'px';
+                    lastState='fixed';
+                }
+                function applyEnd(relativeTop){
+                    if(lastState === 'end') return;
+                    left.classList.remove('vorsorge-left-fixed');
+                    left.classList.add('vorsorge-left-end');
+                    placeholder.style.display='block';
+                    left.style.position='absolute';
+                    left.style.top = relativeTop + 'px';
+                    left.style.width = leftWidth + 'px';
+                    lastState='end';
+                }
                 function update(){
                     const rect = section.getBoundingClientRect();
                     const sectionTop = rect.top + window.scrollY;
@@ -420,39 +454,19 @@
                     const end = sectionTop + rightHeight - leftHeight - offsetTop;
                     const y = window.scrollY;
                     if (y >= start && y <= end) {
-                        if (!left.classList.contains('vorsorge-left-fixed')) {
-                            leftWidth = placeholder.offsetWidth || left.offsetWidth;
-                            left.style.width = leftWidth + 'px';
-                            placeholder.style.display = 'block';
-                            left.classList.remove('vorsorge-left-end');
-                            left.classList.add('vorsorge-left-fixed');
-                            left.style.top = offsetTop + 'px';
-                        }
+                        applyFixed(offsetTop);
                     } else if (y > end) {
-                        if (!left.classList.contains('vorsorge-left-end')) {
-                            left.classList.remove('vorsorge-left-fixed');
-                            left.classList.add('vorsorge-left-end');
-                            placeholder.style.display = 'block';
-                            const relativeTop = rightHeight - leftHeight;
-                            left.style.position = 'absolute';
-                            left.style.top = relativeTop + 'px';
-                            left.style.width = leftWidth + 'px';
-                        }
+                        applyEnd(rightHeight - leftHeight);
                     } else {
-                        if (left.classList.contains('vorsorge-left-fixed') || left.classList.contains('vorsorge-left-end')) {
-                            left.className = left.className.replace('vorsorge-left-fixed','').replace('vorsorge-left-end','').trim();
-                            left.style.position = '';
-                            left.style.top = '';
-                            left.style.width = '';
-                            placeholder.style.display = 'none';
-                        }
+                        applyStatic();
                     }
                 }
                 window.addEventListener('scroll', update, { passive: true });
                 window.addEventListener('resize', () => {
-                    placeholder.style.width = left.offsetWidth + 'px';
-                    placeholder.style.height = left.offsetHeight + 'px';
-                    if (!left.classList.contains('vorsorge-left-fixed')) left.style.width='';
+                    // Bei Resize statischen Modus erzwingen um Sprünge zu vermeiden, dann neu berechnen
+                    applyStatic();
+                    syncPlaceholder();
+                    leftWidth = left.offsetWidth;
                     update();
                 });
                 update();
