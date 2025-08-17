@@ -140,6 +140,67 @@
             left: 0;
             width: 100%;
         }
+
+        .leistungen-main {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .leistungen-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 60px;
+        }
+        .leistungen-text {
+            flex: 2;
+            text-align: left;
+        }
+        .leistungen-text h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .leistungen-beschreibung {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .leistungen-icon {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .leistungen-bild {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 2px solid #b0b0b0;
+            background: #e0e0e0;
+        }
+        @media (max-width: 900px) {
+            .leistungen-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .leistungen-text h1, .leistungen-beschreibung {
+                text-align: center;
+            }
+            .leistungen-icon {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -178,6 +239,21 @@
             </ul>
         </nav>
     </div>
+    <main class="leistungen-main">
+        <div class="leistungen-content">
+            <div class="leistungen-text">
+                <h1>Unsere Leistungen</h1>
+                <p class="leistungen-beschreibung">
+                    Durch modernste Geräte und Untersuchungsmethoden können Erkrankungen des Auges oft
+                    bereits vor dem Auftreten von Beschwerden im Anfangsstadium diagnostiziert werden und so
+                    eine frühzeitige Therapie eingeleitet werden.
+                </p>
+            </div>
+            <div class="leistungen-icon">
+                <img src="bild.png" alt="Leistungen Bild" class="leistungen-bild">
+            </div>
+        </div>
+    </main>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navContainer = document.querySelector('.nav-container');
