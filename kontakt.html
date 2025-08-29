@@ -505,20 +505,21 @@
             .lage-layout { padding-left: 20px; }
         }
 
-        /* Lage-Layout Desktop: zentriert, 100px Abstand, 35%/65% mit Gap ohne Überlauf */
+        /* Lage-Layout Desktop: 40px linker Rand fix, 100px Abstand, Tabelle fix 65%, Karte flexibel bis max. 35% */
         @media (min-width: 901px) {
             .lage-layout { 
-                padding-left: 0; 
+                padding-left: 40px; /* fixer linker Innenabstand */
                 gap: 100px; 
                 margin: 0 auto; 
-                max-width: 1600px; /* optionales zentrieren auf großen Screens */
+                max-width: 1600px; 
             }
             .lage-map { 
-                flex: 0 0 calc(35% - 50px); 
+                flex: 1 1 calc(35% - 50px); /* flexibel, kann kleiner als 35% werden */
                 max-width: calc(35% - 50px);
+                min-width: 260px; /* untere Schranke für sehr schmale Screens */
             }
             .lage-tabelle { 
-                flex: 0 0 calc(65% - 50px); 
+                flex: 0 0 calc(65% - 50px); /* fix 65% */
                 max-width: calc(65% - 50px);
             }
         }
