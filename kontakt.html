@@ -504,6 +504,27 @@
         @media (max-width: 900px) {
             .lage-layout { padding-left: 20px; }
         }
+
+        /* Lage-Layout Desktop: zentriert, 100px Abstand, 35%/65% mit Gap ohne Überlauf */
+        @media (min-width: 901px) {
+            .lage-layout { 
+                padding-left: 0; 
+                gap: 100px; 
+                margin: 0 auto; 
+                max-width: 1600px; /* optionales zentrieren auf großen Screens */
+            }
+            .lage-map { 
+                flex: 0 0 calc(35% - 50px); 
+                max-width: calc(35% - 50px);
+            }
+            .lage-tabelle { 
+                flex: 0 0 calc(65% - 50px); 
+                max-width: calc(65% - 50px);
+            }
+        }
+        @media (max-width: 900px) {
+            .lage-layout { gap: 20px; }
+        }
     </style>
 </head>
 <body>
