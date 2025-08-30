@@ -669,9 +669,9 @@
                 @media (max-width: 900px) {
                         /* Header vereinfachen */
                         .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10001; border-bottom:1px solid #eee; }
-                        .logo { width: 96px; }
+                        .logo { width: 92px; }
                         .header-center, .header-right, .header-language, .button { display:none; }
-                        .hamburger { display:block; }
+                        .hamburger { display:block; margin-right: 2px; padding:6px; }
 
                         /* Hide desktop nav, use mobile menu */
                         .nav-container { display:none; }
@@ -700,9 +700,13 @@
                         .rezensionen-pager { position: static; justify-content:center; margin-top: 16px; }
                         .rezensionen-pager-dot { width: 26px; height: 6px; }
 
-                        /* Footer sicher ohne Overflow */
-                        .footer-main { transform: none; }
-                        .footer { padding-top: 40px; }
+                        /* Footer mobil: höher, Claim etwas tiefer, mehr linker Abstand */
+                        .footer { padding-top: 56px; min-height: 340px; }
+                        .footer-main { transform: none; padding: 0 20px; margin-bottom: 28px; }
+                        .footer-claim { margin-top: 10px; }
+                        .footer-button { margin-left: 0; }
+                        .footer-bottom { padding: 0 20px 18px 20px; gap: 12px; }
+                        .footer-sprechstunde { position: static; left:auto; top:auto; transform:none; }
                 }
     </style>
 </head>

@@ -26,11 +26,12 @@
         html {
             overflow-x: hidden;
         }
-        body {
+    body {
             font-family: 'Roboto', sans-serif;
             overflow-x: hidden; /* Verhindert horizontales Scrollen */
             letter-spacing: 0.5px;
         }
+    body.menu-open { overflow:hidden; }
 
         a {
             text-decoration: none;
@@ -483,6 +484,44 @@
 
         .footer-left { top: auto; bottom: 10px; margin-bottom: 0; padding-bottom: 0; }
         .footer-sprechstunde { top: auto; bottom: 10px; }
+
+        /* ============ MOBILE NAVIGATION & LAYOUT ============ */
+        .hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; margin-left:auto; }
+        .hamburger .bar { display:block; width:26px; height:3px; background:#222; margin:5px 0; border-radius:2px; transition:transform .2s ease, opacity .2s ease; }
+        .hamburger[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger[aria-expanded="true"] .bar:nth-child(2) { opacity:0; }
+        .hamburger[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        .mobile-menu { position:fixed; inset:0; background:#fff; display:none; flex-direction:column; padding:24px; z-index:10002; overflow-y:auto; }
+        .mobile-menu.open { display:flex; }
+        .mobile-menu a { font-size:1.2rem; padding:14px 8px; border-bottom:1px solid #eee; }
+        .mobile-menu .mobile-cta { margin-top:16px; background:#4b79ce; color:#fff; padding:14px 18px; border-radius:10px; text-align:center; display:inline-block; }
+        .mobile-menu .mobile-lang { margin-top:8px; font-size:0.95rem; color:#666; }
+        .mobile-menu .mobile-section-title { margin:18px 0 6px; font-weight:700; font-size:0.95rem; color:#222; }
+        @media (max-width: 900px) {
+            .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10001; border-bottom:1px solid #eee; }
+            .logo { width: 92px; }
+            .header-center, .header-right, .header-language, .button { display:none; }
+            .hamburger { display:block; margin-right: 2px; padding:6px; }
+            .nav-container { display:none; }
+            /* Sprechstunde Tabelle mobil */
+            .sprechstunde-section { margin: 40px 0 24px; padding: 0 16px; }
+            .sprechstunde-section h2 { font-size: 1.8rem; margin-bottom: 18px; }
+            .sprechstunde-tabelle { min-width: 0; width:100%; font-size: 1rem; table-layout: fixed; }
+            .sprechstunde-tabelle th, .sprechstunde-tabelle td { padding: 10px 8px; word-break: break-word; }
+            .sprechstunde-tabelle thead tr { border-bottom-width: 1px; }
+            .sprechstunde-hinweis { font-size: 0.95rem; padding: 0 4px; }
+            /* Lage mobil */
+            .lage-section { margin: 60px 0; padding: 0 16px; }
+            .lage-section h2 { font-size: 1.6rem; }
+            .lage-tabelle { margin: 0; width: 100%; font-size: 1rem; border-spacing: 12px 14px; }
+            .lage-tabelle td:first-child { width: 40%; }
+            /* Footer mobil höher und geordnet */
+            .footer { padding-top: 56px; min-height: 340px; }
+            .footer-main { transform:none; padding: 0 20px; margin-bottom: 28px; }
+            .footer-claim { margin-top: 10px; }
+            .footer-bottom { padding: 0 20px 18px 20px; gap: 12px; }
+            .footer-sprechstunde { position: static; left:auto; top:auto; transform:none; }
+        }
     </style>
 </head>
 <body>
@@ -490,6 +529,11 @@
         <div class="header-left">
             <a href="/"><img src="assets/logo.jpg" alt="Logo" class="logo"></a>
         </div>
+        <button class="hamburger" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <div class="header-center">
             <span class="header-center-text">
             <p>Augenarztpraxis</p>
@@ -510,6 +554,17 @@
             <a href="/en/"><span class="language-inactive">EN</span></a>
         </div>
     </header>
+    <!-- Mobile Menü Overlay -->
+    <nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
+        <a href="/">Startseite</a>
+        <a href="leistungen">Leistungen</a>
+        <a href="sprechzeiten">Sprechzeiten</a>
+        <a href="wichtige-infos">Wichtige Infos</a>
+        <a href="kontakt">Kontakt</a>
+        <a class="mobile-cta" href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi">Termin buchen</a>
+        <div class="mobile-section-title">Sprache</div>
+        <div class="mobile-lang">DE / <a href="/en/">EN</a></div>
+    </nav>
     <div class="nav-container">
         <nav>
             <ul>
@@ -606,6 +661,27 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            /* Hamburger Toggle */
+            const burger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            function closeMenu(){
+                if(!burger || !mobileMenu) return;
+                burger.setAttribute('aria-expanded','false');
+                mobileMenu.classList.remove('open');
+                mobileMenu.setAttribute('aria-hidden','true');
+                document.body.classList.remove('menu-open');
+            }
+            if (burger && mobileMenu) {
+                burger.addEventListener('click', () => {
+                    const expanded = burger.getAttribute('aria-expanded') === 'true';
+                    burger.setAttribute('aria-expanded', String(!expanded));
+                    mobileMenu.classList.toggle('open');
+                    mobileMenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+                    document.body.classList.toggle('menu-open', !expanded);
+                });
+                mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+                window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+            }
             const navContainer = document.querySelector('.nav-container');
             let navTop = navContainer.offsetTop;
             const distanceToFixed = 20; // Abstand zum oberen Rand, bei dem die Navigationsleiste fixiert wird

@@ -429,61 +429,18 @@
             white-space: nowrap;
         }
         @media (max-width: 900px) {
-            .footer-content {
-                flex-direction: column;
-                align-items: flex-start;
-                text-align: left;
-                gap: 30px;
-            }
-            .footer-main {
-                margin-left: 0;
-                align-items: flex-start;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 0 20px 18px 20px;
-                gap: 18px;
-                position: static;
-                min-height: 0;
-            }
-            .footer-left {
-                position: static;
-                left: auto;
-                top: auto;
-                margin-bottom: 0;
-            }
-            .footer-sprechstunde, .footer-right {
-                margin-left: 0;
-            }
-            .footer-image-container {
-                left: -30px;
-                top: -30px;
-                width: 140px;
-                height: 140px;
-            }
-            .footer-logo {
-                width: 140px;
-            }
-            .footer-left, .footer-right {
-                align-items: flex-start;
-                min-width: 0;
-                margin-bottom: 0;
-            }
-            .footer-right {
-                position: static;
-                right: auto;
-                bottom: auto;
-                text-align: left;
-                align-items: flex-start;
-                margin-top: 18px;
-            }
-            .main-content {
-                margin-left: 0;
-            }
-            .main-text {
-                padding-left: 0;
-            }
+            .footer-content { flex-direction: column; align-items: flex-start; text-align: left; gap: 30px; }
+            .footer-main { margin-left: 0; align-items: flex-start; transform:none; padding: 0 20px; margin-bottom: 28px; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; padding: 0 20px 18px 20px; gap: 12px; position: static; min-height: 0; }
+            .footer-left { position: static; left: auto; top: auto; margin-bottom: 0; }
+            .footer-sprechstunde, .footer-right { margin-left: 0; }
+            .footer-image-container { left: -30px; top: -30px; width: 140px; height: 140px; }
+            .footer-logo { width: 140px; }
+            .footer-left, .footer-right { align-items: flex-start; min-width: 0; margin-bottom: 0; }
+            .footer-right { position: static; right: auto; bottom: auto; text-align: left; align-items: flex-start; margin-top: 18px; }
+            .footer { padding-top: 56px; min-height: 340px; }
+            .main-content { margin-left: 0; }
+            .main-text { padding-left: 0; }
         }
         .footer, .footer * {
             color: #fff;
@@ -513,8 +470,8 @@
         .footer-left { top: auto; bottom: 10px; margin-bottom: 0; padding-bottom: 0; }
         .footer-sprechstunde { top: auto; bottom: 10px; }
 
-        /* ============ MOBILE NAVIGATION & LAYOUT ============ */
-        .hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; margin-left:auto; }
+    /* ============ MOBILE NAVIGATION & LAYOUT ============ */
+    .hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; margin-left:auto; }
         .hamburger .bar { display:block; width:26px; height:3px; background:#222; margin:5px 0; border-radius:2px; transition:transform .2s ease, opacity .2s ease; }
         .hamburger[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
         .hamburger[aria-expanded="true"] .bar:nth-child(2) { opacity:0; }
@@ -529,9 +486,9 @@
 
         @media (max-width: 900px) {
             .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10001; border-bottom:1px solid #eee; }
-            .logo { width: 96px; }
+            .logo { width: 92px; }
             .header-center, .header-right, .header-language, .button { display:none; }
-            .hamburger { display:block; }
+            .hamburger { display:block; margin-right: 2px; padding:6px; }
             .nav-container { display:none; }
 
             .leistungen-main { margin-top: 24px; }
