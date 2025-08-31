@@ -678,6 +678,32 @@
           .lage-map { order: 1; }
           .lage-tabelle { order: 2; }
         }
+		@media (max-width: 900px) {
+		/* Mobile: Bild links klein neben der Überschrift in .vorsorge-left */
+		.vorsorge-left {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			justify-content: center;
+		}
+		.vorsorge-left h2 {
+			order: 2;
+			text-align: left;
+			margin: 0;
+		}
+		.vorsorge-left .vorsorge-image-wrapper {
+			order: 1;
+			width: 48px;
+			max-width: 48px;
+			margin: 0;
+			flex: 0 0 auto;
+		}
+		.vorsorge-left .vorsorge-bild {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+	}
     </style>
 </head>
 <body>
