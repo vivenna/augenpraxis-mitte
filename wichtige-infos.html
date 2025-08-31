@@ -469,6 +469,59 @@
             .footer-bottom { padding: 0 20px 18px 20px; gap: 12px; }
             .footer-sprechstunde { position: static; left:auto; top:auto; transform:none; }
         }
+                        @media (max-width: 900px) {
+                        /* Header vereinfachen */
+                        .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10004; border-bottom:1px solid #eee; }
+                        .logo { width: 78px; margin-left: 3px; }
+                        .header-center, .header-right, .header-language, .button { display:none; }
+                        .hamburger { display:block; margin-right: 0; padding:4px; position: absolute; right: 58px; z-index: 10003; }
+                        .hamburger .bar { width:24px; }
+
+                        /* Hamburger-X sichtbar über Overlay, aber gleiche Position wie Hamburger */
+                        body.menu-open .hamburger { z-index: 10005; }
+                        body.menu-open { overflow: hidden !important; } /* Prevent background scroll when menu is open */
+                        html.mobile-menu.open { overflow: hidden !important; } /* Prevent background scroll when menu is open */
+                        body.mobile-menu.open { overflow: hidden !important;} /* Prevent background scroll when menu is open */
+
+                        /* Hide desktop nav, use mobile menu */
+                        .nav-container { display:none; }
+
+                        /* Main hero: Text zuerst, Bild darunter */
+                        .main-content { padding: 12px 16px; min-height:auto; padding-top: 0px;}
+                        .main-text { width:100%; max-width:none; }
+                        .main-text h2 { font-size: 1.5rem; margin-bottom: 16px; }
+                        .main-text p { font-size: 1rem; line-height: 1.6; }
+                        .main-text p:nth-of-type(2) { display:none; } /* Einleitung leicht kürzen */
+                        .main-image-bg { position: relative; width: 100%; height: auto; display:block; margin-top: -120px; margin-left: 30px;}
+                        .main-image-bg img { max-width: 100%; margin: 12px 0 0; border-radius: 10px; }
+
+                        .sprechstunde-section h2 { font-size: 1.6rem; margin-bottom: 20px; }
+
+                        /* Footer mobil */
+                        .footer { padding-top: 60px; min-height: 480px; }
+                        .footer-main { transform: none; padding: 0 20px; margin-bottom: 28px; }
+                        .footer-claim { margin-top: 30px; }
+                        .footer-button { margin-left: 0; }
+                        .footer-bottom { padding: 0 20px 18px 20px; gap: 12px; }
+                        .footer-sprechstunde { position: static; left:auto; top:auto; transform:none; }
+                        .footer-image-container { left: 260px; top: -64px; width: 150px; height: 150px; }
+                        .footer-logo { width: 250px; }
+
+                        /* Mobiles Overlay: Inhalte zentriert, keine Trennlinien, Sprache oben links */
+                        .mobile-menu { justify-content: center; align-items: center; padding: 24px 16px; }
+                        .mobile-menu a { border: none; text-align: center; }
+                        .mobile-menu .mobile-section-title { display: none; }
+                        .mobile-menu .mobile-lang { position: absolute; top: 12px; left: 26px; color: #666; }
+
+                        /* Blauen Rand in Mobile deaktivieren */
+                        nav { border: none !important; padding: 0; }
+}
+
+    /* Override: mobile language switch smaller and above content */
+    @media (max-width: 900px) {
+      .mobile-menu .mobile-lang { z-index: 10006; top: 145px; font-size: 1.05rem !important; }
+      .mobile-lang a { font-size: 1.05rem !important; color: #222; margin-left: -3px;}
+    }
     </style>
 </head>
 <body>
@@ -578,53 +631,44 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            /* Hamburger Toggle */
-            const burger = document.querySelector('.hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            function closeMenu(){
-                if(!burger || !mobileMenu) return;
-                burger.setAttribute('aria-expanded','false');
-                mobileMenu.classList.remove('open');
-                mobileMenu.setAttribute('aria-hidden','true');
-                document.body.classList.remove('menu-open');
-            }
-            if (burger && mobileMenu) {
-                burger.addEventListener('click', () => {
-                    const expanded = burger.getAttribute('aria-expanded') === 'true';
-                    burger.setAttribute('aria-expanded', String(!expanded));
-                    mobileMenu.classList.toggle('open');
-                    mobileMenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
-                    document.body.classList.toggle('menu-open', !expanded);
-                });
-                mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-                window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
-            }
-            const navContainer = document.querySelector('.nav-container');
-            let navTop = navContainer.offsetTop;
-            const distanceToFixed = 20; // Abstand zum oberen Rand, bei dem die Navigationsleiste fixiert wird
-            let navPlaceholder = document.createElement('div');
-
-            navPlaceholder.className = 'nav-placeholder';
-
-            function stickNav() {
-                const style = window.getComputedStyle(navContainer);
-                const marginTop = parseInt(style.marginTop) || 0;
-                const totalHeight = navContainer.offsetHeight + marginTop;
-
-                if (window.scrollY >= (navTop - distanceToFixed)) {
-                    navPlaceholder.style.height = totalHeight + "px";
-                    navContainer.classList.add('nav-fixed');
-                    navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
+        const burger = document.querySelector('.hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let scrollPosition = 0;
+        function closeMenu(){
+            burger.setAttribute('aria-expanded','false');
+            mobileMenu.classList.remove('open');
+            mobileMenu.setAttribute('aria-hidden','true');
+            document.body.classList.remove('menu-open');
+            document.documentElement.classList.remove('menu-open');
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, scrollPosition);
+        }
+        if (burger && mobileMenu) {
+            burger.addEventListener('click', () => {
+                const expanded = burger.getAttribute('aria-expanded') === 'true';
+                burger.setAttribute('aria-expanded', String(!expanded));
+                mobileMenu.classList.toggle('open');
+                mobileMenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+                document.body.classList.toggle('menu-open', !expanded);
+                document.documentElement.classList.toggle('menu-open', !expanded);
+                if (!expanded) {
+                    scrollPosition = window.scrollY;
+                    document.body.style.position = 'fixed';
+                    document.body.style.top = `-${scrollPosition}px`;
+                    document.body.style.width = '100%';
                 } else {
-                    navContainer.classList.remove('nav-fixed');
-                    if (navPlaceholder.parentNode) {
-                        navPlaceholder.parentNode.removeChild(navPlaceholder);
-                    }
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                    window.scrollTo(0, scrollPosition);
                 }
-            }
-
-            window.addEventListener('scroll', stickNav);
-        });
+            });
+            mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+            window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+        }
+    });
     </script>
 </body>
 </html>
