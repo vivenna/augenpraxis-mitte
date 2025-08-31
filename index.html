@@ -663,7 +663,7 @@
                 .mobile-menu.open { display:flex; }
                 .mobile-menu a { font-size:1.2rem; padding:14px 8px; border-bottom:1px solid #eee; }
                 .mobile-menu .mobile-cta { margin-top:16px; background:#4b79ce; color:#fff; padding:14px 18px; border-radius:10px; text-align:center; display:inline-block; }
-                .mobile-menu .mobile-lang { margin-top:8px; font-size:0.95rem; color:#666; }
+                .mobile-menu .mobile-lang { margin-top:8px; color:#666; }
                 .mobile-menu .mobile-section-title { margin:18px 0 6px; font-weight:700; font-size:0.95rem; color:#222; }
 
                 @media (max-width: 900px) {
@@ -718,11 +718,17 @@
                         .mobile-menu { justify-content: center; align-items: center; padding: 24px 16px; }
                         .mobile-menu a { border: none; text-align: center; }
                         .mobile-menu .mobile-section-title { display: none; }
-                        .mobile-menu .mobile-lang { position: absolute; top: 12px; left: 16px; font-size: 0.95rem; color: #666; }
+                        .mobile-menu .mobile-lang { position: absolute; top: 12px; left: 26px; color: #666; }
 
                         /* Blauen Rand in Mobile deaktivieren */
                         nav { border: none !important; padding: 0; }
 }
+
+    /* Override: mobile language switch smaller and above content */
+    @media (max-width: 900px) {
+      .mobile-menu .mobile-lang { z-index: 10006; top: 145px; font-size: 1.05rem !important; }
+      .mobile-lang a { font-size: 1.05rem !important; color: #222; margin-left: -3px;}
+    }
     </style>
 </head>
 <body>
@@ -767,7 +773,7 @@
         <a href="kontakt">Kontakt</a>
         <a class="mobile-cta" href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi">Termin buchen</a>
         <div class="mobile-section-title">Sprache</div>
-        <div class="mobile-lang">DE / <a href="/en/">EN</a></div>
+        <div class="mobile-lang">DE /<a href="/en/">EN</a></div>
     </nav>
 
 
