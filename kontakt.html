@@ -637,6 +637,18 @@
       .mobile-menu .mobile-lang { z-index: 10006; top: 145px; font-size: 1.05rem !important; }
       .mobile-lang a { font-size: 1.05rem !important; color: #222; margin-left: -3px;}
     }
+
+    /* Mobile: Lage – Tabelle zuerst, darunter Karte mit Consent-Preview */
+    @media (max-width: 900px) {
+      .lage-tabelle { order: 1; }
+      .lage-map { order: 2; min-height: 320px; }
+    }
+
+        /* Desktop: Lage – Map links zuerst, Tabelle danach (Originalreihenfolge beibehalten) */
+        @media (min-width: 901px) {
+          .lage-map { order: 1; }
+          .lage-tabelle { order: 2; }
+        }
     </style>
 </head>
 <body>
@@ -721,16 +733,6 @@
     <section class="lage-section">
         <h2>Unsere Lage</h2>
         <div class="lage-layout">
-            <div class="lage-map">
-                <div class="map-consent" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2426.122701795704!2d13.35089847692262!3d52.54930537206888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8536e8997f09f%3A0x51c24e8e6793da9f!2sAugenarztpraxis%20Dr.%20med.%20Nahla%20Al-Asbahi!5e0!3m2!1sde!2sde!4v1756448875339!5m2!1sde!2sde">
-                    <img class="map-consent__bg" src="assets/karte.png" alt="Karten-Platzhalter">
-                    <div class="map-consent__overlay"></div>
-                    <div class="map-consent__content" role="dialog" aria-live="polite">
-                        <p class="map-consent__text">Ich stimme der Verarbeitung von Daten (insbesondere meiner IP-Adresse) und deren Übertragung außerhalb der EU durch Google Maps (USA) zu, um die Karte anzuzeigen.</p>
-                        <button class="map-consent__btn" type="button" aria-label="Karte anzeigen">Karte anzeigen</button>
-                    </div>
-                </div>
-            </div>
             <table class="lage-tabelle">
                 <tbody>
                     <tr>
@@ -759,6 +761,16 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="lage-map">
+                <div class="map-consent" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2426.122701795704!2d13.35089847692262!3d52.54930537206888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8536e8997f09f%3A0x51c24e8e6793da9f!2sAugenarztpraxis%20Dr.%20med.%20Nahla%20Al-Asbahi!5e0!3m2!1sde!2sde!4v1756448875339!5m2!1sde!2sde">
+                    <img class="map-consent__bg" src="assets/karte.png" alt="Karten-Platzhalter">
+                    <div class="map-consent__overlay"></div>
+                    <div class="map-consent__content" role="dialog" aria-live="polite">
+                        <p class="map-consent__text">Ich stimme der Verarbeitung von Daten (insbesondere meiner IP-Adresse) und deren Übertragung außerhalb der EU durch Google Maps (USA) zu, um die Karte anzuzeigen.</p>
+                        <button class="map-consent__btn" type="button" aria-label="Karte anzeigen">Karte anzeigen</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <footer class="footer">
