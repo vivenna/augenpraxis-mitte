@@ -31,7 +31,7 @@
             overflow-x: hidden; /* Verhindert horizontales Scrollen */
             letter-spacing: 0.5px;
         }
-    body.menu-open { overflow: hidden; }
+        body.menu-open { overflow: hidden; }
 
         a {
             text-decoration: none;
@@ -568,6 +568,366 @@
             white-space: nowrap;
         }
         @media (max-width: 900px) {
+            .page-container {
+                max-width: 100%;
+            }
+        }
+        .main-content {
+            display: block;
+            align-items: initial;
+            padding: 20px;
+            position: relative;
+            min-height: 350px;
+        }
+        .main-text {
+            flex: initial;
+            padding-right: initial;
+            position: relative;
+            z-index: 2;
+            width: 80%;
+            max-width: 750px;
+            background: transparent;
+            padding-left: 0; /* Entfernt das linke Padding, damit bündig */
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .main-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .main-image-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            z-index: 0; /* behind nav and other UI */
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            pointer-events: none;
+        }
+        .main-image-bg img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            opacity: 1;
+            margin-top: 50px;
+            margin-right: 0;
+        }
+        .main-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .sprechstunde-section {
+            margin: 100px 0 40px 0;
+            padding-left: 0;
+            text-align: center;
+        }
+        .sprechstunde-section h2 {
+            font-size: 2.7rem;
+            color: #000;
+            margin-bottom: 70px;
+            font-weight: 800;
+        }
+        .sprechstunde-tabelle {
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: 950px;
+            max-width: 1300px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            color: #000;
+            background: #fff;
+            table-layout: fixed;
+        }
+        .sprechstunde-tabelle th,
+        .sprechstunde-tabelle td {
+            padding: 18px 36px;
+            text-align: center;
+            color: #000;
+            background: #fff;
+            width: 50%;
+            font-weight: 400;
+        }
+        .sprechstunde-tabelle th {
+            font-weight: 400;
+            background: #fff;
+            color: #000;
+        }
+        .sprechstunde-tabelle th,
+        .sprechstunde-tabelle td {
+            border-right: 2px solid #4b79ce;
+        }
+        .sprechstunde-tabelle th:last-child,
+        .sprechstunde-tabelle td:last-child {
+            border-right: none;
+        }
+        .sprechstunde-tabelle thead tr {
+            border-bottom: 2px solid #4b79ce;
+        }
+        .sprechstunde-tabelle tbody tr:first-child td {
+            border-top: 2px solid #4b79ce;
+        }
+        .sprechstunde-tabelle tbody tr td {
+            border-top: none;
+        }
+        .sprechstunde-hinweis {
+            margin-top: 40px;
+            font-size: 1.05rem;
+            color: #222;
+            opacity: 0.8;
+        }
+        .rezensionen-section {
+            margin: 140px 0 100px 0;
+            text-align: center;
+        }
+        .rezensionen-section h2 {
+            font-size: 2.7rem;
+            color: #000;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+        .rezensionen-slideshow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            min-height: 320px;
+            position: relative;
+        }
+        .rezensionen-pager {
+            position: absolute;
+            right: 20%;
+            bottom: 0px;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+        }
+        .rezensionen-pager-dot {
+            display: inline-block;
+            width: 38px;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.2s;
+            overflow: hidden;
+            position: relative;
+        }
+        .rezensionen-pager-fill {
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: #7bbd64;
+            border-radius: 3px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: width 0s;
+        }
+        .rezensionen-slide {
+            display: none;
+            max-width: 800px;
+            margin: 0 40px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .rezensionen-slide.active {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .rezensionen-slide blockquote {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            color: #222;
+            margin: 0 0 28px 0;
+            line-height: 1.6;
+        }
+        .rezensionen-autor {
+            font-size: 1.4rem;
+            color: #555;
+            opacity: 0.8;
+            font-style: normal;
+        }
+        .footer {
+            background: #4b79ce;
+            color: #fff;
+            position: relative;
+            padding: 100px 0 0 0; /* Padding oben erhöht */
+            min-height: 340px;
+            overflow: hidden;
+            font-size: 1.15rem;
+            width: 100%;
+            /* margin-left entfernt */
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            text-align: left;
+        }
+        .footer-image-container {
+            position: absolute;
+            top: -130px;
+            left: -200px;
+            z-index: 1;
+            width: 220px;
+            height: 220px;
+            overflow: visible;
+            pointer-events: none;
+        }
+        .footer-logo {
+            width: 620px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.6;
+            transform: translateY(-20px);
+        }
+        .footer-main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 80px; /* weiter nach oben */
+            margin-top: 0; /* Abstand zum oberen Rand der Fußzeile */
+            /* margin-left entfernt */
+            transform: translateX(40%);
+        }
+        .footer-claim {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            margin-top: 0;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        .footer-button {
+            background: #fff;
+            color: #4b79ce !important;
+            padding: 15px 38px;
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            margin-top: 0;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            display: inline-block;
+            border: 1px solid #fff;
+        }
+        .footer-button:hover {
+            background: #4b79ce;
+            color: #fff !important;
+            border-color: #fff;
+            border: 1px solid #fff;
+        }
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 40px 18px 220px;
+            box-sizing: border-box;
+            position: relative; /* hinzugefügt für absolute Positionierung von .footer-left */
+            min-height: 120px; /* Platz für .footer-right unten */
+            margin-bottom: 30px;
+        }
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-width: 220px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            position: absolute;
+            left: 50px;
+            top: 0;
+        }
+        .footer-kontakt-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .footer-kontakt-info {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .footer-kontakt-info > div,
+        .footer-sprechstunde-row,
+        .footer-sprechstunde-sowie {
+            margin-bottom: 0;
+            padding: 0;
+        }
+        .footer-sprechstunde {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            margin: 0;
+            font-size: 1.05rem;
+            text-align: left;
+            line-height: 1.7;
+            margin-top: 0;
+        }
+        .footer-sprechstunde-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        .footer-right {
+            position: absolute;
+            right: 50px;
+            bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-width: 180px;
+            margin-bottom: 0;
+            margin-left: 0;
+            text-align: left;
+        }
+        .footer-link {
+            color: #fff;
+            font-size: 1.02rem;
+            margin-bottom: 0;
+            text-decoration: underline;
+            transition: color 0.2s;
+            line-height: 1.8;
+        }
+        .footer-sprechstunde-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 270px;
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            padding: 0;
+            align-items: normal;
+            min-height: 0;
+        }
+        .footer-sprechstunde-tag {
+            text-align: left;
+            flex: 1 1 90px;
+        }
+        .footer-sprechstunde-zeit {
+            text-align: right;
+            flex: 1 1 120px;
+            white-space: nowrap;
+        }
+        @media (max-width: 900px) {
             .footer-content {
                 flex-direction: column;
                 align-items: flex-start;
@@ -676,6 +1036,9 @@
 
                         /* Hamburger-X sichtbar über Overlay, aber gleiche Position wie Hamburger */
                         body.menu-open .hamburger { z-index: 10005; }
+                        body.menu-open { overflow: hidden !important; } /* Prevent background scroll when menu is open */
+                        html.mobile-menu.open { overflow: hidden !important; } /* Prevent background scroll when menu is open */
+                        body.mobile-menu.open { overflow: hidden !important;} /* Prevent background scroll when menu is open */
 
                         /* Hide desktop nav, use mobile menu */
                         .nav-container { display:none; }
@@ -892,6 +1255,7 @@
                 mobileMenu.classList.remove('open');
                 mobileMenu.setAttribute('aria-hidden','true');
                 document.body.classList.remove('menu-open');
+                document.documentElement.classList.remove('menu-open');
             }
             if (burger && mobileMenu) {
                 burger.addEventListener('click', () => {
@@ -900,6 +1264,7 @@
                     mobileMenu.classList.toggle('open');
                     mobileMenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
                     document.body.classList.toggle('menu-open', !expanded);
+                    document.documentElement.classList.toggle('menu-open', !expanded);
                 });
                 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
                 window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
