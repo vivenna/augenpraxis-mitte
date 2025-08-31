@@ -683,7 +683,7 @@
 		.vorsorge-left {
 			display: flex;
 			align-items: center;
-			gap: 10px;
+			gap: 20px;
 			justify-content: center;
 		}
 		.vorsorge-left h2 {
@@ -693,8 +693,8 @@
 		}
 		.vorsorge-left .vorsorge-image-wrapper {
 			order: 1;
-			width: 48px;
-			max-width: 48px;
+			width: 68px;
+			max-width: 68px;
 			margin: 0;
 			flex: 0 0 auto;
 		}
@@ -703,6 +703,12 @@
 			height: auto;
 			display: block;
 		}
+        .vorsorge-left .führerschein {
+            font-size: 1.5rem;
+        }
+        .vorsorge-left .führerschein img {
+            width: 48px;
+        }
 	}
     </style>
 </head>
@@ -858,7 +864,7 @@
     <section class="vorsorge-wrapper">
         <div class="vorsorge-basis">
             <div class="vorsorge-left">
-                <h2>Führerscheingutachten</h2>
+                <h2><span class="führerschein">Führerscheingutachten</span></h2>
                 <div class="vorsorge-image-wrapper">
                     <img src="assets/führerscheingutachten.png" alt="Führerscheingutachten" class="vorsorge-bild">
                 </div>
