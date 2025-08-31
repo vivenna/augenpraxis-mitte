@@ -263,6 +263,8 @@
             .vorsorge-left, .vorsorge-right { width: 100%; }
             .vorsorge-left h2 { text-align: center; font-size: 2rem;}
             .vorsorge-image-wrapper { margin: 0 auto; }
+          /* Mobile: einige Listeneinträge ausblenden, um die Listen zu verkürzen */
+          .vorsorge-liste li:nth-child(n+8) { display: none; }
         }
         .footer {
             background: #4b79ce;
