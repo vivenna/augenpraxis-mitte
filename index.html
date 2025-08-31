@@ -1245,66 +1245,8 @@
             </div>
         </div>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            /* Hamburger Toggle */
-            const burger = document.querySelector('.hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            function closeMenu(){
-                burger.setAttribute('aria-expanded','false');
-                mobileMenu.classList.remove('open');
-                mobileMenu.setAttribute('aria-hidden','true');
-                document.body.classList.remove('menu-open');
-                document.documentElement.classList.remove('menu-open');
-            }
-            if (burger && mobileMenu) {
-                burger.addEventListener('click', () => {
-                    const expanded = burger.getAttribute('aria-expanded') === 'true';
-                    burger.setAttribute('aria-expanded', String(!expanded));
-                    mobileMenu.classList.toggle('open');
-                    mobileMenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
-                    document.body.classList.toggle('menu-open', !expanded);
-                    document.documentElement.classList.toggle('menu-open', !expanded);
-                });
-                mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-                window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
-            }
 
-            const navContainer = document.querySelector('.nav-container');
-            let navTop = navContainer.offsetTop;
-            const distanceToFixed = 20; // Abstand zum oberen Rand, bei dem die Navigationsleiste fixiert wird
-            let navPlaceholder = document.createElement('div');
-
-            navPlaceholder.className = 'nav-placeholder';
-
-            function stickNav() {
-                if (window.innerWidth <= 900) { // auf Mobil kein Sticky-Nav
-                    navContainer.classList.remove('nav-fixed');
-                    if (navPlaceholder.parentNode) navPlaceholder.parentNode.removeChild(navPlaceholder);
-                    return;
-                }
-                const style = window.getComputedStyle(navContainer);
-                const marginTop = parseInt(style.marginTop) || 0;
-                const totalHeight = navContainer.offsetHeight + marginTop;
-
-                if (window.scrollY >= (navTop - distanceToFixed)) {
-                    navPlaceholder.style.height = totalHeight + "px";
-                    navContainer.classList.add('nav-fixed');
-                    navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
-                } else {
-                    navContainer.classList.remove('nav-fixed');
-                    if (navPlaceholder.parentNode) {
-                        navPlaceholder.parentNode.removeChild(navPlaceholder);
-                    }
-                }
-            }
-
-            window.addEventListener('scroll', stickNav);
-            window.addEventListener('resize', stickNav);
-            stickNav();
-        });
-    </script>
-    <script>
+<script>
     // Rezensionen Slideshow mit animierten Pager-Balken und Autoplay bei Sichtbarkeit
     document.addEventListener('DOMContentLoaded', function() {
         const slides = document.querySelectorAll('.rezensionen-slide');
@@ -1387,6 +1329,45 @@
             });
         }, { threshold: 0.3 });
         observer.observe(rezensionenSection);
+    });
+        document.addEventListener('DOMContentLoaded', function() {
+        const burger = document.querySelector('.hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let scrollPosition = 0;
+        function closeMenu(){
+            burger.setAttribute('aria-expanded','false');
+            mobileMenu.classList.remove('open');
+            mobileMenu.setAttribute('aria-hidden','true');
+            document.body.classList.remove('menu-open');
+            document.documentElement.classList.remove('menu-open');
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, scrollPosition);
+        }
+        if (burger && mobileMenu) {
+            burger.addEventListener('click', () => {
+                const expanded = burger.getAttribute('aria-expanded') === 'true';
+                burger.setAttribute('aria-expanded', String(!expanded));
+                mobileMenu.classList.toggle('open');
+                mobileMenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+                document.body.classList.toggle('menu-open', !expanded);
+                document.documentElement.classList.toggle('menu-open', !expanded);
+                if (!expanded) {
+                    scrollPosition = window.scrollY;
+                    document.body.style.position = 'fixed';
+                    document.body.style.top = `-${scrollPosition}px`;
+                    document.body.style.width = '100%';
+                } else {
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                    window.scrollTo(0, scrollPosition);
+                }
+            });
+            mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+            window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+        }
     });
     </script>
 </body>
