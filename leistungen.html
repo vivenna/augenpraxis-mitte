@@ -939,15 +939,19 @@
             window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
         }
     });
-     // Mehrfache Scrollsteuerung für alle Vorsorge/Diagnostik Abschnitte (NEU: transform-basiert, symmetrisch, kein Springen)
-        (function() {
-            const sections = document.querySelectorAll('.vorsorge-basis');
-            if(!sections.length) return;
+     // Mehrfache Scrollsteuerung für alle Vorsorge/Diagnostik Abschnitte (nur Desktop, sticky Effekt)
+    (function() {
+        const sections = document.querySelectorAll('.vorsorge-basis');
+        if(!sections.length) return;
+        let enabled = false;
+        let listeners = [];
+        function enableSticky() {
+            if (enabled) return;
+            enabled = true;
             sections.forEach(section => {
                 const left = section.querySelector('.vorsorge-left');
                 const right = section.querySelector('.vorsorge-right');
                 if(!left || !right) return;
-                // Wrapper für Inhalt erstellen, damit wir nur Inhalt verschieben und der Platz im Flow stabil bleibt
                 if(!left.querySelector('.vorsorge-left-inner')) {
                     const inner = document.createElement('div');
                     inner.className = 'vorsorge-left-inner';
@@ -955,22 +959,18 @@
                     left.appendChild(inner);
                 }
                 const inner = left.querySelector('.vorsorge-left-inner');
-                // Basis-Styles sicherstellen
                 left.style.position = 'relative';
                 inner.style.willChange = 'transform';
                 inner.style.transition = 'none';
-
                 let start = 0, end = 0, maxShift = 0, offsetTop = 160;
-
                 function recalc(){
-                    // Reset transform für korrekte Messung
                     inner.style.transform = 'translateY(0px)';
                     const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-                    const leftHeight = inner.offsetHeight; // tatsächliche Höhe des Inhalts
+                    const leftHeight = inner.offsetHeight;
                     const rightHeight = right.offsetHeight;
                     maxShift = Math.max(0, rightHeight - leftHeight);
-                    start = sectionTop - offsetTop; // ab hier beginnt Bewegung
-                    end = start + maxShift; // bis hier verschieben wir
+                    start = sectionTop - offsetTop;
+                    end = start + maxShift;
                 }
                 function onScroll(){
                     const y = window.scrollY;
@@ -991,8 +991,34 @@
                 onScroll();
                 window.addEventListener('scroll', onScroll, { passive:true });
                 window.addEventListener('resize', onResize);
+                listeners.push({onScroll, onResize});
             });
-        })();
+        }
+        function disableSticky() {
+            if (!enabled) return;
+            enabled = false;
+            sections.forEach(section => {
+                const left = section.querySelector('.vorsorge-left');
+                if(!left) return;
+                const inner = left.querySelector('.vorsorge-left-inner');
+                if(inner) inner.style.transform = '';
+            });
+            listeners.forEach(l => {
+                window.removeEventListener('scroll', l.onScroll);
+                window.removeEventListener('resize', l.onResize);
+            });
+            listeners = [];
+        }
+        function check() {
+            if(window.innerWidth > 900) {
+                enableSticky();
+            } else {
+                disableSticky();
+            }
+        }
+        window.addEventListener('resize', check);
+        check();
+    })();
     </script>
 </body>
 </html>
