@@ -57,44 +57,263 @@
             .legal-container { width: 100%; font-size: 1rem; }
         }
 
-        /* Footer */
-        .footer { background: #4b79ce; color: #fff; position: relative; padding: 70px 0 0 0; min-height: 280px; overflow: hidden; font-size: 1.05rem; width: 100%; }
-        .footer-content { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; width: 100%; position: relative; z-index: 2; height: 100%; text-align: left; }
-        .footer-image-container { position: absolute; top: -90px; left: -140px; z-index: 1; width: 180px; height: 180px; overflow: visible; pointer-events: none; }
-        .footer-logo { width: 420px; height: auto; object-fit: contain; opacity: 0.6; transform: translateY(-20px); }
-        .footer-main { width: 100%; display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 50px; margin-top: 0; transform: translateX(40%); }
-        .footer-claim { font-size: 3rem; font-weight: 700; margin-bottom: 20px; margin-top: 0; letter-spacing: 0.5px; line-height: 1.3; }
-        .footer-button { background: #fff; color: #4b79ce !important; padding: 12px 32px; font-size: 1.1rem; margin-bottom: 32px; margin-top: 0; text-decoration: none; transition: background 0.2s, color 0.2s; display: inline-block; border: 1px solid #fff; }
-        .footer-button:hover { background: #4b79ce; color: #fff !important; border-color: #fff; border: 1px solid #fff; }
-        .footer-bottom { width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end; padding: 0 40px 18px 220px; box-sizing: border-box; position: relative; min-height: 100px; margin-bottom: 20px; }
-        .footer-left { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; min-width: 220px; margin-bottom: 0; padding-bottom: 0; position: absolute; left: 50px; bottom: 10px; }
-        .footer-kontakt-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
-        .footer-kontakt-info { font-size: 1.05rem; line-height: 1.7; }
-        .footer-kontakt-info > div, .footer-sprechstunde-row, .footer-sprechstunde-sowie { margin-bottom: 0; padding: 0; }
-        .footer-sprechstunde { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); margin: 0; font-size: 1.05rem; text-align: left; line-height: 1.7; }
-        .footer-sprechstunde-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0; }
-        .footer-right { position: absolute; right: 50px; bottom: 10px; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; min-width: 180px; margin-bottom: 0; margin-left: 0; text-align: left; }
-        .footer-link { color: #fff; font-size: 1.02rem; margin-bottom: 0; text-decoration: underline; transition: color 0.2s; line-height: 1.8; }
-        .footer-sprechstunde-row { display: flex; flex-direction: row; justify-content: space-between; width: 270px; font-size: 1.05rem; margin-bottom: 0; padding: 0; align-items: normal; min-height: 0; }
-        .footer-sprechstunde-tag { text-align: left; flex: 1 1 90px; }
-        .footer-sprechstunde-zeit { text-align: right; flex: 1 1 120px; white-space: nowrap; }
-        .footer, .footer * { color: #fff; }
+        .footer {
+            background: #4b79ce;
+            color: #fff;
+            position: relative;
+            padding: 100px 0 0 0; /* Padding oben erhöht */
+            min-height: 340px;
+            overflow: hidden;
+            font-size: 1.15rem;
+            width: 100%;
+            /* margin-left entfernt */
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            text-align: left;
+        }
+        .footer-image-container {
+            position: absolute;
+            top: -130px;
+            left: -200px;
+            z-index: 1;
+            width: 220px;
+            height: 220px;
+            overflow: visible;
+            pointer-events: none;
+        }
+        .footer-logo {
+            width: 620px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.6;
+            transform: translateY(-20px);
+        }
+        .footer-main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 80px; /* weiter nach oben */
+            margin-top: 0; /* Abstand zum oberen Rand der Fußzeile */
+            /* margin-left entfernt */
+            transform: translateX(40%);
+        }
+        .footer-claim {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            margin-top: 0;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        .footer-button {
+            background: #fff;
+            color: #4b79ce !important;
+            padding: 15px 38px;
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            margin-top: 0;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            display: inline-block;
+            border: 1px solid #fff;
+        }
+        .footer-button:hover {
+            background: #4b79ce;
+            color: #fff !important;
+            border-color: #fff;
+            border: 1px solid #fff;
+        }
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 40px 18px 220px;
+            box-sizing: border-box;
+            position: relative; /* hinzugefügt für absolute Positionierung von .footer-left */
+            min-height: 120px; /* Platz für .footer-right unten */
+            margin-bottom: 30px;
+        }
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-width: 220px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            position: absolute;
+            left: 50px;
+            top: 0;
+        }
+        .footer-kontakt-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .footer-kontakt-info {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .footer-kontakt-info > div,
+        .footer-sprechstunde-row,
+        .footer-sprechstunde-sowie {
+            margin-bottom: 0;
+            padding: 0;
+        }
+        .footer-sprechstunde {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            margin: 0;
+            font-size: 1.05rem;
+            text-align: left;
+            line-height: 1.7;
+            margin-top: 0;
+        }
+        .footer-sprechstunde-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        .footer-right {
+            position: absolute;
+            right: 50px;
+            bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-width: 180px;
+            margin-bottom: 0;
+            margin-left: 0;
+            text-align: left;
+        }
+        .footer-link {
+            color: #fff;
+            font-size: 1.02rem;
+            margin-bottom: 0;
+            text-decoration: underline;
+            transition: color 0.2s;
+            line-height: 1.8;
+        }
+        .footer-sprechstunde-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 270px;
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            padding: 0;
+            align-items: normal;
+            min-height: 0;
+        }
+        .footer-sprechstunde-tag {
+            text-align: left;
+            flex: 1 1 90px;
+        }
+        .footer-sprechstunde-zeit {
+            text-align: right;
+            flex: 1 1 120px;
+            white-space: nowrap;
+        }
         @media (max-width: 900px) {
-            .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10004; border-bottom:1px solid #eee; }
-            .logo { width: 78px; margin-left: 3px; }
-            .header-center, .header-right, .header-language, .button { display:none; }
-            .hamburger { display:block; margin-right: 0; padding:4px; position: absolute; right: 58px; z-index: 10003; }
-            .hamburger .bar { width:24px; }
-            .nav-container { display:none; }
-            .footer { padding-top: 60px; min-height: 480px; }
-            .footer-main { transform: none; padding: 0 20px; margin-bottom: 28px; }
-            .footer-claim { margin-top: 30px; }
-            .footer-button { margin-left: 0; }
-            .footer-bottom { padding: 0 20px 18px 20px; gap: 12px; position: static; min-height: 0; }
-            .footer-left, .footer-right, .footer-sprechstunde { position: static; left:auto; right:auto; bottom:auto; transform:none; }
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                gap: 30px;
+            }
+            .footer-main {
+                margin-left: 0;
+                align-items: flex-start;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 20px 18px 20px;
+                gap: 18px;
+                position: static;
+                min-height: 0;
+            }
+            .footer-left {
+                position: static;
+                left: auto;
+                top: auto;
+                margin-bottom: 0;
+            }
+            .footer-sprechstunde, .footer-right {
+                margin-left: 0;
+            }
+            .footer-image-container {
+                left: -30px;
+                top: -30px;
+                width: 140px;
+                height: 140px;
+            }
+            .footer-logo {
+                width: 140px;
+            }
+            .footer-left, .footer-right {
+                align-items: flex-start;
+                min-width: 0;
+                margin-bottom: 0;
+            }
+            .footer-right {
+                position: static;
+                right: auto;
+                bottom: auto;
+                text-align: left;
+                align-items: flex-start;
+                margin-top: 18px;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .main-text {
+                padding-left: 0;
+            }
+        }
+        .footer, .footer * {
+            color: #fff;
+        }
+        .footer-sprechstunde-sowie {
+            flex: 1 1 100%;
+            text-align: left;
+            font-size: 1.05rem;
+            margin-top: 0;
         }
 
-        /* Mobile menu */
+        /* Reduce overall footer height */
+        .footer { padding: 70px 0 0 0; min-height: 280px; font-size: 1.05rem; }
+
+        /* Smaller top-left logo in the footer */
+        .footer-image-container { top: -90px; left: -140px; width: 180px; height: 180px; }
+        .footer-logo { width: 420px; }
+
+        /* Make footer-main slightly smaller */
+        .footer-main { margin-bottom: 50px; }
+        .footer-claim { font-size: 3rem; }
+        .footer-button { padding: 12px 32px; font-size: 1.1rem; }
+
+          /* Trim bottom spacing */
+        .footer-bottom { min-height: 100px; margin-bottom: 20px; }
+
+        .footer-left { top: auto; bottom: 10px; margin-bottom: 0; padding-bottom: 0; }
+        .footer-sprechstunde { top: auto; bottom: 10px; }
+
+        /* ============ MOBILE NAVIGATION & LAYOUT ============ */
         .hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; margin-left:auto; }
         .hamburger .bar { display:block; width:26px; height:3px; background:#222; margin:5px 0; border-radius:2px; transition:transform .2s ease, opacity .2s ease; }
         .hamburger[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -107,12 +326,83 @@
         .mobile-menu .mobile-lang { margin-top:8px; font-size:0.95rem; color:#666; }
         .mobile-menu .mobile-section-title { margin:18px 0 6px; font-weight:700; font-size:0.95rem; color:#222; }
         @media (max-width: 900px) {
-            .mobile-menu { justify-content: center; align-items: center; padding: 24px 16px; }
-            .mobile-menu a { border: none; text-align: center; }
-            .mobile-menu .mobile-section-title { display: none; }
-            .mobile-menu .mobile-lang { position: absolute; top: 145px; left: 26px; color: #666; z-index: 10006; font-size: 1.05rem !important; }
-            .mobile-lang a { font-size: 1.05rem !important; color: #222; margin-left: -3px;}
+            .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10001; border-bottom:1px solid #eee; }
+            .logo { width: 92px; }
+            .header-center, .header-right, .header-language, .button { display:none; }
+            .hamburger { display:block; margin-right: 2px; padding:6px; }
+            .nav-container { display:none; }
+            /* Sprechstunde Tabelle mobil */
+            .sprechstunde-section { margin: 40px 0 24px; padding: 0 16px; }
+            .sprechstunde-section h2 { font-size: 1.8rem; margin-bottom: 18px; }
+            .sprechstunde-tabelle { min-width: 0; width:100%; font-size: 1rem; table-layout: fixed; }
+            .sprechstunde-tabelle th, .sprechstunde-tabelle td { padding: 10px 8px; word-break: break-word; }
+            .sprechstunde-tabelle thead tr { border-bottom-width: 1px; }
+            .sprechstunde-hinweis { font-size: 0.95rem; padding: 0 4px; }
+            /* Lage mobil */
+            .lage-section { margin: 60px 0; padding: 0 16px; }
+            .lage-section h2 { font-size: 1.6rem; }
+            .lage-tabelle { margin: 0; width: 100%; font-size: 1rem; border-spacing: 12px 14px; }
+            .lage-tabelle td:first-child { width: 40%; }
+            /* Footer mobil höher und geordnet */
+            .footer { padding-top: 56px; min-height: 340px; }
+            .footer-main { transform:none; padding: 0 20px; margin-bottom: 28px; }
+            .footer-claim { margin-top: 10px; }
+            .footer-bottom { padding: 0 20px 18px 20px; gap: 12px; }
+            .footer-sprechstunde { position: static; left:auto; top:auto; transform:none; }
         }
+                        @media (max-width: 900px) {
+                        /* Header vereinfachen */
+                        .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10004; border-bottom:1px solid #eee; }
+                        .logo { width: 78px; margin-left: 3px; }
+                        .header-center, .header-right, .header-language, .button { display:none; }
+                        .hamburger { display:block; margin-right: 0; padding:4px; position: absolute; right: 58px; z-index: 10003; }
+                        .hamburger .bar { width:24px; }
+
+                        /* Hamburger-X sichtbar über Overlay, aber gleiche Position wie Hamburger */
+                        body.menu-open .hamburger { z-index: 10005; }
+                        body.menu-open { overflow: hidden !important; } /* Prevent background scroll when menu is open */
+                        html.mobile-menu.open { overflow: hidden !important; } /* Prevent background scroll when menu is open */
+                        body.mobile-menu.open { overflow: hidden !important;} /* Prevent background scroll when menu is open */
+
+                        /* Hide desktop nav, use mobile menu */
+                        .nav-container { display:none; }
+
+                        /* Main hero: Text zuerst, Bild darunter */
+                        .main-content { padding: 12px 16px; min-height:auto; padding-top: 0px;}
+                        .main-text { width:100%; max-width:none; }
+                        .main-text h2 { font-size: 1.5rem; margin-bottom: 16px; }
+                        .main-text p { font-size: 1rem; line-height: 1.6; }
+                        .main-text p:nth-of-type(2) { display:none; } /* Einleitung leicht kürzen */
+                        .main-image-bg { position: relative; width: 100%; height: auto; display:block; margin-top: -120px; margin-left: 30px;}
+                        .main-image-bg img { max-width: 100%; margin: 12px 0 0; border-radius: 10px; }
+
+                        .sprechstunde-section h2 { font-size: 1.6rem; margin-bottom: 20px; }
+
+                        /* Footer mobil */
+                        .footer { padding-top: 60px; min-height: 480px; }
+                        .footer-main { transform: none; padding: 0 20px; margin-bottom: 28px; }
+                        .footer-claim { margin-top: 30px; }
+                        .footer-button { margin-left: 0; }
+                        .footer-bottom { padding: 0 20px 18px 20px; gap: 12px; }
+                        .footer-sprechstunde { position: static; left:auto; top:auto; transform:none; }
+                        .footer-image-container { left: 260px; top: -64px; width: 150px; height: 150px; }
+                        .footer-logo { width: 250px; }
+
+                        /* Mobiles Overlay: Inhalte zentriert, keine Trennlinien, Sprache oben links */
+                        .mobile-menu { justify-content: center; align-items: center; padding: 24px 16px; }
+                        .mobile-menu a { border: none; text-align: center; }
+                        .mobile-menu .mobile-section-title { display: none; }
+                        .mobile-menu .mobile-lang { position: absolute; top: 12px; left: 26px; color: #666; }
+
+                        /* Blauen Rand in Mobile deaktivieren */
+                        nav { border: none !important; padding: 0; }
+}
+
+    /* Override: mobile language switch smaller and above content */
+    @media (max-width: 900px) {
+      .mobile-menu .mobile-lang { z-index: 10006; top: 145px; font-size: 1.05rem !important; }
+      .mobile-lang a { font-size: 1.05rem !important; color: #222; margin-left: -3px;}
+    }
     </style>
 </head>
 <body>
@@ -253,68 +543,44 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navContainer = document.querySelector('.nav-container');
-            if (!navContainer) return;
-            let navTop = navContainer.offsetTop;
-            const distanceToFixed = 20;
-            let navPlaceholder = document.createElement('div');
-            navPlaceholder.className = 'nav-placeholder';
-            function stickNav() {
-                const style = window.getComputedStyle(navContainer);
-                const marginTop = parseInt(style.marginTop) || 0;
-                const totalHeight = navContainer.offsetHeight + marginTop;
-                if (window.scrollY >= (navTop - distanceToFixed)) {
-                    navPlaceholder.style.height = totalHeight + "px";
-                    navContainer.classList.add('nav-fixed');
-                    navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
+        const burger = document.querySelector('.hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let scrollPosition = 0;
+        function closeMenu(){
+            burger.setAttribute('aria-expanded','false');
+            mobileMenu.classList.remove('open');
+            mobileMenu.setAttribute('aria-hidden','true');
+            document.body.classList.remove('menu-open');
+            document.documentElement.classList.remove('menu-open');
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, scrollPosition);
+        }
+        if (burger && mobileMenu) {
+            burger.addEventListener('click', () => {
+                const expanded = burger.getAttribute('aria-expanded') === 'true';
+                burger.setAttribute('aria-expanded', String(!expanded));
+                mobileMenu.classList.toggle('open');
+                mobileMenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+                document.body.classList.toggle('menu-open', !expanded);
+                document.documentElement.classList.toggle('menu-open', !expanded);
+                if (!expanded) {
+                    scrollPosition = window.scrollY;
+                    document.body.style.position = 'fixed';
+                    document.body.style.top = `-${scrollPosition}px`;
+                    document.body.style.width = '100%';
                 } else {
-                    navContainer.classList.remove('nav-fixed');
-                    if (navPlaceholder.parentNode) { navPlaceholder.parentNode.removeChild(navPlaceholder); }
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                    window.scrollTo(0, scrollPosition);
                 }
-            }
-            window.addEventListener('scroll', stickNav);
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const burger = document.querySelector('.hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            let scrollPosition = 0;
-            function closeMenu(){
-                burger.setAttribute('aria-expanded','false');
-                mobileMenu.classList.remove('open');
-                mobileMenu.setAttribute('aria-hidden','true');
-                document.body.classList.remove('menu-open');
-                document.documentElement.classList.remove('menu-open');
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.width = '';
-                window.scrollTo(0, scrollPosition);
-            }
-            if (burger && mobileMenu) {
-                burger.addEventListener('click', () => {
-                    const expanded = burger.getAttribute('aria-expanded') === 'true';
-                    burger.setAttribute('aria-expanded', String(!expanded));
-                    mobileMenu.classList.toggle('open');
-                    mobileMenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
-                    document.body.classList.toggle('menu-open', !expanded);
-                    document.documentElement.classList.toggle('menu-open', !expanded);
-                    if (!expanded) {
-                        scrollPosition = window.scrollY;
-                        document.body.style.position = 'fixed';
-                        document.body.style.top = `-${scrollPosition}px`;
-                        document.body.style.width = '100%';
-                    } else {
-                        document.body.style.position = '';
-                        document.body.style.top = '';
-                        document.body.style.width = '';
-                        window.scrollTo(0, scrollPosition);
-                    }
-                });
-                mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-                window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
-            }
-        });
+            });
+            mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+            window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+        }
+    });
     </script>
 </body>
 </html>
