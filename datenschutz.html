@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Datenschutzerklärung - Augenarztpraxis Dr. med. Nahla Al-Asbahi</title>
+	<meta name="description" content="Datenschutzerklärung dieser Website.">
+	<meta name="robots" content="noindex, nofollow">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="vivenna" />
+	<link rel="manifest" href="/favicon/site.webmanifest" />
+	<link rel="canonical" href="https://augenpraxis-mitte.de/">
+	<style>
+		html, body { margin: 0; padding: 0; box-sizing: border-box; }
+		html { overflow-x: hidden; }
+		body { font-family: 'Roboto', sans-serif; overflow-x: hidden; letter-spacing: 0.5px; }
+		body.menu-open { overflow: hidden; }
+		a { text-decoration: none; color: inherit; }
+
+		/* Header + Nav (wie auf den anderen Seiten) */
+		.header { background-color: #fff; display: flex; flex-wrap: wrap; align-items: center; padding: 20px; top: 0; justify-content: center; left: 0; width: 100%; margin-left: -30px; }
+		.header-left, .header-center, .header-right, .header-button, .header-language { padding: 10px; }
+		.logo { width: 110px; margin: 0 0; }
+		.header-center { margin: 0 50px; }
+		.header-center-text { font-weight: bold; font-size: 18px; line-height: 0.8; }
+		.button { color: #fff; background-color: #4b79ce; padding: 13px 20px; text-decoration: none; margin: 0 50px; border-radius: 10px; font-weight: bold; transition: background-color 0.3s ease; }
+		.button:hover { background-color: #7bbd64; }
+		.header-language { margin: 0 0px; font-size: 13px; }
+		.language-active { color: grey; padding-right: 5px; }
+		.language-inactive { color: black; }
+
+		.nav-container { display: flex; justify-content: center; padding-top: 20px; width: 100%; z-index: 100; transition: height 0.3s ease; }
+		nav { background-color: #fff; border: 5px solid #4b79ce; border-radius: 50px; padding: 20px 45px; display: inline-block; }
+		nav ul { display: flex; justify-content: space-around; width: 100%; list-style: none; padding: 0; margin: 0; }
+		nav ul li { text-align: center; padding: 0px 57px; }
+		.nav-placeholder { height: 109px; width: 100%; }
+		.nav-fixed { position: fixed; top: 20px; left: 0; width: 100%; }
+
+		/* Page layout */
+		.kontakt-main { margin: 100px 0 0 0; padding-left: 0; max-width: none; width: 100%; }
+		.kontakt-ueberschrift { text-align: center; font-size: 2.6rem; font-weight: 800; margin-bottom: 40px; }
+		.legal-container { margin: 0 auto; width: 75%; max-width: 1100px; font-size: 1.06rem; line-height: 1.75; color: #111; }
+		.legal-container h2 { font-size: 1.6rem; margin: 28px 0 10px; }
+		.legal-container h3 { font-size: 1.25rem; margin: 24px 0 8px; }
+		.legal-container p, .legal-container li { color: #222; }
+		.legal-meta { font-size: 0.98rem; color: #555; margin-top: 28px; }
+		.legal-list { padding-left: 18px; }
+		@media (max-width: 900px) {
+			.kontakt-main { padding: 0 16px; margin: 40px 0 0 0; }
+			.kontakt-ueberschrift { font-size: 1.8rem; margin: 24px 0; }
+			.legal-container { width: 100%; font-size: 1rem; }
+		}
+
+		/* Footer */
+		.footer { background: #4b79ce; color: #fff; position: relative; padding: 70px 0 0 0; min-height: 280px; overflow: hidden; font-size: 1.05rem; width: 100%; }
+		.footer-content { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; width: 100%; position: relative; z-index: 2; height: 100%; text-align: left; }
+		.footer-image-container { position: absolute; top: -90px; left: -140px; z-index: 1; width: 180px; height: 180px; overflow: visible; pointer-events: none; }
+		.footer-logo { width: 420px; height: auto; object-fit: contain; opacity: 0.6; transform: translateY(-20px); }
+		.footer-main { width: 100%; display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 50px; margin-top: 0; transform: translateX(40%); }
+		.footer-claim { font-size: 3rem; font-weight: 700; margin-bottom: 20px; margin-top: 0; letter-spacing: 0.5px; line-height: 1.3; }
+		.footer-button { background: #fff; color: #4b79ce !important; padding: 12px 32px; font-size: 1.1rem; margin-bottom: 32px; margin-top: 0; text-decoration: none; transition: background 0.2s, color 0.2s; display: inline-block; border: 1px solid #fff; }
+		.footer-button:hover { background: #4b79ce; color: #fff !important; border-color: #fff; border: 1px solid #fff; }
+		.footer-bottom { width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end; padding: 0 40px 18px 220px; box-sizing: border-box; position: relative; min-height: 100px; margin-bottom: 20px; }
+		.footer-left { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; min-width: 220px; margin-bottom: 0; padding-bottom: 0; position: absolute; left: 50px; bottom: 10px; }
+		.footer-kontakt-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+		.footer-kontakt-info { font-size: 1.05rem; line-height: 1.7; }
+		.footer-kontakt-info > div, .footer-sprechstunde-row, .footer-sprechstunde-sowie { margin-bottom: 0; padding: 0; }
+		.footer-sprechstunde { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); margin: 0; font-size: 1.05rem; text-align: left; line-height: 1.7; }
+		.footer-sprechstunde-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0; }
+		.footer-right { position: absolute; right: 50px; bottom: 10px; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; min-width: 180px; margin-bottom: 0; margin-left: 0; text-align: left; }
+		.footer-link { color: #fff; font-size: 1.02rem; margin-bottom: 0; text-decoration: underline; transition: color 0.2s; line-height: 1.8; }
+		.footer-sprechstunde-row { display: flex; flex-direction: row; justify-content: space-between; width: 270px; font-size: 1.05rem; margin-bottom: 0; padding: 0; align-items: normal; min-height: 0; }
+		.footer-sprechstunde-tag { text-align: left; flex: 1 1 90px; }
+		.footer-sprechstunde-zeit { text-align: right; flex: 1 1 120px; white-space: nowrap; }
+		.footer, .footer * { color: #fff; }
+		@media (max-width: 900px) {
+			.header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10004; border-bottom:1px solid #eee; }
+			.logo { width: 78px; margin-left: 3px; }
+			.header-center, .header-right, .header-language, .button { display:none; }
+			.hamburger { display:block; margin-right: 0; padding:4px; position: absolute; right: 58px; z-index: 10003; }
+			.hamburger .bar { width:24px; }
+			.nav-container { display:none; }
+			.footer { padding-top: 60px; min-height: 480px; }
+			.footer-main { transform: none; padding: 0 20px; margin-bottom: 28px; }
+			.footer-claim { margin-top: 30px; }
+			.footer-button { margin-left: 0; }
+			.footer-bottom { padding: 0 20px 18px 20px; gap: 12px; position: static; min-height: 0; }
+			.footer-left, .footer-right, .footer-sprechstunde { position: static; left:auto; right:auto; bottom:auto; transform:none; }
+		}
+
+		/* Mobile menu */
+		.hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; margin-left:auto; }
+		.hamburger .bar { display:block; width:26px; height:3px; background:#222; margin:5px 0; border-radius:2px; transition:transform .2s ease, opacity .2s ease; }
+		.hamburger[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+		.hamburger[aria-expanded="true"] .bar:nth-child(2) { opacity:0; }
+		.hamburger[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+		.mobile-menu { position:fixed; inset:0; background:#fff; display:none; flex-direction:column; padding:24px; z-index:10002; overflow-y:auto; }
+		.mobile-menu.open { display:flex; }
+		.mobile-menu a { font-size:1.2rem; padding:14px 8px; border-bottom:1px solid #eee; }
+		.mobile-menu .mobile-cta { margin-top:16px; background:#4b79ce; color:#fff; padding:14px 18px; border-radius:10px; text-align:center; display:inline-block; }
+		.mobile-menu .mobile-lang { margin-top:8px; font-size:0.95rem; color:#666; }
+		.mobile-menu .mobile-section-title { margin:18px 0 6px; font-weight:700; font-size:0.95rem; color:#222; }
+		@media (max-width: 900px) {
+			.mobile-menu { justify-content: center; align-items: center; padding: 24px 16px; }
+			.mobile-menu a { border: none; text-align: center; }
+			.mobile-menu .mobile-section-title { display: none; }
+			.mobile-menu .mobile-lang { position: absolute; top: 145px; left: 26px; color: #666; z-index: 10006; font-size: 1.05rem !important; }
+			.mobile-lang a { font-size: 1.05rem !important; color: #222; margin-left: -3px;}
+		}
+	</style>
+</head>
+<body>
+	<header class="header">
+		<div class="header-left">
+			<a href="https://vivenna.github.io/augenpraxis-mitte/"><img src="assets/logo.jpg" alt="Logo" class="logo"></a>
+		</div>
+		<button class="hamburger" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</button>
+		<div class="header-center">
+			<span class="header-center-text">
+			<p>Augenarztpraxis</p>
+			<p>Dr. med. Nahla Al-Asbahi</p>
+			</span>
+			<p>Fachärztin für Augenheilkunde</p>
+			<p>Berlin Mitte</p>
+		</div>
+		<div class="header-right">
+			<p>Müllerstr. 139, 13353 Berlin</p>
+			<p>Tel: 030 33876167</p>
+			<p>Fax: 030 28654715</p>
+			<p>E-Mail: info@augenpraxis-mitte.de</p>
+		</div>
+		<a href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi" class="button">Termin buchen</a>
+		<div class="header-language">
+			<span class="language-active">DE</span>
+			<a href="/en/"><span class="language-inactive">EN</span></a>
+		</div>
+	</header>
+	<!-- Mobile Menü Overlay -->
+	<nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
+		<a href="/">Startseite</a>
+		<a href="leistungen">Leistungen</a>
+		<a href="sprechzeiten">Sprechzeiten</a>
+		<a href="wichtige-infos">Wichtige Infos</a>
+		<a href="kontakt">Kontakt</a>
+		<a class="mobile-cta" href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi">Termin buchen</a>
+		<div class="mobile-section-title">Sprache</div>
+		<div class="mobile-lang">DE / <a href="/en/">EN</a></div>
+	</nav>
+	<div class="nav-container">
+		<nav>
+			<ul>
+				<li><a href="/">Startseite</a></li>
+				<li><a href="leistungen">Leistungen</a></li>
+				<li><a href="sprechzeiten">Sprechzeiten</a></li>
+				<li><a href="wichtige-infos">Wichtige Infos</a></li>
+				<li><a href="kontakt">Kontakt</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<main class="kontakt-main">
+		<h1 class="kontakt-ueberschrift">Datenschutzerklärung</h1>
+		<div class="legal-container">
+			<h2>1. Einleitung</h2>
+			<p>Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Auf dieser Website werden keine personenbezogenen Daten erhoben, verarbeitet oder gespeichert, es sei denn, dies ist technisch erforderlich.</p>
+			<p>Diese Datenschutzerklärung informiert Sie gemäß Art. 13 DSGVO über die Art, den Umfang und den Zweck der Verarbeitung personenbezogener Daten beim Besuch dieser Website.</p>
+
+			<h2>2. Verantwortliche Stelle</h2>
+			<p>
+				Hausarztpraxis Bazara<br>
+				Safia Bazara<br>
+				Alte Hellersdorfer Str. 123<br>
+				12629 Berlin<br>
+				Telefon: +49 (0) 30 9939 168<br>
+				E-Mail: arztpraxisbazara@gmail.com
+			</p>
+
+			<h2>3. Hosting</h2>
+			<p>Diese Website wird über GitHub Pages gehostet.</p>
+			<p>
+				Der Anbieter ist:<br>
+				GitHub Inc.<br>
+				88 Colin P. Kelly Jr. Street<br>
+				San Francisco, CA 94107<br>
+				USA
+			</p>
+			<p>Beim Aufruf der Website übermittelt Ihr Browser automatisch Informationen an den Server von GitHub. Dabei handelt es sich insbesondere um:</p>
+			<ul class="legal-list">
+				<li>IP-Adresse</li>
+				<li>Datum und Uhrzeit des Zugriffs</li>
+				<li>Browsertyp und Version</li>
+				<li>Betriebssystem</li>
+				<li>Referrer-URL</li>
+			</ul>
+			<p>Diese Daten werden von GitHub automatisch in sogenannten Server-Logfiles gespeichert. Eine Auswertung durch uns findet nicht statt. Weitere Informationen finden Sie in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+
+			<h2>4. Google Fonts</h2>
+			<p>Auf dieser Website werden Schriftarten von Google Fonts verwendet. Diese sind lokal eingebunden. Eine Verbindung zu Google-Servern findet dabei nicht statt. Es werden somit keine personenbezogenen Daten an Google übermittelt.</p>
+
+			<h2>5. Cookies und Tracking</h2>
+			<p>Diese Website verwendet keine Cookies, kein Tracking und keine Analyse-Tools wie Google Analytics. Es findet keine Nutzerverfolgung oder Profilbildung statt.</p>
+
+			<h2>6. Kontaktaufnahme</h2>
+			<p>Es gibt kein Kontaktformular auf dieser Website. Wenn Sie per E-Mail oder Telefon Kontakt aufnehmen, werden Ihre Angaben ausschließlich zur Bearbeitung der Anfrage verwendet.</p>
+
+			<h2>7. Ihre Rechte</h2>
+			<p>Sie haben nach der DSGVO folgende Rechte:</p>
+			<ul class="legal-list">
+				<li>Recht auf Auskunft über gespeicherte Daten (Art. 15 DSGVO)</li>
+				<li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+				<li>Recht auf Löschung („Recht auf Vergessenwerden“) (Art. 17 DSGVO)</li>
+				<li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+				<li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+				<li>Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+			</ul>
+			<p>Sie haben zudem das Recht, sich bei einer Aufsichtsbehörde zu beschweren, z. B. bei der <a href="https://www.datenschutz-berlin.de/" target="_blank" rel="noopener">Berliner Beauftragten für Datenschutz und Informationsfreiheit</a>.</p>
+
+			<h2>8. Änderungen dieser Datenschutzerklärung</h2>
+			<p>Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht.</p>
+
+			<p class="legal-meta">Stand: Juni 2025</p>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="footer-image-container">
+			<img src="assets/logo footer.webp" alt="Logo" class="footer-logo">
+		</div>
+		<div class="footer-content">
+			<div class="footer-main">
+				<div class="footer-claim">Klar sehen beginnt<br>mit einem Klick</div>
+				<a href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi" class="footer-button">Termin buchen</a>
+			</div>
+			<div class="footer-bottom">
+				<div class="footer-left">
+					<div class="footer-kontakt-title">Kontakt</div>
+					<div class="footer-kontakt-info">
+						<div>Tel: 030 33876167</div>
+						<div>Fax: 030 28654715</div>
+						<div>E-Mail: info@augenpraxis-mitte.de</div>
+					</div>
+				</div>
+				<div class="footer-sprechstunde">
+					<div class="footer-sprechstunde-title">Sprechzeiten</div>
+					<div class="footer-sprechstunde-row"><span class="footer-sprechstunde-tag">Mo, Do</span><span class="footer-sprechstunde-zeit">8–13 Uhr, 14–17 Uhr</span></div>
+					<div class="footer-sprechstunde-row"><span class="footer-sprechstunde-tag">Di, Mi, Fr</span><span class="footer-sprechstunde-zeit">8–13 Uhr</span></div>
+					<div class="footer-sprechstunde-row"><span class="footer-sprechstunde-sowie">sowie nach Vereinbarung</span></div>
+				</div>
+				<div class="footer-right">
+					<a href="impressum" class="footer-link">Impressum</a>
+					<a href="datenschutz" class="footer-link">Datenschutzerklärung</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const navContainer = document.querySelector('.nav-container');
+			if (!navContainer) return;
+			let navTop = navContainer.offsetTop;
+			const distanceToFixed = 20;
+			let navPlaceholder = document.createElement('div');
+			navPlaceholder.className = 'nav-placeholder';
+			function stickNav() {
+				const style = window.getComputedStyle(navContainer);
+				const marginTop = parseInt(style.marginTop) || 0;
+				const totalHeight = navContainer.offsetHeight + marginTop;
+				if (window.scrollY >= (navTop - distanceToFixed)) {
+					navPlaceholder.style.height = totalHeight + "px";
+					navContainer.classList.add('nav-fixed');
+					navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
+				} else {
+					navContainer.classList.remove('nav-fixed');
+					if (navPlaceholder.parentNode) { navPlaceholder.parentNode.removeChild(navPlaceholder); }
+				}
+			}
+			window.addEventListener('scroll', stickNav);
+		});
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const burger = document.querySelector('.hamburger');
+			const mobileMenu = document.getElementById('mobileMenu');
+			let scrollPosition = 0;
+			function closeMenu(){
+				burger.setAttribute('aria-expanded','false');
+				mobileMenu.classList.remove('open');
+				mobileMenu.setAttribute('aria-hidden','true');
+				document.body.classList.remove('menu-open');
+				document.documentElement.classList.remove('menu-open');
+				document.body.style.position = '';
+				document.body.style.top = '';
+				document.body.style.width = '';
+				window.scrollTo(0, scrollPosition);
+			}
+			if (burger && mobileMenu) {
+				burger.addEventListener('click', () => {
+					const expanded = burger.getAttribute('aria-expanded') === 'true';
+					burger.setAttribute('aria-expanded', String(!expanded));
+					mobileMenu.classList.toggle('open');
+					mobileMenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+					document.body.classList.toggle('menu-open', !expanded);
+					document.documentElement.classList.toggle('menu-open', !expanded);
+					if (!expanded) {
+						scrollPosition = window.scrollY;
+						document.body.style.position = 'fixed';
+						document.body.style.top = `-${scrollPosition}px`;
+						document.body.style.width = '100%';
+					} else {
+						document.body.style.position = '';
+						document.body.style.top = '';
+						document.body.style.width = '';
+						window.scrollTo(0, scrollPosition);
+					}
+				});
+				mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+				window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+			}
+		});
+	</script>
+</body>
+</html>
