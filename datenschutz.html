@@ -54,7 +54,18 @@
 		@media (max-width: 900px) {
 			.kontakt-main { padding: 0 16px; margin: 40px 0 0 0; }
 			.kontakt-ueberschrift { font-size: 1.8rem; margin: 24px 0; }
-			.legal-container { width: 100%; font-size: 1rem; }
+			.legal-container {
+				width: 100vw;
+				max-width: 100vw;
+				font-size: 1rem;
+				word-break: break-word;
+				overflow-wrap: break-word;
+				box-sizing: border-box;
+				padding-left: 0;
+			}
+            .legal-container, .legal-container h2, .legal-container h3, .legal-container p, .legal-container li {
+                padding-right: 10px !important;
+            }
 		}
 
         .footer {
