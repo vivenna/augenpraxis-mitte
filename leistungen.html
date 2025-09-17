@@ -21,6 +21,7 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
+        :root { --header-gap: 36px; --header-edge: 40px; }
         html, body {
             margin: 0;
             padding: 0;
@@ -43,64 +44,23 @@
             color: inherit;
         }   
 
-        .header {
-            background-color: #fff;            
-            display: flex;
-            flex-wrap: wrap; /* Ermöglicht Umbruch bei kleineren Bildschirmen */
-            align-items: center;
-            padding: 20px;
-            top: 0;
-            justify-content: center;
-            left: 0;
-            width: 100%;
-            margin-left: -30px;
-        }
-
-        .header-left, .header-center, .header-right, .header-button, .header-language {
-            padding: 10px;
-        }
-
-        .logo {
-            width: 110px;
-            margin: 0 0; /* Vergrößert den Abstand links und rechts vom Logo */
-        }
-        
-        .header-center {
-            margin: 0 50px; /* Fügt Abstand links und rechts vom Text hinzu */
-        }
-
-        .header-center-text {
-            font-weight: bold;
-            font-size: 18px;
-            line-height: 0.8;
-        }
-
-        .button {
-            color: rgb(255, 255, 255);
-            background-color: #4b79ce;
-            padding: 13px 20px;
-            text-decoration: none;
-            margin: 0 50px; /* Fügt Abstand links und rechts vom Button hinzu */
-            border-radius: 10px;
-            font-weight: bold;
-            transition: background-color 0.3s ease; /* Fügt einen sanften Übergang hinzu */
-        }
-
-        .button:hover {
-            background-color: #7bbd64; /* Ändert die Farbe zu einem dunkleren Grün beim Hover */
-        }
-
-        .header-language {
-            margin: 0 0px; /* Abstand links und rechts vom Sprachauswahl entfernt */
-            font-size: 13px;
-        }
-        .language-active {
-            color: grey;
-            padding-right: 5px;
-        }
-        .language-inactive {
-            color: black;
-        }
+        /* Unified Header */
+        .header { background-color: #fff; display: flex; align-items: center; justify-content: flex-start; gap: var(--header-gap); padding: 8px var(--header-edge); border-bottom: 1px solid #eee; position: relative; left: 0; top: 0; width: 100%; margin: 0; box-sizing: border-box; }
+        .header-left, .header-center, .header-right, .header-button, .header-language { padding: 10px; }
+        .logo { width: 54px; margin: 0; }
+        .header-left { display: flex; align-items: center; gap: var(--header-gap); padding: 0; }
+        .header-title { font-weight: 700; font-size: 14px; line-height: 1.2; color: #111; white-space: nowrap; }
+        .header-address { margin: 0; font-size: 13px; color: #666; white-space: nowrap; flex: 0 0 auto; text-align: right; }
+        .header-email { margin: 0; font-size: 13px; color: #666; white-space: nowrap; flex: 0 0 auto; }
+        .header-email a { color: inherit; text-decoration: none; }
+        .header-email a:hover { text-decoration: underline; }
+        .header-spacer-left { flex: 1 1 auto; }
+        .button { color: #fff; background-color: #4b79ce; padding: 12px 20px; text-decoration: none; margin: 0; border-radius: 10px; font-weight: 700; font-size: 1.05rem; transition: background-color 0.3s ease; }
+        .button:hover { background-color: #7bbd64; }
+        .header-actions { display: flex; align-items: center; gap: var(--header-gap); }
+        .header-language { margin: 0; font-size: 13px; padding: 0; }
+        .language-active { color: grey; padding-right: 5px; }
+        .language-inactive { color: black; }
 
         .nav-container {
             display: flex;
@@ -593,12 +553,12 @@
 .mobile-menu .mobile-cta { margin-top:16px; background:#4b79ce; color:#fff; padding:14px 18px; border-radius:10px; text-align:center; display:inline-block; }
 .mobile-menu .mobile-lang { margin-top:8px; font-size:0.95rem; color:#666; }
 .mobile-menu .mobile-section-title { margin:18px 0 6px; font-weight:700; font-size:0.95rem; color:#222; }
-@media (max-width: 900px) {
-    .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10001; border-bottom:1px solid #eee; }
-    .logo { width: 92px; }
-    .header-center, .header-right, .header-language, .button { display:none; }
-    .hamburger { display:block; margin-right: 2px; padding:6px; }
-    .nav-container { display:none; }
+        @media (max-width: 900px) {
+            .header-title, .header-address, .header-email, .header-actions, .header-language, .button, .header-spacer-left { display:none; }
+            .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10001; border-bottom:1px solid #eee; }
+            .logo { width: 92px; }
+            .hamburger { display:block; margin-right: 2px; padding:6px; }
+            .nav-container { display:none; }
     .kontakt-main { padding: 0 16px; }
     .kontakt-ueberschrift { font-size: 1.8rem; margin: 24px 0; }
     .kontakt-tabelle { margin: 0; width: 100%; font-size: 1rem; border-spacing: 12px 14px; }
@@ -619,7 +579,7 @@
                         /* Header vereinfachen */
                         .header { justify-content: space-between; align-items:center; gap:12px; padding:12px 16px; margin-left:0; position:sticky; top:0; z-index:10004; border-bottom:1px solid #eee; }
                         .logo { width: 78px; margin-left: 3px; }
-                        .header-center, .header-right, .header-language, .button { display:none; }
+                        .header-title, .header-address, .header-email, .header-actions, .header-language, .button, .header-spacer-left { display:none; }
                         .hamburger { display:block; margin-right: 0; padding:4px; position: absolute; right: 58px; z-index: 10003; }
                         .hamburger .bar { width:24px; }
 
@@ -718,31 +678,23 @@
     <header class="header">
         <div class="header-left">
             <a href="https://vivenna.github.io/augenpraxis-mitte/"><img src="assets/logo.jpg" alt="Logo" class="logo"></a>
+            <div class="header-title">Augenarztpraxis Dr. med. Nahla Al-Asbahi</div>
+        </div>
+        <div class="header-spacer-left"></div>
+        <div class="header-address">Müllerstr. 139</div>
+        <div class="header-email"><a href="mailto:info@augenpraxis-mitte.de">info@augenpraxis-mitte.de</a></div>
+        <div class="header-actions">
+            <div class="header-language">
+                <span class="language-active">DE</span>
+                <a href="/en/"><span class="language-inactive">EN</span></a>
+            </div>
+            <a href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi" class="button">Termin buchen</a>
         </div>
         <button class="hamburger" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
-        <div class="header-center">
-            <span class="header-center-text">
-            <p>Augenarztpraxis</p>
-            <p>Dr. med. Nahla Al-Asbahi</p>
-            </span>
-            <p>Fachärztin für Augenheilkunde</p>
-            <p>Berlin Mitte</p>
-        </div>
-        <div class="header-right">
-            <p>Müllerstr. 139, 13353 Berlin</p>
-            <p>Tel: 030 33876167</p>
-            <p>Fax: 030 28654715</p>
-            <p>E-Mail: info@augenpraxis-mitte.de</p>
-        </div>
-        <a href="https://www.doctolib.de/augenheilkunde/berlin/nahla-al-asbahi" class="button">Termin buchen</a>
-        <div class="header-language">
-            <span class="language-active">DE</span>
-            <a href="/en/"><span class="language-inactive">EN</span></a>
-            </div>
     </header>
     <!-- Mobile Menü Overlay -->
     <nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
