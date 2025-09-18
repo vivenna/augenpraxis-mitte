@@ -445,6 +445,34 @@
         .footer-left { top: auto; bottom: 10px; margin-bottom: 0; padding-bottom: 0; }
         .footer-sprechstunde { top: auto; bottom: 10px; }
 
+                /* ===== Full-width map section above footer (like home/leistungen) ===== */
+                .page-map-section { width: 100%; margin: 60px 0 0; padding: 0; box-sizing: border-box; }
+                .page-map-container { width: 100%; max-width: none; margin: 0; height: 420px; }
+                .page-map-section h2 { display:none; }
+
+                /***** Map Consent Placeholder *****/
+                .map-consent { position: relative; width: 100%; height: 100%; background: #e9eef6; overflow: hidden; border-radius: 8px; }
+                .map-consent__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(13px) saturate(1.0) !important; transform: scale(1.18); }
+                .map-consent__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.35)); }
+                .map-consent__content { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); color: #000; padding: 16px 18px; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.18); max-width: 560px; width: calc(100% - 40px); text-align: left; }
+                .map-consent__text { margin: 0 0 12px; font-size: 1rem; line-height: 1.45; }
+                .map-consent__btn { background: #4b79ce; color: #fff; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+                .map-consent__btn:hover { background: #3a64b2; }
+                @media (max-width: 900px) {
+                    .map-consent__text { font-size: 0.95rem; }
+                }
+
+                /* Map-Consent: Banner-Text und Button mittig zentrieren */
+                .map-consent__content { text-align: center !important; }
+                .map-consent__btn { display: inline-block; margin: 8px auto 0; }
+
+                /* Map-Consent: Schriftgrößen erhöhen */
+                .map-consent__text { font-size: 1.1rem; }
+                .map-consent__btn { font-size: 0.99rem; padding: 12px 18px; }
+                @media (max-width: 900px) {
+                        .map-consent__text { font-size: 1.05rem; }
+                }
+
         /* ============ MOBILE NAVIGATION & LAYOUT ============ */
         .hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; margin-left:auto; }
         .hamburger .bar { display:block; width:26px; height:3px; background:#222; margin:5px 0; border-radius:2px; transition:transform .2s ease, opacity .2s ease; }
@@ -633,6 +661,19 @@
             </tbody>
         </table>
     </section>
+    <!-- Full-width map section (no heading) -->
+    <section class="page-map-section" aria-label="Karte">
+        <div class="page-map-container">
+            <div class="map-consent" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2426.122701795704!2d13.35089847692262!3d52.54930537206888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8536e8997f09f%3A0x51c24e8e6793da9f!2sAugenarztpraxis%20Dr.%20med.%20Nahla%20Al-Asbahi!5e0!3m2!1sde!2sde!4v1756448875339!5m2!1sde!2sde">
+                <img class="map-consent__bg" src="assets/karte.png" alt="Karte Vorschau">
+                <div class="map-consent__overlay"></div>
+                <div class="map-consent__content">
+                    <p class="map-consent__text">Um die Karte anzuzeigen, laden wir Inhalte von Google Maps. Dabei können personenbezogene Daten an Google übertragen werden. Mehr dazu in unserer Datenschutzerklärung.</p>
+                    <button class="map-consent__btn" type="button">Karte laden</button>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="footer">
         <div class="footer-image-container">
             <img src="assets/logo footer.webp" alt="Logo" class="footer-logo">
@@ -703,6 +744,31 @@
             mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
             window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
         }
+    });
+    </script>
+    <script>
+    // Map consent for sprechzeiten page: load iframe on click
+    document.addEventListener('DOMContentLoaded', function() {
+        const consentEl = document.querySelector('.page-map-section .map-consent');
+        if (!consentEl) return;
+        const btn = consentEl.querySelector('.map-consent__btn');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+            const src = consentEl.getAttribute('data-src');
+            if (!src) return;
+            const iframe = document.createElement('iframe');
+            iframe.src = src;
+            iframe.loading = 'lazy';
+            iframe.allowFullscreen = '';
+            iframe.referrerPolicy = 'no-referrer-when-downgrade';
+            iframe.style.border = '0';
+            iframe.setAttribute('aria-label', 'Google Maps Karte');
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            const container = consentEl.parentElement; // .page-map-container
+            container.innerHTML = '';
+            container.appendChild(iframe);
+        });
     });
     </script>
 </body>
