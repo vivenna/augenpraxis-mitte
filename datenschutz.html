@@ -570,30 +570,7 @@
 		</div>
 	</footer>
 
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			const navContainer = document.querySelector('.nav-container');
-			if (!navContainer) return;
-			let navTop = navContainer.offsetTop;
-			const distanceToFixed = 20;
-			let navPlaceholder = document.createElement('div');
-			navPlaceholder.className = 'nav-placeholder';
-			function stickNav() {
-				const style = window.getComputedStyle(navContainer);
-				const marginTop = parseInt(style.marginTop) || 0;
-				const totalHeight = navContainer.offsetHeight + marginTop;
-				if (window.scrollY >= (navTop - distanceToFixed)) {
-					navPlaceholder.style.height = totalHeight + "px";
-					navContainer.classList.add('nav-fixed');
-					navContainer.parentNode.insertBefore(navPlaceholder, navContainer);
-				} else {
-					navContainer.classList.remove('nav-fixed');
-					if (navPlaceholder.parentNode) { navPlaceholder.parentNode.removeChild(navPlaceholder); }
-				}
-			}
-			window.addEventListener('scroll', stickNav);
-		});
-	</script>
+	
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         const burger = document.querySelector('.hamburger');
