@@ -56,6 +56,7 @@
             width: 100%;
             margin: 0;
             box-sizing: border-box;
+            z-index: 10002; /* always above page content/hero */
         }
 
         .header-left, .header-center, .header-right, .header-button, .header-language {
@@ -224,7 +225,7 @@
             right: 0;
             width: 60%;
             height: 100%;
-            z-index: 0; /* behind nav and other UI */
+            z-index: -1; /* place fully behind header/nav and text */
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
@@ -237,7 +238,7 @@
             opacity: 1;
             margin-top: 50px;
             margin-right: 0;
-            z-index: -1000;
+            z-index: -10000000;
         }
         .main-text p {
             font-size: 16px;
@@ -275,7 +276,7 @@
             right: 0;
             width: 60%;
             height: 100%;
-            z-index: 0; /* behind nav and other UI */
+            z-index: -1; /* place fully behind header/nav and text */
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
@@ -326,7 +327,7 @@
             right: 0;
             width: 60%;
             height: 100%;
-            z-index: 0; /* behind nav and other UI */
+            z-index: -1; /* place fully behind header/nav and text */
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
@@ -1213,7 +1214,7 @@
                 sich bei uns gut aufgehoben fühlen.</p>
         </div>
         <div class="main-image-bg">
-            <img src="assets/eye-4453129_1280.jpg" alt="Augenarztpraxis">
+            <img src="assets/hero-bild-1.jpg" alt="Augenarztpraxis">
         </div>
       </div>
      </div>
