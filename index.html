@@ -1127,6 +1127,28 @@
       .mobile-menu .mobile-lang { z-index: 10006; top: 145px; font-size: 1.05rem !important; }
       .mobile-lang a { font-size: 1.05rem !important; color: #222; margin-left: -3px;}
     }
+
+        /* ===== Home: Lage (Map) section above footer ===== */
+        .home-lage-section { width: 100%; margin: 60px 0 0; padding: 0; box-sizing: border-box; }
+        .home-lage-section h2 { display: none; }
+        .home-lage-map-container { width: 100%; max-width: none; margin: 0; height: 420px; }
+        @media (max-width: 900px) {
+            .home-lage-section { margin: 50px 0 20px; }
+            .home-lage-section h2 { display: none; }
+            .home-lage-map-container { height: 320px; }
+        }
+
+        /***** Map Consent Placeholder (shared with Kontakt) *****/
+        .map-consent { position: relative; width: 100%; height: 100%; background: #e9eef6; overflow: hidden; border-radius: 8px; }
+        .map-consent__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(13px) saturate(1.0) !important; transform: scale(1.18); }
+        .map-consent__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.35)); }
+        .map-consent__content { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); color: #000; padding: 16px 18px; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.18); max-width: 560px; width: calc(100% - 40px); text-align: center !important; }
+        .map-consent__text { margin: 0 0 12px; font-size: 1.1rem; line-height: 1.45; }
+        .map-consent__btn { background: #4b79ce; color: #fff; border: none; padding: 12px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.99rem; display: inline-block; margin: 8px auto 0; }
+        .map-consent__btn:hover { background: #3a64b2; }
+        @media (max-width: 900px) {
+            .map-consent__text { font-size: 1.05rem; }
+        }
     </style>
 </head>
 <body>
@@ -1236,6 +1258,19 @@
                 <span class="rezensionen-pager-dot"><span class="rezensionen-pager-fill"></span></span>
                 <span class="rezensionen-pager-dot"><span class="rezensionen-pager-fill"></span></span>
                 <span class="rezensionen-pager-dot"><span class="rezensionen-pager-fill"></span></span>
+            </div>
+        </div>
+    </section>
+    <!-- Home: Lage Section (Map with Consent) -->
+    <section class="home-lage-section" aria-label="Karte">
+        <div class="home-lage-map-container">
+            <div class="map-consent" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2426.122701795704!2d13.35089847692262!3d52.54930537206888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8536e8997f09f%3A0x51c24e8e6793da9f!2sAugenarztpraxis%20Dr.%20med.%20Nahla%20Al-Asbahi!5e0!3m2!1sde!2sde!4v1756448875339!5m2!1sde!2sde">
+                <img class="map-consent__bg" src="assets/karte.png" alt="Karten-Platzhalter">
+                <div class="map-consent__overlay"></div>
+                <div class="map-consent__content" role="dialog" aria-live="polite">
+                    <p class="map-consent__text">Ich stimme der Verarbeitung von Daten (insbesondere meiner IP-Adresse) und deren Übertragung außerhalb der EU durch Google Maps (USA) zu, um die Karte anzuzeigen.</p>
+                    <button class="map-consent__btn" type="button" aria-label="Karte anzeigen">Karte anzeigen</button>
+                </div>
             </div>
         </div>
     </section>
@@ -1354,6 +1389,29 @@
             });
         }, { threshold: 0.3 });
         observer.observe(rezensionenSection);
+    });
+    // Maps-Consent: Iframe erst nach Klick laden (Home-Lage)
+    document.addEventListener('DOMContentLoaded', function() {
+        const consentEl = document.querySelector('.home-lage-section .map-consent') || document.querySelector('.map-consent');
+        if (!consentEl) return;
+        const btn = consentEl.querySelector('.map-consent__btn');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+            const src = consentEl.getAttribute('data-src');
+            if (!src) return;
+            const iframe = document.createElement('iframe');
+            iframe.src = src;
+            iframe.loading = 'lazy';
+            iframe.allowFullscreen = '';
+            iframe.referrerPolicy = 'no-referrer-when-downgrade';
+            iframe.style.border = '0';
+            iframe.setAttribute('aria-label', 'Google Maps Karte');
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            const container = consentEl.parentElement; // .home-lage-map-container
+            container.innerHTML = '';
+            container.appendChild(iframe);
+        });
     });
         document.addEventListener('DOMContentLoaded', function() {
         const burger = document.querySelector('.hamburger');

@@ -177,6 +177,14 @@
             width: 100%;
             margin-top: 120px; /* hinzugefügt für mehr Abstand nach oben */
         }
+        /* ===== Full-width map section above footer (like home) ===== */
+        .page-map-section { width: 100%; margin: 60px 0 0; padding: 0; box-sizing: border-box; }
+        .page-map-container { width: 100%; max-width: none; margin: 0; height: 420px; }
+        .page-map-section h2 { display:none; }
+        @media (max-width: 900px) {
+            .page-map-section { margin: 50px 0 20px; }
+            .page-map-container { height: 320px; }
+        }
         .vorsorge-basis {
             display: flex;
             flex-direction: row;
@@ -861,6 +869,19 @@
             </div>
         </div>
     </section>
+    <!-- Full-width map section (no heading) -->
+    <section class="page-map-section" aria-label="Karte">
+        <div class="page-map-container">
+            <div class="map-consent" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2426.122701795704!2d13.35089847692262!3d52.54930537206888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8536e8997f09f%3A0x51c24e8e6793da9f!2sAugenarztpraxis%20Dr.%20med.%20Nahla%20Al-Asbahi!5e0!3m2!1sde!2sde!4v1756448875339!5m2!1sde!2sde">
+                <img class="map-consent__bg" src="assets/karte.png" alt="Karten-Platzhalter">
+                <div class="map-consent__overlay"></div>
+                <div class="map-consent__content" role="dialog" aria-live="polite">
+                    <p class="map-consent__text">Ich stimme der Verarbeitung von Daten (insbesondere meiner IP-Adresse) und deren Übertragung außerhalb der EU durch Google Maps (USA) zu, um die Karte anzuzeigen.</p>
+                    <button class="map-consent__btn" type="button" aria-label="Karte anzeigen">Karte anzeigen</button>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="footer">
         <div class="footer-image-container">
             <img src="assets/logo footer.webp" alt="Logo" class="footer-logo">
@@ -1012,6 +1033,30 @@
         window.addEventListener('resize', check);
         check();
     })();
+
+    // Map consent for leistungen page: load iframe on click
+    document.addEventListener('DOMContentLoaded', function() {
+        const consentEl = document.querySelector('.page-map-section .map-consent');
+        if (!consentEl) return;
+        const btn = consentEl.querySelector('.map-consent__btn');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+            const src = consentEl.getAttribute('data-src');
+            if (!src) return;
+            const iframe = document.createElement('iframe');
+            iframe.src = src;
+            iframe.loading = 'lazy';
+            iframe.allowFullscreen = '';
+            iframe.referrerPolicy = 'no-referrer-when-downgrade';
+            iframe.style.border = '0';
+            iframe.setAttribute('aria-label', 'Google Maps Karte');
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            const container = consentEl.parentElement; // .page-map-container
+            container.innerHTML = '';
+            container.appendChild(iframe);
+        });
+    });
     </script>
 </body>
 </html>
