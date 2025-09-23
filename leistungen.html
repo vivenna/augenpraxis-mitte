@@ -532,8 +532,9 @@
 .map-consent__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.35)); }
 .map-consent__content { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); color: #000; padding: 16px 18px; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.18); max-width: 560px; width: calc(100% - 40px); text-align: left; }
 .map-consent__text { margin: 0 0 12px; font-size: 1rem; line-height: 1.45; }
-.map-consent__btn { background: #4b79ce; color: #fff; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; }
-.map-consent__btn:hover { background: #3a64b2; }
+.map-consent__btn { background: #4b79ce; color: #fff; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: background-color .25s ease, color .25s ease; }
+.map-consent__btn:hover,
+.map-consent__btn:focus-visible { background:#7bbd64; color:#fff; outline:none; }
 @media (max-width: 900px) {
   .map-consent__text { font-size: 0.95rem; }
 }
