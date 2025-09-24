@@ -423,6 +423,7 @@
             gap: 60px;
             min-height: 320px;
             position: relative;
+            overflow: hidden; /* für sauberes Crossfade */
         }
         .rezensionen-pager {
             position: absolute;
@@ -455,15 +456,17 @@
             transition: width 0s;
         }
         .rezensionen-slide {
-            display: none;
+            /* Crossfade: Slides übereinander stapeln */
+            position: absolute;
+            inset: 0;
             max-width: 800px;
-            margin: 0 40px;
+            margin: 0 auto; /* horizontal zentrieren */
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+            transition: opacity 220ms ease; /* schnell und clean */
+            display: block; /* kein display toggling, damit Transition greift */
         }
         .rezensionen-slide.active {
-            display: block;
             opacity: 1;
             pointer-events: auto;
         }
@@ -733,6 +736,7 @@
             gap: 60px;
             min-height: 320px;
             position: relative;
+            overflow: hidden; /* für sauberes Crossfade */
         }
         .rezensionen-pager {
             position: absolute;
@@ -765,15 +769,16 @@
             transition: width 0s;
         }
         .rezensionen-slide {
-            display: none;
+            position: absolute;
+            inset: 0;
             max-width: 800px;
-            margin: 0 40px;
+            margin: 0 auto;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+            transition: opacity 220ms ease;
+            display: block;
         }
         .rezensionen-slide.active {
-            display: block;
             opacity: 1;
             pointer-events: auto;
         }
@@ -1097,7 +1102,7 @@
                         /* Rezensionen */
                         .rezensionen-section { margin: 60px 0 60px; padding: 0 16px; }
                         .rezensionen-section h2 { font-size: 1.6rem; margin-bottom: 22px; }
-                        .rezensionen-slideshow { gap: 12px; min-height: auto; flex-direction: column; align-items: center; }
+                        .rezensionen-slideshow { gap: 12px; min-height: 240px; flex-direction: column; align-items: center; overflow: hidden; }
                         .rezensionen-slide blockquote { font-size: 1.25rem; }
                         .rezensionen-autor { font-size: 1rem; }
                         .rezensionen-pager { position: static; justify-content:center; align-self: center; margin-top: 14px; }
@@ -1312,24 +1317,25 @@
     </footer>
 
 <script>
-    // Rezensionen Slideshow mit animierten Pager-Balken und Autoplay bei Sichtbarkeit
+    // Rezensionen Slideshow: schnelles, sauberes Crossfade + Pager-Fill + Autoplay bei Sichtbarkeit
     document.addEventListener('DOMContentLoaded', function() {
         const slides = document.querySelectorAll('.rezensionen-slide');
         const pagerDots = document.querySelectorAll('.rezensionen-pager-dot');
         const pagerFills = document.querySelectorAll('.rezensionen-pager-fill');
         const rezensionenSection = document.querySelector('.rezensionen-section');
+        const DURATION = 4000; // Autoplay-Intervall
+        const TRANSITION_MS = 220; // CSS-Transition spiegelt dies wider
+
         let current = 0;
         let interval = null;
-        let fillInterval = null;
-        const DURATION = 4000;
         let started = false;
-        let isTransitioning = false;
+        let locked = false; // kurze Sperre während Crossfade
 
         function resetFills() {
-            pagerFills.forEach((fill, i) => {
+            pagerFills.forEach((fill) => {
                 fill.style.transition = 'none';
                 fill.style.width = '0%';
-                // force reflow for transition reset
+                // Reflow erzwingen
                 void fill.offsetWidth;
             });
         }
@@ -1345,45 +1351,43 @@
             });
         }
         function showSlide(idx) {
-            const currentSlide = document.querySelector('.rezensionen-slide.active');
-            if (currentSlide && slides[idx] !== currentSlide) {
-                currentSlide.style.opacity = '0';
-                setTimeout(() => {
-                    currentSlide.classList.remove('active');
-                    slides[idx].classList.add('active');
-                    slides[idx].style.opacity = '1';
-                    animateFill(idx);
-                }, 400);
-            } else {
-                slides.forEach((slide, i) => {
-                    slide.classList.toggle('active', i === idx);
-                    slide.style.opacity = i === idx ? '1' : '0';
-                });
+            if (locked || idx === current) {
                 animateFill(idx);
+                return;
             }
+            locked = true;
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === idx);
+            });
+            animateFill(idx);
+            // nach Ende der kurzen CSS-Transition entsperren
+            setTimeout(() => { locked = false; }, TRANSITION_MS + 20);
+            current = idx;
         }
         function nextSlide() {
-            current = (current + 1) % slides.length;
-            showSlide(current);
+            const next = (current + 1) % slides.length;
+            showSlide(next);
         }
         pagerDots.forEach((dot, i) => {
             dot.addEventListener('click', function() {
-                current = i;
-                showSlide(current);
+                showSlide(i);
                 if (interval) {
                     clearInterval(interval);
                     interval = setInterval(nextSlide, DURATION);
                 }
             });
         });
-        showSlide(current);
+
+        // Initial aktivieren
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+        animateFill(current);
 
         // Intersection Observer für Autoplay
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !started) {
                     started = true;
-                    showSlide(current);
+                    animateFill(current);
                     interval = setInterval(nextSlide, DURATION);
                 } else if (!entry.isIntersecting && interval) {
                     clearInterval(interval);
