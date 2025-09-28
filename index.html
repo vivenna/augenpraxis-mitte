@@ -1165,6 +1165,32 @@
         .map-consent__btn { transition: background-color .25s ease, color .25s ease; }
         .map-consent__btn:hover,
         .map-consent__btn:focus-visible { background:#7bbd64; color:#fff; outline:none; }
+
+        /* Final mobile override: push reviews pager further down */
+        @media (max-width: 900px) {
+            .rezensionen-slideshow { 
+                justify-content: flex-end !important; /* align pager to bottom of container */
+                min-height: 220px !important;       /* increase height so pager sits lower */
+                padding-bottom: 24px !important;     /* extra space below pager */
+            }
+            .rezensionen-pager { 
+                position: static !important; 
+                margin-top: 20px !important;        /* push it even further down */
+                justify-content: center !important;
+            }
+        }
+
+        /* Mobile: move reviews pager further down and center */
+        @media (max-width: 900px) {
+            .rezensionen-slideshow { align-items: flex-end; }
+            .rezensionen-pager {
+                position: static;
+                right: auto;
+                bottom: auto;
+                justify-content: center;
+                margin: 24px auto 0; /* pushes it further down */
+            }
+        }
     </style>
 </head>
 <body>

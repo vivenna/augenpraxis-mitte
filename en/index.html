@@ -83,6 +83,18 @@
 		.rezensionen-slide.active { opacity:1; pointer-events:auto; }
 		.rezensionen-slide blockquote { font-family:Georgia,'Times New Roman',Times,serif; font-size:2.2rem; font-style:italic; color:#222; margin:0 0 28px; line-height:1.6; }
 		.rezensionen-autor { font-size:1.4rem; color:#555; opacity:.8; font-style:normal; }
+		
+		/* Mobile: move reviews pager further down and center */
+		@media (max-width: 900px) {
+			.rezensionen-slideshow { align-items: flex-end; }
+			.rezensionen-pager {
+				position: static;
+				right: auto;
+				bottom: auto;
+				justify-content: center;
+				margin: 24px auto 0; 
+			}
+		}
 		.footer { background:#4b79ce; color:#fff; position:relative; padding:100px 0 0; min-height:340px; overflow:hidden; font-size:1.15rem; width:100%; }
 		.footer-content { display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; width:100%; position:relative; z-index:2; height:100%; text-align:left; }
 		.footer-image-container { position:absolute; top:-130px; left:-200px; z-index:1; width:220px; height:220px; overflow:visible; pointer-events:none; }
@@ -192,6 +204,20 @@
 		.map-consent__text { margin:0 0 12px; font-size:1.1rem; line-height:1.45; }
 		.map-consent__btn { background:#4b79ce; color:#fff; border:none; padding:12px 18px; border-radius:8px; font-weight:700; cursor:pointer; font-size:.99rem; display:inline-block; margin:8px auto 0; transition:background-color .25s ease, color .25s ease; }
 		.map-consent__btn:hover,.map-consent__btn:focus-visible { background:#7bbd64; color:#fff; outline:none; }
+
+		/* Final mobile override: push reviews pager further down */
+		@media (max-width: 900px) {
+			.rezensionen-slideshow { 
+				justify-content: flex-end !important; /* align pager to bottom of container */
+				min-height: 320px !important;       /* increase height so pager sits lower */
+				padding-bottom: 24px !important;     /* extra space below pager */
+			}
+			.rezensionen-pager { 
+				position: static !important; 
+				margin-top: 40px !important;        /* push it even further down */
+				justify-content: center !important;
+			}
+		}
 	</style>
 </head>
 <body>
