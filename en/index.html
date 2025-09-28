@@ -86,14 +86,14 @@
 		
 		/* Mobile: move reviews pager further down and center */
 		@media (max-width: 900px) {
-			.rezensionen-slideshow { align-items: flex-end; }
-			.rezensionen-pager {
-				position: static;
-				right: auto;
-				bottom: auto;
-				justify-content: center;
-				margin: 24px auto 0; 
-			}
+            .rezensionen-slideshow { align-items: flex-end; }
+            .rezensionen-pager {
+                position: static;
+                right: auto;
+                bottom: auto;
+                justify-content: center;
+                margin: 24px auto 0; /* pushes it further down */
+            }
 		}
 		.footer { background:#4b79ce; color:#fff; position:relative; padding:100px 0 0; min-height:340px; overflow:hidden; font-size:1.15rem; width:100%; }
 		.footer-content { display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; width:100%; position:relative; z-index:2; height:100%; text-align:left; }
@@ -177,7 +177,7 @@
 			.rezensionen-slideshow { gap:12px; min-height:240px; flex-direction:column; align-items:center; overflow:hidden; }
 			.rezensionen-slide blockquote { font-size:1.25rem; }
 			.rezensionen-autor { font-size:1rem; }
-			.rezensionen-pager { position:static; justify-content:center; align-self:center; margin-top:14px; }
+            .rezensionen-pager { position: static; justify-content:center; align-self: center; margin-top: 14px; }
 			.rezensionen-pager-dot { width:26px; height:6px; }
 			.footer { padding-top:60px; min-height:480px; }
 			.footer-main { transform:none; padding:0 20px; margin-bottom:28px; }
@@ -208,14 +208,26 @@
 
 		/* Final mobile override: push reviews pager further down */
 		@media (max-width: 900px) {
+			/* Make slides participate in layout to remove extra gap */
+			.rezensionen-slide { 
+				position: static !important; 
+				inset: initial !important; 
+				opacity: 1 !important; 
+				pointer-events: auto !important; 
+				display: none; /* hide non-active */
+			}
+			.rezensionen-slide.active { display: block; }
+
+			/* Tighten the container so pager sits right under the text */
 			.rezensionen-slideshow { 
-				justify-content: flex-end !important; /* align pager to bottom of container */
-				min-height: 320px !important;       /* increase height so pager sits lower */
-				padding-bottom: 24px !important;     /* extra space below pager */
+				justify-content: flex-start !important; 
+				min-height: auto !important; 
+				padding-bottom: 0 !important; 
+				gap: 0 !important; 
 			}
 			.rezensionen-pager { 
 				position: static !important; 
-				margin-top: 40px !important;        /* push it even further down */
+				margin-top: 25px !important; 
 				justify-content: center !important;
 			}
 		}
