@@ -488,6 +488,12 @@
       .mobile-menu .mobile-lang { z-index: 10006; top: 145px; font-size: 1.05rem !important; }
       .mobile-lang a { font-size: 1.05rem !important; color: #222; margin-left: -3px;}
     }
+
+        /* Mobile: remove rounding on expandable menu */
+        @media (max-width: 900px) {
+            nav { border-radius: 0 !important; }
+            .mobile-menu { border-radius: 0 !important; }
+        }
     </style>
 </head>
 <body>
