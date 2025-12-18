@@ -1,0 +1,255 @@
+<!-- APM Popup Banner: Urlaubshinweis -->
+<style>
+	:root {
+		--apm-brand: #4b79ce;
+		--apm-accent: #7bbd64;
+		--apm-text: #000;
+	}
+	.apm-banner-open { overflow: hidden; }
+	.apm-banner-overlay {
+		position: fixed;
+		inset: 0;
+		background: rgba(0,0,0,0.4);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 10050;
+	}
+	/* Ensure overlay can be hidden via attributes despite author display styles */
+	.apm-banner-overlay[hidden],
+	.apm-banner-overlay[aria-hidden="true"],
+	[hidden] { display: none !important; }
+	.apm-banner {
+		position: relative;
+		background: #fff;
+		color: var(--apm-text);
+		border: 2px solid var(--apm-brand);
+		border-radius: 12px;
+		padding: 24px 28px;
+		max-width: 640px; /* etwas schmaler */
+		width: calc(100% - 40px);
+		box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+		font-family: inherit; /* übernimmt Roboto aus der Seite */
+		text-align: center;
+		display: flex;
+		flex-direction: column; /* ermöglicht Button unten rechts */
+	}
+	.apm-banner-title {
+		margin: 0 0 8px 0;
+		font-weight: 800; /* wie Seitentitel */
+		font-size: 2rem;
+		line-height: 1.2;
+		color: var(--apm-text);
+		letter-spacing: 0.5px; /* wie Body */
+	}
+	.apm-banner-text {
+		margin: 8px 0 18px 0;
+		font-size: 1.1rem;
+		line-height: 1.6;
+		color: #111;
+	}
+	.apm-banner-actions {
+		display: flex;
+		gap: 12px;
+		justify-content: flex-end; /* Button rechts */
+		align-items: center;
+		margin-top: auto; /* nach unten schieben */
+		align-self: stretch; /* volle Breite für saubere Rechtsausrichtung */
+	}
+	.apm-btn {
+		appearance: none;
+		border: none;
+		border-radius: 10px;
+		padding: 10px 16px;
+		font-weight: 700;
+		font-size: 1rem;
+		cursor: pointer;
+		transition: background-color .25s ease, color .25s ease, opacity .2s ease;
+	}
+	.apm-btn-primary { background: var(--apm-brand); color: #fff; }
+	.apm-btn-primary:hover,
+	.apm-btn-primary:focus-visible { background: var(--apm-accent); outline: none; }
+
+	.apm-banner-close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		width: 34px;
+		height: 34px;
+		border: none;
+		background: transparent;
+		color: #000;
+		font-size: 26px;
+		line-height: 1;
+		border-radius: 8px;
+		cursor: pointer;
+		z-index: 3; /* über Sprachumschalter */
+	}
+	.apm-banner-close:hover,
+	.apm-banner-close:focus-visible { background: #f2f5fb; outline: none; }
+
+	/* Language toggle in top-right */
+	.apm-banner-lang {
+		position: absolute;
+		top: 21px;
+		right: 56px; /* Platz für X-Button */
+		font-size: 0.88rem;
+		color: #222;
+		user-select: none;
+		z-index: 2;
+		pointer-events: auto;
+	}
+	.apm-banner-lang a,
+	.apm-banner-lang span { text-decoration: none; color: inherit; }
+	.apm-lang-active { color: grey; }
+	.apm-lang-inactive { color: #000; cursor: pointer; }
+	.apm-lang-inactive:hover { text-decoration: underline; }
+
+	@media (max-width: 900px) {
+		.apm-banner { padding: 62px 18px 18px; border-width: 2px; width: calc(100% - 64px); margin: 20px 0; }
+		.apm-banner-title { font-size: 1.6rem; }
+		.apm-banner-text { font-size: 1.05rem; }
+		.apm-banner-close { top: 8px; }
+		.apm-banner-lang { top: 17px; }
+	}
+</style>
+
+<div class="apm-banner-overlay" id="apmBannerOverlay" role="dialog" aria-modal="true" aria-labelledby="apmBannerTitle" hidden>
+	<div class="apm-banner" role="document">
+		<button class="apm-banner-close" aria-label="Schließen" title="Schließen"
+			onclick="(function(){var o=document.getElementById('apmBannerOverlay');if(!o)return;o.setAttribute('hidden','');o.setAttribute('aria-hidden','true');document.documentElement.classList.remove('apm-banner-open');document.body.classList.remove('apm-banner-open');try{sessionStorage.setItem('apmBannerDismissed','1')}catch(_){}})();return false;">×</button>
+		<div class="apm-banner-lang" aria-label="Sprache wählen">
+			<span class="apm-lang-active" data-lang="de" role="button" tabindex="0"
+				onclick="(function(){var l='de',o=document.getElementById('apmBannerOverlay');if(!o)return;try{sessionStorage.setItem('apmBannerLang',l)}catch(_){ }var t=o.querySelector('#apmBannerTitle'),p=o.querySelector('.apm-banner-text'),b=o.querySelector('#apmBannerOk');if(t)t.textContent='Praxis im Urlaub';if(p)p.innerHTML='Unsere Praxis ist vom <strong>18.12.2025</strong> bis einschließlich <strong>09.01.2026</strong> im Urlaub. Ab dem 12.01.2026 sind wir wieder für Sie da.';if(b)b.textContent='Verstanden';var de=o.querySelector('[data-lang=de]'),en=o.querySelector('[data-lang=en]');if(de){de.classList.add('apm-lang-active');de.classList.remove('apm-lang-inactive');}if(en){en.classList.add('apm-lang-inactive');en.classList.remove('apm-lang-active');}})();return false;">DE</span> /
+			<a href="#" class="apm-lang-inactive" data-lang="en"
+				onclick="(function(){var l='en',o=document.getElementById('apmBannerOverlay');if(!o)return;try{sessionStorage.setItem('apmBannerLang',l)}catch(_){ }var t=o.querySelector('#apmBannerTitle'),p=o.querySelector('.apm-banner-text'),b=o.querySelector('#apmBannerOk');if(t)t.textContent='Practice on Vacation';if(p)p.innerHTML='Our practice is on vacation from <strong>December 18, 2025</strong> to <strong>January 9, 2026</strong>. We will be back from January 12, 2026.';if(b)b.textContent='Got it';var de=o.querySelector('[data-lang=de]'),en=o.querySelector('[data-lang=en]');if(en){en.classList.add('apm-lang-active');en.classList.remove('apm-lang-inactive');}if(de){de.classList.add('apm-lang-inactive');de.classList.remove('apm-lang-active');}})();return false;">EN</a>
+		</div>
+		<h2 class="apm-banner-title" id="apmBannerTitle">Praxis im Urlaub</h2>
+		<p class="apm-banner-text">
+			Unsere Praxis ist vom <strong>18.12.2025</strong> bis einschließlich <strong>09.01.2026</strong> im Urlaub.
+			Ab dem 12.01.2026 sind wir wieder für Sie da.
+		</p>
+		<div class="apm-banner-actions">
+			<button class="apm-btn apm-btn-primary" id="apmBannerOk"
+				onclick="(function(){var o=document.getElementById('apmBannerOverlay');if(!o)return;o.setAttribute('hidden','');o.setAttribute('aria-hidden','true');document.documentElement.classList.remove('apm-banner-open');document.body.classList.remove('apm-banner-open');try{sessionStorage.setItem('apmBannerDismissed','1')}catch(_){}})();return false;">Verstanden</button>
+		</div>
+	</div>
+	<!-- Klick auf den abgedunkelten Bereich schließt ebenfalls -->
+</div>
+
+<script>
+	(function() {
+		const KEY = 'apmBannerDismissed';
+		const LANG_KEY = 'apmBannerLang';
+		const overlay = document.getElementById('apmBannerOverlay');
+		if (!overlay) return;
+
+		const i18n = {
+			de: {
+				title: 'Praxis im Urlaub',
+				text: 'Unsere Praxis ist vom <strong>18.12.2025</strong> bis einschließlich <strong>09.01.2026</strong> im Urlaub. Ab dem 12.01.2026 sind wir wieder für Sie da.',
+				ok: 'Verstanden',
+				closeLabel: 'Schließen'
+			},
+			en: {
+				title: 'Practice on Vacation',
+				text: 'Our practice is on vacation from <strong>December 18, 2025</strong> to <strong>January 9, 2026</strong>. We will be back from January 12, 2026.',
+				ok: 'Got it',
+				closeLabel: 'Close'
+			}
+		};
+
+		const open = () => {
+			overlay.removeAttribute('hidden');
+			overlay.removeAttribute('aria-hidden');
+			document.documentElement.classList.add('apm-banner-open');
+			document.body.classList.add('apm-banner-open');
+		};
+
+		const close = () => {
+			overlay.setAttribute('hidden', '');
+			overlay.setAttribute('aria-hidden', 'true');
+			document.documentElement.classList.remove('apm-banner-open');
+			document.body.classList.remove('apm-banner-open');
+			try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+		};
+
+		const applyLang = (lang) => {
+			const dict = i18n[lang] || i18n.de;
+			const titleEl = overlay.querySelector('#apmBannerTitle');
+			const textEl = overlay.querySelector('.apm-banner-text');
+			const okBtn = overlay.querySelector('#apmBannerOk');
+			const closeBtn = overlay.querySelector('.apm-banner-close');
+			if (titleEl) titleEl.textContent = dict.title;
+			if (textEl) textEl.innerHTML = dict.text;
+			if (okBtn) okBtn.textContent = dict.ok;
+			if (closeBtn) { closeBtn.setAttribute('aria-label', dict.closeLabel); closeBtn.setAttribute('title', dict.closeLabel); }
+			// Update toggle styles
+			const deEl = overlay.querySelector('[data-lang="de"]');
+			const enEl = overlay.querySelector('[data-lang="en"]');
+			if (lang === 'de') {
+				deEl?.classList.add('apm-lang-active');
+				deEl?.classList.remove('apm-lang-inactive');
+				enEl?.classList.add('apm-lang-inactive');
+				enEl?.classList.remove('apm-lang-active');
+			} else {
+				enEl?.classList.add('apm-lang-active');
+				enEl?.classList.remove('apm-lang-inactive');
+				deEl?.classList.add('apm-lang-inactive');
+				deEl?.classList.remove('apm-lang-active');
+			}
+		};
+
+		const setLang = (lang) => {
+			try { sessionStorage.setItem(LANG_KEY, lang); } catch (e) {}
+			applyLang(lang);
+		};
+
+		// Autostart, wenn in dieser Sitzung noch nicht geschlossen
+		try {
+			if (!sessionStorage.getItem(KEY)) open();
+		} catch (e) { open(); }
+
+		// Events
+		overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+		const btnClose = overlay.querySelector('.apm-banner-close');
+		const btnOk = overlay.querySelector('#apmBannerOk');
+		if (btnClose) btnClose.addEventListener('click', close);
+		if (btnOk) btnOk.addEventListener('click', close);
+		document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.hasAttribute('hidden')) close(); });
+
+		// Language toggle (event delegation for robustness)
+		const bannerEl = overlay.querySelector('.apm-banner');
+		if (bannerEl) {
+			bannerEl.addEventListener('click', (ev) => {
+				const target = ev.target.closest('[data-lang]');
+				if (target && target.closest('.apm-banner-lang')) {
+					ev.preventDefault();
+					const lang = target.getAttribute('data-lang');
+					if (lang) setLang(lang);
+				}
+			});
+		}
+
+		// Init language
+		let lang = 'de';
+		try { lang = sessionStorage.getItem(LANG_KEY) || 'de'; } catch (e) {}
+		applyLang(lang);
+
+		// Optional globale Steuerung
+		window.apmBanner = { open, close };
+	})();
+</script>
+
+<!--
+Einbindungsmöglichkeiten (optional):
+- Server-seitig einbinden (z. B. Include/Template) direkt vor </body>.
+- Oder per Fetch laden und ans Dokument anhängen:
+	<script>
+		fetch('/banner.html').then(r => r.text()).then(html => {
+			const tmp = document.createElement('div');
+			tmp.innerHTML = html;
+			document.body.appendChild(tmp);
+		});
+	</script>
+-->
