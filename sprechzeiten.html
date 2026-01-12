@@ -718,43 +718,6 @@
     </footer>
         </script>
         </script>
-        <script id="apmBannerLoader">
-            (function(){
-                try { if (sessionStorage.getItem('apmBannerDismissed')) return; } catch(e) {}
-                if (document.getElementById('apmBannerOverlay')) return;
-                var apmPath = (function(){
-                    var path = (location.pathname || '/');
-                    var isEn = /\/en\//.test(path);
-                    return isEn ? '../banner.html' : 'banner.html';
-                })();
-                fetch(apmPath, { cache: 'no-store' })
-                    .then(function(r){ return r.text(); })
-                    .then(function(html){
-                        var tmp = document.createElement('div');
-                        tmp.innerHTML = html;
-                        Array.prototype.slice.call(tmp.childNodes).forEach(function(node){
-                            if (node.nodeType === 1 && node.tagName.toLowerCase() !== 'script') {
-                                document.body.appendChild(node);
-                            }
-                        });
-                        Array.prototype.slice.call(tmp.querySelectorAll('script')).forEach(function(oldScript){
-                            var s = document.createElement('script');
-                            if (oldScript.src) s.src = oldScript.src;
-                            if (oldScript.type) s.type = oldScript.type;
-                            s.text = oldScript.text || oldScript.textContent || '';
-                            document.body.appendChild(s);
-                        });
-                        var overlay = document.getElementById('apmBannerOverlay');
-                        if (overlay && (overlay.hasAttribute('hidden') || overlay.getAttribute('aria-hidden') === 'true')) {
-                            overlay.removeAttribute('hidden');
-                            overlay.removeAttribute('aria-hidden');
-                            document.documentElement.classList.add('apm-banner-open');
-                            document.body.classList.add('apm-banner-open');
-                        }
-                    })
-                    .catch(function(){});
-            })();
-        </script>
 </body>
 </html>
         let scrollPosition = 0;
