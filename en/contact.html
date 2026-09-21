@@ -212,7 +212,29 @@
 		@media (max-width: 900px) { .lage-tabelle { width: 100%; } }
 		.map-consent__btn { transition: background-color .25s ease, color .25s ease; }
 		.map-consent__btn:hover, .map-consent__btn:focus-visible { background:#7bbd64; color:#fff; outline:none; }
-	</style>
+
+        /* Webdesign-Credit: dezente Fußnote unter dem Footer-Inhalt */
+        .footer .footer-credit {
+            position: relative;
+            z-index: 2;
+            margin: 0 50px;
+            padding: 14px 0 22px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 13px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .footer .footer-credit a {
+            color: #fff;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        @media (max-width: 900px) {
+            .footer .footer-credit { margin: 10px 20px 0 20px; }
+        }
+    </style>
 </head>
 <body>
 	<header class="header">
@@ -338,6 +360,9 @@
 					<a href="privacy-policy" class="footer-link">Privacy Policy</a>
 				</div>
 			</div>
+		</div>
+		<div class="footer-credit">
+			Web design &amp; development: <a href="https://vivenna-it.de" target="_blank" rel="noopener">vivenna-it.de</a>
 		</div>
 	</footer>
 	<script>

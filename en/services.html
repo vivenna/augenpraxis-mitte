@@ -136,6 +136,28 @@
         @media (max-width:900px){ .lage-tabelle { order:1; } .lage-map { order:2; min-height:320px; } }
         @media (min-width:901px){ .lage-map { order:1; } .lage-tabelle { order:2; } }
         @media (max-width:900px){ .vorsorge-left { display:flex; align-items:center; gap:20px; justify-content:left; } .vorsorge-left h2 { order:2; text-align:left; margin:0; } .vorsorge-left .vorsorge-image-wrapper { order:1; width:68px; max-width:68px; margin:0; flex:0 0 auto; } .vorsorge-left .vorsorge-bild { width:100%; height:auto; display:block; } .vorsorge-left .führerschein { font-size:1.5rem; } .vorsorge-left .führerschein img { width:48px; } }
+
+        /* Webdesign-Credit: dezente Fußnote unter dem Footer-Inhalt */
+        .footer .footer-credit {
+            position: relative;
+            z-index: 2;
+            margin: 0 50px;
+            padding: 14px 0 22px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 13px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .footer .footer-credit a {
+            color: #fff;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        @media (max-width: 900px) {
+            .footer .footer-credit { margin: 10px 20px 0 20px; }
+        }
     </style>
 </head>
 <body>
@@ -359,6 +381,9 @@
                     <a href="privacy-policy" class="footer-link">Privacy Policy</a>
                 </div>
             </div>
+        </div>
+        <div class="footer-credit">
+            Web design &amp; development: <a href="https://vivenna-it.de" target="_blank" rel="noopener">vivenna-it.de</a>
         </div>
     </footer>
     <script>
